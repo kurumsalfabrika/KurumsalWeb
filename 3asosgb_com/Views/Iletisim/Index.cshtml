@@ -1,0 +1,108 @@
+﻿@using Kurumsal.Core.Functions
+@model AnasayfaViewModel
+
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url(~/assets/images/backgrounds/page-header-bg.jpg);"></div>
+    <div class="container">
+        <div class="page-header__content">
+            <h2 class="page-header__title">İletişim</h2>
+            <ul class="insuba-breadcrumb list-unstyled">
+                <li><a href="/anasayfa/3asosgb.html">Anasayfa</a></li>
+                <li><span>Bize Ulaşın</span></li>
+            </ul>
+        </div>
+    </div>
+
+
+        <img src="~/assets/images/resources/page-header-1-1.png" alt="3 AS Ortak Sağlık Güvenlik Birimi" class="page-header__image" />
+
+
+    <div class="page-header__shape-two"></div>
+    <div class="page-header__shape-three"></div>
+    <div class="page-header__shape-four"></div>
+</section>
+
+<!-- İLETİŞİM BİLGİLERİ VE FORM -->
+<section class="contact-one section-space">
+    <div class="container">
+        <div class="row gutter-y-40">
+            <div class="col-lg-6">
+                <div class="contact-one__content">
+                    <div class="sec-title">
+                        <h3 class="sec-title__title">Bizimle İletişime Geçin</h3>
+                        <p class="sec-title__text">
+                            3 AS OSGB olarak iş sağlığı ve güvenliği alanındaki tüm ihtiyaçlarınız için bizimle kolayca iletişime geçebilirsiniz.
+                        </p>
+                    </div>
+
+                    <ul class="list-unstyled contact-one__info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <strong>Adres:</strong> @Model.IletisimAyar.FirmaAdres
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <strong>Telefon:</strong> <a href="tel:@Model.IletisimAyar.Telefon1">@Model.IletisimAyar.Telefon1</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <strong>E-posta:</strong> <a href="mailto:@Model.IletisimAyar.IletisimEposta">@Model.IletisimAyar.IletisimEposta</a>
+                        </li>
+                    </ul>
+                    <div class="contact-one__social">
+                        <a href="https://facebook.com/3asisg" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/3asosgb" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/company/3asosgb" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">@TempData["Success"]</div>
+                }
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["Error"]</div>
+                }
+
+
+                <form method="post" asp-action="Gonder" asp-controller="Iletisim" class="contact-one__form">
+                    <div class="row gutter-y-20">
+                        <div class="col-md-6">
+                            <input type="text" name="AdSoyad" placeholder="Ad Soyad" required class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" name="Email" placeholder="E-posta Adresiniz" required class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="Telefon" placeholder="Telefon" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="Konu" placeholder="Konu" class="form-control" />
+                        </div>
+                        <div class="col-md-12">
+                            <textarea name="Mesaj" placeholder="Mesajınızı yazın..." rows="5" required class="form-control"></textarea>
+                        </div>
+                        <div class="col-md-12 text-start mt-2">
+                            <button type="submit" class="btn btn-danger">Mesaj Gönder</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GOOGLE HARİTA -->
+<section class="contact-map section-space-top">
+    <div class="container-fluid p-0">
+        <div class="google-map" style="width: 100%; height: 450px; z-index:1500000;">
+
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1-RuKkWiHmxeo2dKgy7u70g9L-BXYwN4&ehbc=2E312F" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,79 @@
+@using Kurumsal.Core.Functions
+@model GenelViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!--===== HERO AREA STARTS =======-->
+<div class="hero-section-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hero-tabs-area">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="tab-content" id="pills-tabContent">
+                                @{
+                                    int sira = 0;
+                                }
+                                @foreach (var item in Model.Sliderlar)
+                                {
+                                    sira++;
+                                    <div class="tab-pane fade @(sira == 1 ? "show active" : "")"
+                                         id="pills-@sira"
+                                         role="tabpanel"
+                                         aria-labelledby="pills-@sira-tab"
+                                         tabindex="0">
+                                        <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="@item.SliderBaslik" class="hero-img1">
+                                        <div class="hero-header heading1">
+                                            <h5 class="text-anime-style-3">
+                                                <img src="assets/img/icons/sub-logo1.svg" alt=""> #@sira @item.SliderBaslik
+                                            </h5>
+                                            <div class="space20"></div>
+                                            <h2 class="text-anime-style-3">@item.IkinciSatir</h2>
+                                            <div class="space24"></div>
+                                            <p class="text-anime-style-1">@item.UcuncuSatir</p>
+                                            <div class="space32"></div>
+                                            <div class="btn-area">
+                                                <a href="@item.SliderURL"
+                                                   target="@(item.YeniSekmedeAc ? "_blank" : "_self")"
+                                                   class="header-btn1">
+                                                    @item.ButonYazisi <i class="fa-solid fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="space50"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slider-btn-area">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            @{
+                int sira1 = 0;
+            }
+            @foreach (var item in Model.Sliderlar)
+            {
+                sira1++;
+                <li class="nav-item btn@sira1" role="presentation">
+                    <button class="nav-link @(sira1 == 1 ? "active" : "")"
+                            id="pills-@sira1-tab"
+                            data-bs-toggle="pill"
+                            data-bs-target="#pills-@sira1"
+                            type="button"
+                            role="tab"
+                            aria-controls="pills-@sira1"
+                            aria-selected="@(sira1 == 1 ? "true" : "false")">
+                        #@sira1 @item.SliderBaslik
+                    </button>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<!--===== HERO AREA ENDS =======-->

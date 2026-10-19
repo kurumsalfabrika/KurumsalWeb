@@ -1,0 +1,140 @@
+﻿@{
+
+    @model IletisimAyarViewModel
+    ViewBag.pTitle = "İLETİŞİM İŞLEMLERİ";
+    ViewBag.Title = "Iletişim İşlemleri";
+    ViewBag.pageTitle = "İletişim";
+    Layout = "~/Views/_Shared/Layouts/_layout_horizontal_topbarlight_kurumsal_web.cshtml";
+}
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form asp-action="AddOrUpdate" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" id="editSayfaId" asp-for="IletisimAyar.Id" name="IletisimAyar.Id">
+
+                    <div class="row mb-3">
+                        <label for="Sira" class="col-sm-2 col-form-label">Sıra</label>
+                        <div class="col-sm-10">
+                            <input asp-for="IletisimAyar.Sira" type="number" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="FirmaUnvani" class="col-sm-2 col-form-label">Firma Ünvanı</label>
+                        <div class="col-sm-10">
+                            <input asp-for="IletisimAyar.FirmaUnvani" type="text" class="form-control" placeholder="Adresteki Firma Ünvanı">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="Telefon1" class="col-sm-2 col-form-label">Telefon 1</label>
+                        <div class="col-sm-10">
+                            <input asp-for="IletisimAyar.Telefon1" type="tel" class="form-control" >
+                        </div>
+                    </div>
+                    
+
+                    <div class="row mb-3">
+                        <label for="Telefon2" class="col-sm-2 col-form-label">Telefon 2</label>
+                        <div class="col-sm-10">
+                            <input asp-for="IletisimAyar.Telefon2" type="tel" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Telefon3" class="col-sm-2 col-form-label">Telefon 3</label>
+                        <div class="col-sm-10">
+                            <input asp-for="IletisimAyar.Telefon3" type="tel" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Telefon4" class="col-sm-2 col-form-label">Telefon 4</label>
+                        <div class="col-sm-10">
+                            <input asp-for="IletisimAyar.Telefon4" type="tel" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="GSM" class="col-sm-2 col-form-label">GSM</label>
+                        <div class="col-sm-10">
+                            <input asp-for="IletisimAyar.GSM" type="tel" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Faks" class="col-sm-2 col-form-label">Faks</label>
+                        <div class="col-sm-10">
+                            <input asp-for="IletisimAyar.Faks" type="tel" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="IletisimEposta" class="col-sm-2 col-form-label">İletişim Posta</label>
+                        <div class="col-sm-10">
+                            <input asp-for="IletisimAyar.IletisimEposta" type="email" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="SiparisEposta" class="col-sm-2 col-form-label">Sipariş Posta</label>
+                        <div class="col-sm-10">
+                            <input asp-for="IletisimAyar.SiparisEposta" type="email" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="FirmaAdres" class="col-sm-2 col-form-label">Posta Adresi</label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="IletisimAyar.FirmaAdres" rows="3" class="form-control" ></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="XKoordinat" class="col-sm-2 col-form-label">XKoordinat</label>
+                        <div class="col-sm-10">
+                            <input asp-for="IletisimAyar.XKoordinat" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="YKoordinat" class="col-sm-2 col-form-label">YKoordinat</label>
+                        <div class="col-sm-10">
+                            <input asp-for="IletisimAyar.YKoordinat" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Varsayilan" class="col-sm-2 col-form-label">Varsayılan</label>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input asp-for="IletisimAyar.Varsayilan" class="form-check-input" type="checkbox">
+                                <label class="form-check-label" for="Varsayilan">Varsayılan Adres</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Gönderim Butonu -->
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<!--tinymce js-->
+<script src="~/assets/libs/tinymce/tinymce.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/form-editor.init.js"></script>
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Sweet alert init js-->
+<script src="~/assets/js/pages/sweet-alerts.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>

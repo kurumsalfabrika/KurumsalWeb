@@ -1,0 +1,352 @@
+﻿@using Kurumsal.Core.Functions
+@{
+    ViewData["Title"] = "Anasayfa";
+}
+
+@model AnasayfaViewModel
+<section class="main-slider-one" id="home">
+    <div class="main-slider-one__carousel insuba-owl__carousel insuba-owl__carousel--basic-nav owl-carousel owl-theme"
+         data-owl-options='{
+         "items" : 1,
+         "margin" : 0,
+         "animateIn" : "fadeIn" ,
+         "animateOut" : "fadeOut" ,
+         "loop" : true,
+         "smartSpeed" : 3200,
+         "nav" : false,
+         "dots" : true,
+         "autoplay" : true,
+         "navText" : ["<i class=\"fas fa-chevron-left\"></i>","<i class=\"fas fa-chevron-right\"></i>"]
+                    }'>
+
+
+
+                        @foreach (var item in Model.Sliderlar)
+        {
+            
+                              <div class="main-slider-one__item">
+                        <div class="main-slider-one__image-left"
+                                style="background-image: url(@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel);"></div>
+                        <!-- /.main-slider-one__image-left -->
+                        <div class="main-slider-one__image-right">
+                            <div class="main-slider-one__image-right__inner">
+                                <div class="main-slider-one__image-right__bg"
+                                        style="background-image: url(@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel2);"></div>
+                            </div><!-- /.main-slider-one__image-right__inner -->
+                            <div class="main-slider-one__experience">
+                                <h4 class="main-slider-one__experience__title">@item.DorduncuSatir</h4>
+                                <!-- /.main-slider-one__experience__title -->
+                            </div><!-- /.main-slider-one__experience -->
+                                <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel1" alt="slider image"
+                                class="main-slider-one__image-right__image">
+                        </div><!-- /.main-slider-one__image-right -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-9">
+                                    <div class="main-slider-one__content">
+                                        <div class="main-slider-one__top">
+                                            <div class="main-slider-one__top__inner">
+                                                <div class="main-slider-one__top__box">
+                                                    <div class="main-slider-one__top__box__inner"></div>
+                                                </div><!-- /.main-slider-one__top__box -->
+                                                <h6 class="main-slider-one__tagline">@item.SliderBaslik</h6>
+                                            </div><!-- /.main-slider-one__top__inner -->
+                                        </div><!-- /.main-slider-one__top -->
+                                        <h2 class="main-slider-one__title">
+                                            <span class="main-slider-one__title__inner">@item.IkinciSatir
+                                            </span>
+                                        </h2><!-- /.title -->
+                                        <div class="main-slider-one__description">
+                                            <p class="main-slider-one__text">@item.UcuncuSatir</p>
+                                        </div>
+                                        <div class="main-slider-one__button">
+                                            <div class="main-slider-one__button__inner">
+                                                <a href="@item.SliderURL" class="main-slider-one__btn-1 insuba-btn">
+                                                    <span>@item.ButonYazisi</span>
+                                                    <span class="insuba-btn__icon-box">
+                                                        <span class="insuba-btn__icon"><i
+                                                                class="fas fa-arrow-right"></i></span>
+                                                    </span>
+                                                </a><!-- /.insuba-btn -->
+                                            </div><!-- /.main-slider-one__button__inner -->
+
+                                        </div><!-- /.button -->
+                                        <div class="main-slider-one__content__shape-box"></div>
+                                        <!-- /.main-slider-one__content__shape-box -->
+                                        <img src="~/assets/images/shapes/main-slider-shape-1-1.png" alt="shape"
+                                            class="main-slider-one__content__shape-one slider-image">
+                                    </div><!-- /.main-slider-one__content -->
+                                </div><!-- /.col-xl-6 col-lg-9 -->
+                            </div><!-- /.row -->
+                        </div><!-- /.container -->
+                        <div class="main-slider-one__shape-box"></div><!-- /.main-slider-one__shape-box -->
+                        <img src="~/assets/images/shapes/main-slider-shape-1-2.png" alt="shape"
+                            class="main-slider-one__shape-one slider-image">
+                    </div>
+        }
+            </div><!-- /.main-slider-one__carousel -->
+</section><!-- /.main-slider-one -->
+
+<section class="company-info">
+    <div class="container">
+        <div class="company-info__inner wow fadeInUp" data-wow-duration="1500ms">
+            <div class="row gutter-y-30 align-items-center">
+                <div class="col-lg-3 col-sm-5">
+                    <div class="company-info__image">
+                        <img src="~/assets/images/resources/company-info-1-1.jpg" alt="company-info">
+                    </div><!-- /.company-info__image -->
+                </div><!-- /.col-lg-3 col-sm-5 -->
+                <div class="col-lg-4 col-sm-7">
+                    <div class="company-info__clients">
+                        <div class="company-info__clients__image">
+                            <img src="~/assets/images/resources/kbsb.png" alt="client image">
+                            <img src="~/assets/images/resources/oksut.png" alt="client image">
+                            <img src="~/assets/images/resources/gib.png" alt="client image">
+                        </div><!-- /.company-info__clients__image -->
+                        <a href="/referanslar/tum-referanslar.html" class="company-info__clients__link">
+                            Referanslar
+                            <span class="company-info__clients__link__icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </a><!-- /.company-info__clients__link -->
+                    </div><!-- /.company-info__clients -->
+                </div><!-- /.col-lg-4 col-sm-7 -->
+                <div class="col-lg-5">
+                    <div class="company-info__customers">
+                        Mutlu müşterilerimiz arasında siz de yer alabilirsiniz <a href="/referanslar/tum-referanslar.html">(Referanslarımıza göaz atmak için buraya tıklayın)</a>
+                    </div>
+                    <!-- /.company-info__customers -->
+                </div><!-- /.col-lg-5 -->
+            </div><!-- /.row gutter-y-30 -->
+        </div><!-- /.company-info__inner -->
+    </div><!-- /.container -->
+</section><!-- /.company-info -->
+<br />
+<div class="container-fluid">
+    <div class="portfolio-one__carousel insuba-owl__carousel insuba-owl__carousel--basic-nav owl-carousel owl-theme"
+         data-owl-options='{
+         "items" : 1,
+         "margin" : 10,
+         "loop" : false,
+         "smartSpeed" : 700,
+         "nav" : false,
+         "dots" : true,
+         "navText" : ["<i class=\"fas fa-chevron-left\"></i>","<i class=\"fas fa-chevron-right\"></i>"],
+            "autoplay": true,
+            "responsive": {
+                "0": {
+                    "items": 1,
+                    "nav": true,
+                    "dots": false,
+                    "margin": 10
+                },
+                "768": {
+                    "items": 2,
+                    "margin": 0
+                },
+                "992": {
+                    "items": 3,
+                    "margin": 0
+                },
+                "1200": {
+                    "items": 3,
+                    "margin": 0
+                },
+                "1400": {
+                    "items": 4,
+                    "margin": 0
+                },
+                "1600": {
+                    "items": 4,
+                    "margin": 0
+                },
+                "1800": {
+                    "items": 5,
+                    "margin": 0
+                }
+            }
+        }'>
+
+
+@{
+        var delay = 0;
+}
+
+@foreach (var item in Model.Hizmetler)
+{
+        <div class="item wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="@($"{delay}ms")">
+            <div class="portfolio-card">
+                <div class="portfolio-card__bg"
+                     style='background-image: url(@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel)'></div>
+                <!-- /.portfolio-card__bg -->
+                <div class="portfolio-card__content">
+                    <div class="portfolio-card__content__inner">
+                        <h3 class="portfolio-card__title">
+                            <a href=@Url.Content("~/hizmet/" + SeoUrlGenerator.GenerateSlug(item.HizmetAdi) + "-" + item.Id + ".html")>
+                                @item.HizmetAdi
+                            </a>
+                        </h3>
+                        <p class="portfolio-card__text">@item.HizmetKisaAciklama</p>
+                                <a href=@Url.Content("~/hizmet/" + SeoUrlGenerator.GenerateSlug(item.HizmetAdi) + "-" + item.Id + ".html") class="portfolio-card__btn">
+                            <span class="portfolio-card__btn__icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        delay += 100;
+}
+
+
+
+
+            </div><!-- /.portfolio-one__carousel -->
+</div><!-- /.container-fluid -->
+
+<section class="work-planning section-space">
+    <div class="work-planning__container container">
+        <div class="sec-title sec-title--center wow fadeInUp" data-wow-duration="1500ms">
+            <div class="sec-title__top">
+                <div class="sec-title__box">
+                    <div class="sec-title__box__inner"></div>
+                </div><!-- /.sec-title__box -->
+                <h6 class="sec-title__tagline">Nasıl Çalışıyoruz?</h6><!-- /.sec-title__tagline -->
+            </div><!-- /.sec-title__top -->
+            <h3 class="sec-title__title">Planlı Adımlarla Güvenli Gelecek</h3><!-- /.sec-title__title -->
+        </div><!-- /.sec-title -->
+        <div class="row gutter-y-40">
+            <div class="col-lg-3 col-sm-6">
+                <div class="work-planning__item work-planning__item--bottom-serial-number">
+                    <h2 class="work-planning__item__serial-number"></h2>
+                    <!-- /.work-planning__item__serial-number -->
+                    <div class="work-planning__item__image">
+                        <div class="work-planning__item__image__bg"
+                             style="background-image: url(~/assets/images/shapes/work-planning-item-image-bg.png);">
+                        </div>
+                        <!-- /.work-planning__item__image__bg -->
+                        <div class="work-planning__item__image__bg work-planning__item__image__bg--hover"
+                             style="background-image: url(~/assets/images/shapes/work-planning-item-image-bg-hover.png);">
+                        </div>
+                        <!-- /.work-planning__item__image__bg -->
+                        <div class="work-planning__item__image__inner">
+                            <img src="~/assets/images/work-planning/work-planning-1-1.jpg" alt="work-planning">
+                        </div><!-- /.work-planning__item__image__inner -->
+                        <div class="work-planning__item__icon-box">
+                            <span class="work-planning__item__icon"><i class="icon-life-insurance"></i></span>
+                        </div><!-- /.work-planning__item__icon-box -->
+                    </div><!-- /.work-planning__item__image -->
+                    <div class="work-planning__item__content">
+                        <h3 class="work-planning__item__title">Risk Analizi</h3>
+                        <p class="work-planning__item__text">
+                            İşyerinizde karşılaşılabilecek tehlikeleri analiz ederek gerekli önlemleri belirliyoruz.
+                        </p>
+                        <!-- /.work-planning__item__text -->
+                    </div><!-- /.work-planning__item__content -->
+                </div><!-- /.work-planning__item -->
+            </div><!-- /.col-lg-3 col-sm-6 -->
+            <div class="col-lg-3 col-sm-6 col-sm-6">
+                <div class="work-planning__item">
+                    <h2 class="work-planning__item__serial-number"></h2>
+                    <!-- /.work-planning__item__serial-number -->
+                    <div class="work-planning__item__image">
+                        <div class="work-planning__item__image__bg"
+                             style="background-image: url(~/assets/images/shapes/work-planning-item-image-bg.png);">
+                        </div>
+                        <!-- /.work-planning__item__image__bg -->
+                        <div class="work-planning__item__image__bg work-planning__item__image__bg--hover"
+                             style="background-image: url(~/assets/images/shapes/work-planning-item-image-bg-hover.png);">
+                        </div>
+                        <!-- /.work-planning__item__image__bg -->
+                        <div class="work-planning__item__image__inner">
+                            <img src="~/assets/images/work-planning/work-planning-1-2.jpg" alt="work-planning">
+                        </div><!-- /.work-planning__item__image__inner -->
+                        <div class="work-planning__item__icon-box">
+                            <span class="work-planning__item__icon"><i class="icon-umbrella"></i></span>
+                        </div><!-- /.work-planning__item__icon-box -->
+                    </div><!-- /.work-planning__item__image -->
+                    <div class="work-planning__item__content">
+                        <h3 class="work-planning__item__title">Değerlendirme</h3>
+                        <p class="work-planning__item__text">
+                            Tespit edilen riskleri değerlendirerek öncelik sırasına göre çözümler üretiyoruz.
+                        </p>
+                    </div><!-- /.work-planning__item__content -->
+                </div><!-- /.work-planning__item -->
+            </div><!-- /.col-lg-3 col-sm-6 -->
+            <div class="col-lg-3 col-sm-6">
+                <div class="work-planning__item work-planning__item--bottom-serial-number">
+                    <h2 class="work-planning__item__serial-number"></h2>
+                    <!-- /.work-planning__item__serial-number -->
+                    <div class="work-planning__item__image">
+                        <div class="work-planning__item__image__bg"
+                             style="background-image: url(~/assets/images/shapes/work-planning-item-image-bg.png);">
+                        </div>
+                        <!-- /.work-planning__item__image__bg -->
+                        <div class="work-planning__item__image__bg work-planning__item__image__bg--hover"
+                             style="background-image: url(~/assets/images/shapes/work-planning-item-image-bg-hover.png);">
+                        </div>
+                        <!-- /.work-planning__item__image__bg -->
+                        <div class="work-planning__item__image__inner">
+                            <img src="~/assets/images/work-planning/work-planning-1-3.jpg" alt="work-planning">
+                        </div><!-- /.work-planning__item__image__inner -->
+                        <div class="work-planning__item__icon-box">
+                            <span class="work-planning__item__icon"><i class="icon-protection"></i></span>
+                        </div><!-- /.work-planning__item__icon-box -->
+                    </div><!-- /.work-planning__item__image -->
+                    <div class="work-planning__item__content">
+                        <h3 class="work-planning__item__title">Sözleşme</h3>
+                        <p class="work-planning__item__text">
+                            Hizmet kapsamını netleştirerek yasal ve teknik gerekliliklere uygun sözleşmeler oluşturuyoruz.
+                        </p>
+
+                    </div><!-- /.work-planning__item__content -->
+                </div><!-- /.work-planning__item -->
+            </div><!-- /.col-lg-3 col-sm-6 -->
+            <div class="col-lg-3 col-sm-6">
+                <div class="work-planning__item">
+                    <h2 class="work-planning__item__serial-number"></h2>
+                    <!-- /.work-planning__item__serial-number -->
+                    <div class="work-planning__item__image">
+                        <div class="work-planning__item__image__bg"
+                             style="background-image: url(~/assets/images/shapes/work-planning-item-image-bg.png);">
+                        </div>
+                        <!-- /.work-planning__item__image__bg -->
+                        <div class="work-planning__item__image__bg work-planning__item__image__bg--hover"
+                             style="background-image: url(~/assets/images/shapes/work-planning-item-image-bg-hover.png);">
+                        </div>
+                        <!-- /.work-planning__item__image__bg -->
+                        <div class="work-planning__item__image__inner">
+                            <img src="~/assets/images/work-planning/work-planning-1-4.jpg" alt="work-planning">
+                        </div><!-- /.work-planning__item__image__inner -->
+                        <div class="work-planning__item__icon-box">
+                            <span class="work-planning__item__icon"><i class="icon-protection-1"></i></span>
+                        </div><!-- /.work-planning__item__icon-box -->
+                    </div><!-- /.work-planning__item__image -->
+                    <div class="work-planning__item__content">
+                        <h3 class="work-planning__item__title">Uygulama</h3>
+                        <p class="work-planning__item__text">
+                            Hazırlanan plan doğrultusunda tüm iş güvenliği süreçlerini uygulamaya geçiriyoruz.
+                        </p>
+                        <!-- /.work-planning__item__text -->
+                    </div><!-- /.work-planning__item__content -->
+                </div><!-- /.work-planning__item -->
+            </div><!-- /.col-lg-3 col-sm-6 -->
+        </div><!-- /.row gutter-y-40 -->
+        <img src="~/assets/images/shapes/work-planning-border-shape.png" alt="border shape"
+             class="work-planning__border-shape">
+    </div>
+    <div class="container">
+        <div class="work-planning__appointment">
+            <p class="work-planning__appointment__text">
+                Hemen iletişime geçin, iş sağlığı ve güvenliği hizmetlerimizden faydalanmaya başlayın!
+            </p>
+            <a href="/iletisim/randevu-al.html" class="insuba-btn">
+                <span>Randevu Al</span>
+                <span class="insuba-btn__icon-box">
+                    <span class="insuba-btn__icon"><i class="fas fa-arrow-right"></i></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>

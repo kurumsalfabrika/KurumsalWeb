@@ -1,0 +1,206 @@
+﻿@model RezervasyonViewModel
+@section Styles {
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <!-- BASE CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.min.css" rel="stylesheet">
+    <link href="~/css/bs-icon-font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="~/pro/css/all.css" rel="stylesheet" />
+    <link href="~/css/shop.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <!-- SPECIFIC CSS -->
+    <link href="~/css/carousel_home.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <!-- YOUR CUSTOM CSS -->
+    <link href="~/css/custom.css" rel="stylesheet">
+}
+<section class="parallax_window_in short" data-parallax="scroll" data-image-src="~/img/subheader_in_3.jpg" data-natural-width="1400" data-natural-height="350">
+    <div id="sub_content_in">
+        <div class="container">
+            <h1>Online Rezervasyon</h1>
+            <p>@Model.Oda.OdaAdi</p>
+        </div>
+    </div>
+</section>
+<main>
+    <form asp-action="Odeme" asp-controller="Rezervasyon" method="post">
+        <div class="container margin_60_35">
+            <div class="checkout-page">
+                <ul class="default-links">
+                    <li>Kayıtlı üyemiz misiniz? <a href="#"><strong>Lütfen Üye Girişi Yapınız.</strong></a></li>
+                </ul>
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="billing-details">
+                            <div class="shop-form">
+                                <div class="default-title">
+                                    <h2>Rezervasyon Detayı</h2>
+                                </div>
+                                <div class="row">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.Id" id="id" name="Rezervasyon.Id" class="form-control">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.GunlukUcret" id="gunlukUcretInput" name="Rezervasyon.GunlukUcret" class="form-control">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.ToplamGun" id="toplamGunInput" name="Rezervasyon.ToplamGun" class="form-control">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.ToplamTutar" id="toplamTutarInput" name="Rezervasyon.ToplamTutar" class="form-control">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.OdaId" name="Rezervasyon.OdaId" class="form-control">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.Currency" name="Rezervasyon.Currency" class="form-control">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.Amount" name="Rezervasyon.Amount" class="form-control">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.GunlukUcret" name="Rezervasyon.GunlukUcret" class="form-control">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.GunlukUcretDovizAdi" name="Rezervasyon.GunlukUcretDovizAdi" class="form-control">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.GunlukUcretDovizKodu" name="Rezervasyon.GunlukUcretDovizKodu" class="form-control">
+
+                                    <div class="form-group col-md-6 col-sm-6 col-12">
+                                        <label>Giriş Tarihi <sup>*</sup></label>
+                                        <input type="date" asp-for="@Model.Rezervasyon.GirisTarihi" id="girisTarihi" name="Rezervasyon.GirisTarihi" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-12">
+                                        <label>Çıkış Tarihi <sup>*</sup></label>
+                                        <input type="date" asp-for="@Model.Rezervasyon.CikisTarihi" id="cikisTarihi" name="Rezervasyon.CikisTarihi" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-12">
+                                        <label>Ad Soyad <sup>*</sup></label>
+                                        <input type="text" asp-for="@Model.Rezervasyon.AdSoyad" name="Rezervasyon.AdSoyad" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-12">
+                                        <label>E-Posta Adresi <sup>*</sup></label>
+                                        <input type="text" asp-for="@Model.Rezervasyon.Eposta" name="Rezervasyon.Eposta" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-12">
+                                        <label>Telefon <sup>*</sup></label>
+                                        <input type="text" asp-for="@Model.Rezervasyon.Telefon" name="Rezervasyon.Telefon" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-12">
+                                        <label>TC Kimlik No <sup>*</sup></label>
+                                        <input type="text" asp-for="@Model.Rezervasyon.TCKimlikNo" name="Rezervasyon.TCKimlikNo" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-12">
+                                        <label>Not </label>
+                                        <input type="text" asp-for="@Model.Rezervasyon.Not" name="Rezervasyon.Not" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-12">
+                                        <label>Firma Adı</label>
+                                        <input type="text" asp-for="@Model.Rezervasyon.FirmaAdi" name="Rezervasyon.FirmaAdi" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-12">
+                                        <label>Vergi Dairesi </label>
+                                        <input type="text" asp-for="@Model.Rezervasyon.VergiDairesi" name="Rezervasyon.VergiDairesi" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-12">
+                                        <label>Vergi No </label>
+                                        <input type="text" asp-for="@Model.Rezervasyon.VergiNo" name="Rezervasyon.VergiNo" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-12">
+                                        <label>Fatura Adresi</label>
+                                        <input type="text" asp-for="@Model.Rezervasyon.FaturaAdresi" name="Rezervasyon.FaturaAdresi" required class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="your-order">
+                            <div class="default-title" style="margin-bottom:0;">
+                                <h2>Ödeme Detayı</h2>
+                            </div>
+                            <ul class="orders-table">
+                                <li class="clearfix">
+                                    <div class="col" style="text-transform:none;">
+                                        <img src="@Model.Ftp.DosyaAdresOnEki@Model.Oda.OneCikanGorsel" width="50" height="50" alt=""> @Model.Oda.OdaAdi
+                                    </div>
+                                    <div class="col second">
+                                        <span id="gunlukUcretSpan">@Model.Rezervasyon.GunlukUcret.ToString("N2")</span> <span id="dovizSembol">@Model.Rezervasyon.GunlukUcretDovizAdi</span>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="col-12 text-center">
+                                        Giriş Tarihi: <span class="bold" id="girisTarihiSpan">@Model.Rezervasyon.GirisTarihi.ToString("dd.MM.yyyy")</span> - Çıkış Tarihi:<span class="bold" id="cikisTarihiSpan">@Model.Rezervasyon.CikisTarihi.ToString("dd.MM.yyyy")</span> / <span class="bold" id="gunSayisiSpan">@Model.Rezervasyon.ToplamGun</span> Gün
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="col" style="text-transform:none;">
+                                        Ara Toplam
+                                    </div>
+                                    <div class="col second">
+                                        <span id="toplamTutarSpan">@Model.Rezervasyon.ToplamTutar.ToString("N2")</span> <span id="dovizSembolTutar">@Model.Rezervasyon.GunlukUcretDovizAdi</span>
+                                    </div>
+                                </li>
+                                <li class="clearfix total">
+                                    <div class="col">
+                                        <strong>Genel Toplam</strong>
+                                    </div>
+                                    <div class="col second">
+                                        <span class="bold" id="genelToplamSpan">@Model.Rezervasyon.ToplamTutar.ToString("N2")</span> <span id="dovizSembolGenel">@Model.Rezervasyon.GunlukUcretDovizAdi</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="place-order add_bottom_30">
+                            <button type="submit" class="btn_full">Rezervasyon Yap <i class="icon-left"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</main>
+
+@section Scripts {
+    <!-- Common scripts -->
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/common_scripts_min.js"></script>
+    <script src="~/js/functions.js"></script>
+    <!--Owl carousel/slider -->
+    <script src="~/js/slider.js"></script>
+    <!-- Specific scripts -->
+    <script src="~/js/jquery.validate.js"></script>
+    <script src="~/js/jquery.stepy.min.js"></script>
+    <script src="~/js/quotation-validate.js"></script>
+}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var girisTarihiInput = document.getElementById("girisTarihi");
+        var cikisTarihiInput = document.getElementById("cikisTarihi");
+        var gunSayisiSpan = document.getElementById("gunSayisiSpan");
+        var gunlukUcretInput = document.getElementById("gunlukUcretInput");
+        var toplamGunInput = document.getElementById("toplamGunInput");
+        var toplamTutarInput = document.getElementById("toplamTutarInput");
+
+        girisTarihiInput.addEventListener("change", hesaplaGunSayisi);
+        cikisTarihiInput.addEventListener("change", hesaplaGunSayisi);
+
+        function hesaplaGunSayisi() {
+            var girisTarihi = new Date(girisTarihiInput.value);
+            var cikisTarihi = new Date(cikisTarihiInput.value);
+
+            if (girisTarihi && cikisTarihi && girisTarihi <= cikisTarihi) {
+                var gunFarki = Math.ceil((cikisTarihi - girisTarihi) / (1000 * 60 * 60 * 24));
+                gunSayisiSpan.textContent = gunFarki;
+                toplamGunInput.value = gunFarki;
+
+                var gunlukUcret = parseFloat(gunlukUcretInput.value.replace(',', '.'));
+                if (!isNaN(gunlukUcret)) {
+                    var toplamTutar = gunlukUcret * gunFarki;
+                    toplamTutarInput.value = toplamTutar.toFixed(2);
+
+                    document.getElementById("toplamTutarSpan").textContent = toplamTutar.toFixed(2);
+                    document.getElementById("genelToplamSpan").textContent = toplamTutar.toFixed(2);
+                } else {
+                    document.getElementById("toplamTutarSpan").textContent = "Geçersiz Ücret";
+                    document.getElementById("genelToplamSpan").textContent = "Geçersiz Ücret";
+                }
+
+            } else {
+                gunSayisiSpan.textContent = "Geçersiz Tarih Aralığı";
+            }
+        }
+    });
+
+
+</script>

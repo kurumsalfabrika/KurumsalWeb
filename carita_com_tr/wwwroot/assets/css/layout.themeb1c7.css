@@ -1,0 +1,125 @@
+﻿
+
+.slick-dots li {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 8px;
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.product-photos {
+    position: relative;
+    width: 100%;
+}
+
+    .product-photos h3 {
+        padding: 0 0 30px;
+        font: 36px tt_commonsmedium,Helvetica,Arial,sans-serif;
+        line-height: 33px;
+        color: #001665;
+        text-align: center;
+    }
+
+        .product-photos h3 span {
+            display: block;
+            font-family: tt_commonslight,Helvetica,Arial,sans-serif;
+        }
+
+.product-photos__slider {
+    overflow: hidden;
+}
+
+    .product-photos__slider a {
+        outline: none;
+    }
+
+    .product-photos__slider figure {
+        outline: 0;
+        width: 555px;
+        margin-right: 15px;
+    }
+
+        .product-photos__slider figure img {
+            display: block;
+            width: 100%;
+            outline: 0;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+
+
+
+.slick-slide, .slider-nav-thumbnails .slick-slide {
+    opacity: 1;
+    transition: .22s ease-out;
+    transition-property: opacity;
+}
+
+    .slick-slide.slick-current {
+        opacity: 1;
+    }
+
+
+.slick-arrow {
+    position: absolute;
+    bottom: 36px;
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    background-size: 20%;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    font-size: 0;
+    cursor: pointer;
+    left: calc(((100% - 1200px)/2) - 107px);
+}
+
+
+
+    .slick-arrow.slick-next {
+        left: calc(((100% - 1200px)/2) - 60px);
+        /* right: 60px; */
+    }
+
+    .slick-arrow:hover {
+    }
+
+.slick-dots {
+    position: absolute;
+    text-align: center;
+    font-size: 0;
+    z-index: 9;
+    bottom: 30px;
+    display: flex;
+}
+
+    .slick-dots li {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 11px 5px;
+        width: 10px
+    }
+
+        .slick-dots li.slick-active button {
+            background-color: #ffffff;
+        }
+
+
+    .slick-dots button {
+        display: block;
+        width: 14px;
+        height: 14px;
+        padding: 0;
+        border: 0;
+        min-width: 0;
+        background-color: transparent;
+        border-radius: 100%;
+        font-size: 0;
+        margin: 0 auto;
+        border: 1px solid #fff;
+    }

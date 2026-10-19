@@ -1,0 +1,76 @@
+﻿
+@using Kurumsal.Core.Functions
+@model SayfaViewModel
+
+<div class="breadcumb-wrapper " data-bg-src="@($"{Model.Ftp.DosyaAdresOnEki}{Model.Sayfa.OneCikanGorsel}")">
+    <div class="breadcumb-overlay" data-bg-src="assets/img/bg/breadcumb-bg-overlay.png"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcumb-content">
+                    <h1 class="breadcumb-title">@Model.Sayfa.Baslik</h1>
+                    <ul class="breadcumb-menu">
+                        <li><a href="/anasayfa/anasayfa.html">Anasayfa</a></li>
+                        <li>@Model.Sayfa.Baslik</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--==============================
+About Area
+==============================-->
+<div class="overflow-hidden space-top bg-smoke3" id="about-sec">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-6">
+                <div class="title-area">
+                    <h2 class="sec-title">@Model.Sayfa.Baslik</h2>
+                    <p class="sec-text">We are a real estate firm with over 20 years of expertise, and our main goal is to provide amazing locations to our partners.</p>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="sec-btn">
+                    <a href="about.html" class="th-btn style4 btn-sm th-btn-icon">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="row gy-4">
+            <div class="col-lg-6">
+                <div class="img-box1">
+                    <div class="img1 img-shine" data-mask-src="assets/img/shape/about-1-mask.png">
+                        <img src="assets/img/normal/about_1_1.png" alt="About">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="img-box1">
+                    <div class="img1 img-shine" data-mask-src="assets/img/shape/about-1-mask.png">
+                        <img src="assets/img/normal/about_1_2.png" alt="About">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-60">
+            <div class="row gy-40 flex-row-reverse">
+                <div class="col-xl-3 text-xl-end">
+                    <div class="about-tag">
+                        <div class="about-experience-tag">
+                            <span class="circle-title-anime text-title">Builda Agent <i class="fas fa-star"></i> Builda Living Solutions</span>
+                        </div>
+                        <div class="about-tag-thumb">
+                            <img src="assets/img/normal/about_1_3.png" alt="img">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9">
+                    <div class="about-wrap1">
+                        <p class="about-text text-title">Classic construction refers to building techniques, designs, and materials that emphasize durability, elegance,</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿@using Kurumsal.Core.Functions
+@model UrunViewModel
+
+@{
+    ViewData["Title"] = "Ürün Grupları ";
+}
+<div class="wt-bnr-inr overlay-wraper" style="background-image:url(~/assets/images/banner/gallery-banner.jpg);">
+    <div class="overlay-main bg-black opacity-07"></div>
+    <div class="container">
+        <div class="wt-bnr-inr-entry">
+            <h1 class="text-white">Ürün Grupları</h1>
+        </div>
+    </div>
+</div>
+<!-- INNER PAGE BANNER END -->
+<!-- BREADCRUMB ROW -->
+<div class="bg-gray-light p-tb20">
+    <div class="container">
+        <ul class="wt-breadcrumb breadcrumb-style-2">
+            <li><a href="/anasayfa/kirilmazlar-yapi.html"><i class="fa fa-home"></i> Anasayfa</a></li>
+            <li>Ürün Grupları</li>
+        </ul>
+    </div>
+</div>
+
+<div class="section-full p-t80 p-b50">
+    <div class="container">
+
+        <div class="row">
+            @foreach (var item in Model.UrunKategorileri)
+            {
+                <div class="col-md-4 mb-4">
+                    <a href="/urunler/@($"{SeoUrlGenerator.GenerateSlug(item.KategoriAdi)}-{item.Id}.html")" class="urun-kategori-link">
+
+                        <div class="card urun-kategori-card">
+                            <div class="overflow-hidden">
+                                <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" class="card-img-top urun-img" alt="@item.KategoriAdi" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-center">@item.KategoriAdi</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center">
+                @if (Model.UrunKategorileri.Count == 0)
+                {
+                    <p>Ürün grubu bulunmamaktadır.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

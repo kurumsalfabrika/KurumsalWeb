@@ -1,0 +1,138 @@
+﻿@model GenelViewModel
+<header class="main-header">
+
+    <!--Header Top-->
+    <div class="header-top">
+        <div class="auto-container">
+            <div class="inner-container">
+                <div class="clearfix">
+
+                    <!--Top Right-->
+                    <div class="top-right">
+                        <ul class="top-links clearfix">
+                            <li><a href="tel:@Model.Iletisim.Telefon1"><span class="fa fa fa-phone"></span>Bize Ulaşın &nbsp; @Model.Iletisim.Telefon1</a></li>
+                            <li><a href="mailto:@Model.Iletisim.IletisimEposta"><span class="fa fa-envelope-o"></span>@Model.Iletisim.IletisimEposta</a></li>
+                        </ul>
+                        <ul class="top-links clearfix">
+                            <li>
+                                <div class="social-links">
+                                    <a href="#"><span class="fab fa-instagram"></span></a>
+                                    <a href="#"><span class="fab fa-facebook"></span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Header-Upper-->
+    <div class="header-upper">
+        <div class="auto-container">
+            <div class="inner-container">
+                <div class="clearfix">
+
+                    <div class="logo-outer">
+                        <div class="logo"><a href="/anasayfa/anasayfa.html" title="@Model.SiteAyar.SiteAdi"><img src="@Model.Ftp.DosyaAdresOnEki@Model.SiteAyar.HeaderLogoAcikRenk" alt="Ufuk Baca Temizleme" title="Ufuk Baca Temizleme"></a></div>
+                    </div>
+
+                    <div class="upper-right clearfix">
+
+                        <div class="nav-outer clearfix">
+                            <!-- Main Menu -->
+                            <nav class="main-menu">
+                                <div class="navbar-header">
+                                    <!-- Toggle Button -->
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse clearfix">
+                                    <ul class="navigation clearfix">
+                                        @foreach (var item in Model.Menuler.Where(x=>x.AnaMenuId==0).ToList())
+                                        {
+                                            @if(Model.Menuler.Where(a=>a.AnaMenuId==item.Id).Count()==0)
+                                            {
+                                                <li><a href="@item.BaglantiAdresi">@item.MenuAdi</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li class=" dropdown">
+                                                    <a href="#">@item.MenuAdi</a>
+                                                    <ul>
+                                                        @foreach (var altitem in Model.Menuler.Where(c=>c.AnaMenuId==item.Id))
+                                                        {
+                                                            <li><a href="@item.BaglantiAdresi">@altitem.MenuAdi</a></li>
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </nav>
+                            <!-- Main Menu End-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Header Upper-->
+    <!--Sticky Header-->
+    <div class="sticky-header">
+        <div class="auto-container clearfix">
+            <!--Logo-->
+            <div class="logo pull-left">
+                <a href="/anasayfa/anasayfa.html" class="img-responsive" title="@Model.SiteAyar.SiteAdi"><img src="@Model.Ftp.DosyaAdresOnEki@Model.SiteAyar.HeaderLogoAcikRenk" alt="@Model.SiteAyar.SiteAdi" title="@Model.SiteAyar.SiteAdi"></a>
+            </div>
+
+            <!--Right Col-->
+            <div class="right-col pull-right">
+                <!-- Main Menu -->
+                <nav class="main-menu">
+                    <div class="navbar-header">
+                        <!-- Toggle Button -->
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="navbar-collapse collapse clearfix">
+                        <ul class="navigation clearfix">
+                            @foreach (var item in Model.Menuler.Where(x => x.AnaMenuId == 0).ToList())
+                            {
+                                @if (Model.Menuler.Where(a => a.AnaMenuId == item.Id).Count() == 0)
+                                {
+                                    <li><a href="@item.BaglantiAdresi">@item.MenuAdi</a></li>
+                                }
+                                else
+                                {
+                                    <li class=" dropdown">
+                                        <a href="#">@item.MenuAdi</a>
+                                        <ul>
+                                            @foreach (var altitem in Model.Menuler.Where(c => c.AnaMenuId == item.Id))
+                                            {
+                                                <li><a href="@item.BaglantiAdresi">@altitem.MenuAdi</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </nav><!-- Main Menu End-->
+            </div>
+
+        </div>
+    </div>
+    <!--End Sticky Header-->
+
+</header>
+<!--End Main Header -->

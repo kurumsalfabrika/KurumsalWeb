@@ -1,0 +1,135 @@
+﻿@{
+
+    @model TeklifViewModel
+    ViewBag.pTitle = "HABER İŞLEMLERİ";
+    ViewBag.Title = "Teklif İşlemleri";
+    ViewBag.pageTitle = "Teklifler";
+    Layout = "~/Views/_Shared/Layouts/_layout_horizontal_topbarlight_kurumsal_web.cshtml";
+}
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form asp-action="AddOrUpdate" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" id="editSayfaId" asp-for="Teklif.Id" name="Teklif.Id">
+
+                     <div class="col-12">
+                        <img src="http://www.sodemcanta.com.tr/@Model.Teklif.Tasarim" class="img-fluid text-center" />
+                     </div>
+           
+                    <div class="row mb-3">
+                        <label for="AdSoyad" class="col-sm-2 col-form-label">Ad Soyad</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Teklif.AdSoyad" class="form-control" type="text" placeholder="Ad Soyad">
+                            <input asp-for="Teklif.Tasarim" class="form-control" type="hidden">
+                        </div>
+                    </div>
+                    
+           
+                    <div class="row mb-3">
+                        <label for="FirmaAdi" class="col-sm-2 col-form-label">Firma Adı</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Teklif.FirmaAdi" class="form-control" type="text" placeholder="Firma Adı">
+                        </div>
+                    </div>
+                    
+           
+                    <div class="row mb-3">
+                        <label for="Telefon" class="col-sm-2 col-form-label">Telefon</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Teklif.Telefon" class="form-control" type="text" placeholder="Telefon">
+                        </div>
+                    </div>
+
+
+                    
+                    <div class="row mb-3">
+                        <label for="Eposta" class="col-sm-2 col-form-label">Eposta</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Teklif.Eposta" class="form-control" type="text" placeholder="Eposta">
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="row mb-3">
+                        <label for="Konu" class="col-sm-2 col-form-label">Konu</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Teklif.Konu" class="form-control" type="text" placeholder="Konu">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <textarea id="elm1" asp-for="Teklif.Mesaj" for="Teklif.Mesaj" name="Teklif.Mesaj"></textarea>
+                    </div>
+
+                    <!-- Form Gönderim Butonu -->
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<!--tinymce js-->
+<script src="~/assets/libs/tinymce/tinymce.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/form-editor.init.js"></script>
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Sweet alert init js-->
+<script src="~/assets/js/pages/sweet-alerts.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var fileInput = document.getElementById('oneCikanGorsel');
+        var fileNameInput = document.getElementById('dosyaAdi');
+
+        fileInput.addEventListener('change', function () {
+            if (this.files.length > 0) {
+                var fileName = this.files[0].name;
+
+                var fileNameWithoutExtension = fileName.replace(/\.[^/.]+$/, ""); // Uzantıyı kaldır
+
+
+                fileNameInput.value = fileNameWithoutExtension; // Dosya adını input alanına yerleştir
+                // SweetAlert ile bildirim göster
+                swal("Dosya Seçildi!", "Dosya Adı alanı SEO açısından büyük önem arz etmektedir. Lütfen dosya adınızı belirlerken özen gösteriniz ve çok fazla uzun olmasın!", "success");
+            }
+        });
+
+        // Fonksiyonu bir değişkene atayarak kullanıma hazırla
+        var showSweetAlert = function () {
+            swal({
+                title: "Dosya Adı Düzenleme",
+                text: "Dosya Adı alanı SEO açısından büyük önem arz etmektedir. Lütfen dosya adınızı belirlerken özen gösteriniz ve çok fazla uzun olmasın!",
+                icon: "info",
+                button: "Tamam",
+            }).then((value) => {
+                // SweetAlert gösterildikten sonra, olay dinleyicisini kaldır
+                fileNameInput.removeEventListener('click', showSweetAlert);
+            });
+        };
+
+        // Olay dinleyicisini ekle
+        fileNameInput.addEventListener('click', showSweetAlert);
+    });
+
+</script>

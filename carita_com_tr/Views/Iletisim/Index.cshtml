@@ -1,0 +1,343 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Gökhan Eraslan İnşaat - KAYSERİ";
+}
+@model IletisimViewModel
+
+
+<div class="detaypagetop">
+    <div class="bg1"></div>
+    <div>
+
+        <div class="detaypagetoptitle txtcenter">
+            <h1>İLETİŞİM</h1>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container  hakk">
+    <section>
+        <div class="iccenter">
+            <div class="fullcenter">
+                <div class="detaypage">
+
+                    <h6>Gökhan Eraslan İnşaat</h6>
+                    <h2>"GÜÇLÜ BAĞLAR, GÜVENLE BAŞLAR!"</h2>
+
+                    <div class="tema1 mtop">
+                        <div>
+                            <img src="~/img/caritalogo.jpg" />
+                        </div>
+                        <div>
+                            @if (Model.IletisimAyar == null)
+                            {
+                                <h1>İletişim Bilgileri Bulunamadı!</h1>
+                            }
+                            else
+                            {
+                                <p>@Model.IletisimAyar.FirmaAdres</p>
+                                <a href="tel:@Model.IletisimAyar.Telefon1" class="phone-number">
+                                    <p>
+                                        <span class="material-symbols-outlined">
+                                            phone_in_talk
+                                        </span> @Model.IletisimAyar.Telefon1
+                                    </p>
+                                </a>
+                                <a href="mailto:@Model.IletisimAyar.IletisimEposta">
+                                    <p>
+                                        <span class="material-symbols-outlined">
+                                            mail
+                                        </span>@Model.IletisimAyar.IletisimEposta
+                                    </p>
+                                </a>
+                            }
+                            <div>
+                               
+                                    @if (TempData["Success"] != null)
+                                    {
+                                        <div class="alert alert-success">@TempData["Success"]</div>
+                                    }
+                                    @if (TempData["Error"] != null)
+                                    {
+                                        <div class="alert alert-danger">@TempData["Error"]</div>
+                                    }
+
+                                    <form method="post" asp-action="Gonder" asp-controller="Iletisim" class="contact-one__form" enctype="multipart/form-data">
+                                        <div class="row gutter-y-20">
+                                            <div class="col-md-6">
+                                                <input class="form-control" type="text" name="Ad" placeholder="Adınız ve Soyadınız" required />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input class="form-control" type="email" name="Email" placeholder="E-Mail Adresiniz" required />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input class="form-control" type="text" name="Telefon" placeholder="Telefon Numaranız" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input class="form-control" type="text" name="Konu" placeholder="Konu" />
+                                            </div>
+                                            <div class="col-md-12">
+                                                <textarea class="form-control" name="Mesaj" placeholder="Mesajınız" rows="5" required></textarea>
+                                            </div>
+                                            <div class="col-md-12 text-start mt-2">
+                                                <button class="btn btn-danger" type="submit">Gönder</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                <div class="g-recaptcha" data-sitekey="6LcYFvMrAAAAAMHjDjSFv9bpEfPbJNETTwqPxPyJ"></div>
+                           <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcYFvMrAAAAAMHjDjSFv9bpEfPbJNETTwqPxPyJ"></script>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+
+
+<script>
+
+    function kontrol() {
+
+        var sayac = 0;
+        if (document.getElementById('adsoyad').value == "") {
+            document.getElementById('adsoyad').style.borderColor = "red";
+            sayac++;
+        }
+        else {
+            document.getElementById('adsoyad').style.borderColor = "green";
+        }
+
+
+        if (document.getElementById('eposta').value == "") {
+            document.getElementById('eposta').style.borderColor = "red";
+            sayac++;
+        }
+        else {
+            document.getElementById('eposta').style.borderColor = "green";
+        }
+
+
+        if (document.getElementById('telefon').value == "") {
+            document.getElementById('telefon').style.borderColor = "red";
+            sayac++;
+        }
+        else {
+            document.getElementById('telefon').style.borderColor = "green";
+        }
+
+        if (document.getElementById('mesaj').value == "") {
+            document.getElementById('mesaj').style.borderColor = "red";
+            sayac++;
+        }
+        else {
+            document.getElementById('mesaj').style.borderColor = "green";
+        }
+
+        if (sayac > 0) {
+            return false;
+        }
+        else {
+
+            $(".formloading").css("display", "block");
+            var ad = document.getElementById('adsoyad').value;
+            var email = document.getElementById('eposta').value;
+            var telefon = document.getElementById('telefon').value;
+            var mesaj = document.getElementById('mesaj').value;
+               $.ajax({
+        type: "POST",
+        url: "/Iletisim/Gonder",
+        data: { ad: ad, email: email, telefon: telefon, mesaj: mesaj },
+        success: function (result) {
+            if (result == "1") {
+                $("#form-contact-us")[0].reset();
+                $(".formloading").css("display", "none");
+                $(".tesekkurler").css("display", "block");
+            }
+        }
+    });
+            return true;
+        }
+    }</script>
+
+
+
+<script>
+
+        var recaptcha = grecaptcha.getResponse();
+    if (!recaptcha) {
+        alert("Lütfen reCAPTCHA doğrulamasını yapın.");
+        return false;
+    }
+
+
+
+    $('.circile.usttab').each(function () {
+        $(this)
+            // create elements needed for the effect
+            .html('<span class="icon">' + $(this).html() + '</span><span class="circle"><span><em></em></span><span><em></em></span></span>')
+        // add links
+    });
+
+    $(document).ready(function () {
+        navNumbers();
+        backToDefault();
+
+        // show hovered li stuff
+        $('.main-menu').on('mouseover', 'li', function () {
+            showTarget($(this));
+        });
+
+        // show default .active li stuff
+        $('.main-menu').on('mouseleave', backToDefault);
+
+        // change active list item
+        $('.main-menu').on('click', 'li', function () {
+            changeActive($(this));
+        });
+
+        // toggle menu
+        $('.toggle').on('click', toggleMenu);
+
+        $(".toggle").click(function () {
+
+            if ($("#up").hasClass('scroll')) {
+                $("#up").removeClass('scroll');
+            } else {
+                $("#up").addClass('scroll');
+
+            }
+        });
+
+
+        // for showcase only
+        var tl = new TimelineMax(),
+            body = $('body'),
+            header = $('header'),
+            content = $('.content p'),
+            toggle = $('.toggle'),
+            nav = $('nav');
+        alert("sd");
+
+        tl.to(body, 1, {
+            padding: '0 80px 80px',
+            delay: .5
+        });
+
+        tl.to(header, .25, {
+            opacity: 1,
+            delay: .5
+        });
+
+        tl.to(content, .25, {
+            opacity: 1
+        }, '-=.25');
+
+        tl.call(function () {
+            toggleMenu();
+        }, null, null, 3);
+
+        tl.call(function () {
+            toggleMenu();
+        }, null, null, 4.5);
+
+    });
+
+    // toggle menu
+    function toggleMenu() {
+        var toggle = $('.toggle');
+        var nav = $('nav');
+
+        if (toggle.hasClass('clicked')) {
+            toggle.removeClass('clicked');
+            nav.removeClass('open');
+            console.log('remove open');
+            setTimeout(function () {
+                console.log('add hidden');
+                nav.addClass('hidden');
+            }, 500);
+        } else {
+            nav.removeClass('hidden');
+            toggle.addClass('clicked');
+            nav.addClass('open');
+        }
+    }
+
+    // give the list items numbers
+    function navNumbers() {
+        var sum = $('.main-menu li').length;
+        var i = 0;
+        var x = 0;
+
+        $('.showcase-menu li').each(function () {
+            $(this).attr('data-target', x);
+            x++;
+        });
+
+        $('.main-menu li').each(function () {
+            var number = ('0' + i).slice(-2);
+            var numberElement = '<div class="number"><span>' + number + '</span></div>';
+            $(this).prepend(numberElement);
+            $(this).attr('data-target', i);
+            i++;
+        });
+    }
+
+
+    // show the hovered list item stuff
+    function showTarget(e) {
+        $('.main-menu li').removeClass('hover');
+
+        var target = $(e).attr('data-target');
+        var showcaseHeight = $('.showcase-menu').outerHeight();
+
+        showcaseHeight = (showcaseHeight * target) * -1;
+
+        $('.showcase-menu').css({
+            top: showcaseHeight
+        });
+
+        $(e).addClass('hover');
+    }
+
+    // show the list item stuff of .active
+    function backToDefault() {
+        $('.main-menu li').removeClass('hover');
+
+        var activeItem = $('.main-menu li.active');
+        var target = activeItem.attr('data-target');
+        var showcaseHeight = $('.showcase-menu').outerHeight();
+
+        showcaseHeight = (showcaseHeight * target) * -1;
+
+        $('.showcase-menu').css({
+            top: showcaseHeight
+        });
+
+        activeItem.addClass('hover');
+    }
+
+
+    // change active list item
+    function changeActive(e) {
+        $('.main-menu li').removeClass('active');
+        $(e).addClass('active');
+    }</script>
+
+

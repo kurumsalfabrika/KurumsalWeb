@@ -1,0 +1,53 @@
+/* WRITE HERE YOUR CUSTOM CSS IN ORDER TO MAKE ITEM UPDATES EASY */
+
+.bold {
+    font-weight: bold;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Slide In Right Animation */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Slide In Left Animation */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Görüntü kapsayýcýsý */
+.centered-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+    /* Görüntüye ek stil eklemek isterseniz */
+    .centered-image-container img {
+        max-width: 100%;
+        height: auto;
+    }

@@ -1,0 +1,92 @@
+﻿@{
+
+    @model IletisimViewModel
+    ViewBag.pTitle = "BLOG İŞLEMLERİ";
+    ViewBag.Title = "Iletisim İşlemleri";
+    ViewBag.pageTitle = "Iletisimlar";
+    Layout = "~/Views/_Shared/Layouts/_layout_horizontal_topbarlight_kurumsal_web.cshtml";
+}
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form asp-action="AddOrUpdate" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" id="editSayfaId" asp-for="Iletisim.Id" name="Iletisim.Id">
+
+
+
+                    <div class="row mb-3">
+                        <label for="Ad" class="col-sm-2 col-form-label">Ad</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Iletisim.Ad" class="form-control" placeholder="Ad">
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3">
+                        <label for="Soyad" class="col-sm-2 col-form-label">Soyad</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Iletisim.Soyad" class="form-control" placeholder="Soyad">
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3">
+                        <label for="Telefon" class="col-sm-2 col-form-label">Telefon</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Iletisim.Telefon" class="form-control" placeholder="Telefon">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="Eposta" class="col-sm-2 col-form-label">Eposta</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Iletisim.Eposta" class="form-control" placeholder="Eposta">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Konu" class="col-sm-2 col-form-label">Konu</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Iletisim.Konu" class="form-control" placeholder="Konu">
+                        </div>
+                    </div>
+                    <!-- SEO Açıklama -->
+                    <div class="row mb-3">
+                        <label for="Mesaj" class="col-sm-2 col-form-label">Mesaj</label>
+                        <div class="col-sm-10">
+                            <textarea id="elm2" asp-for="Iletisim.Mesaj" for="Iletisim.Mesaj" name="Iletisim.Mesaj"></textarea>
+                        </div>
+                    </div>
+                    <!-- Form Gönderim Butonu -->
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<!--tinymce js-->
+<script src="~/assets/libs/tinymce/tinymce.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/form-editor.init.js"></script>
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Sweet alert init js-->
+<script src="~/assets/js/pages/sweet-alerts.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>

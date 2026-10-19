@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kurumsal.Business\Kurumsal.Business.csproj" />
+    <ProjectReference Include="..\Kurumsal.Core\Kurumsal.Core.csproj" />
+    <ProjectReference Include="..\Kurumsal.DataAccess\Kurumsal.DataAccess.csproj" />
+  </ItemGroup>
+
+</Project>

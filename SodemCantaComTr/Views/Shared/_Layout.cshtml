@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Sodem Çanta - Promosyon ">
+	<meta name="author" content="Kurumsal Fabrika">
+	<title>Sodem Çanta - Promosyon </title>
+
+	<!-- Favicons-->
+	<link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" type="image/x-icon" href="~/img/apple-touch-icon-57x57-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="~/img/apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="~/img/apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="~/img/apple-touch-icon-144x144-precomposed.png">
+	<!-- GOOGLE WEB FONT -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17264734615">
+	</script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'AW-17264734615');
+	</script>
+
+    @RenderSection("Styles", required: false)
+</head>
+
+<body>
+	<div id="preloader">
+		<div class="sk-spinner sk-spinner-wave">
+			<div class="sk-rect1"></div>
+			<div class="sk-rect2"></div>
+			<div class="sk-rect3"></div>
+			<div class="sk-rect4"></div>
+			<div class="sk-rect5"></div>
+		</div>
+	</div><!-- End Preload -->
+
+	<div class="layer"></div><!-- Mobile menu overlay mask -->
+	<!-- Header================================================== -->
+	<header>
+		@await Html.PartialAsync("~/Views/Shared/_top_line.cshtml")
+		@await Html.PartialAsync("~/Views/Shared/_logo_menu.cshtml")
+
+	</header><!-- End Header -->
+
+
+        @RenderBody()
+
+	<footer-tag></footer-tag>
+
+	<div id="toTop"></div><!-- Back to top button -->
+
+	@await RenderSectionAsync("Modals", required: false)
+	@await RenderSectionAsync("Scripts", required: false)
+
+
+	<script>
+		// Sağ tıklamayı devre dışı bırak
+		document.addEventListener('contextmenu', function (e) {
+			e.preventDefault();
+		});
+
+		// Resim sürüklemeyi devre dışı bırak
+		document.addEventListener('dragstart', function (e) {
+			if (e.target.tagName === 'IMG') {
+				e.preventDefault();
+			}
+		});
+
+		// Resimlerin seçilmesini devre dışı bırak
+		document.addEventListener('selectstart', function (e) {
+			if (e.target.tagName === 'IMG') {
+				e.preventDefault();
+			}
+		});
+
+		// CSS ile resimlerin kullanıcı tarafından seçilmesini ve sürüklenmesini engelle
+		const style = document.createElement('style');
+		style.innerHTML = `
+						img {
+							-webkit-user-drag: none;
+							user-drag: none;
+							-webkit-user-select: none;
+							-moz-user-select: none;
+							-ms-user-select: none;
+							user-select: none;
+						}
+					`;
+		document.head.appendChild(style);
+	</script>
+
+</body>
+</html>

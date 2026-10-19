@@ -1,0 +1,195 @@
+﻿@using Kurumsal.Core.Functions
+@{
+    @model HomeViewModel
+}
+
+<div class="hero-wrap fl-wrap full-height">
+    <div class="hero-slider-holder fl-wrap full-height">
+        <div class="num-holder3"></div>
+        <div class="hero-slider fscs fl-wrap full-height">
+
+            @foreach (var item in Model.Sliderler)
+            {
+                <div class="item fl-wrap full-height">
+                    <div class="bg" data-bg="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel"></div>
+                    <div class="overlay"></div>
+                    <div class="hero-wrap-item left-her alt">
+                        <div class="container">
+                            <div class="fl-wrap section-entry">
+
+                                <h2>@item.SliderBaslik</h2>
+                                <h3>@Html.Raw(item.Aciklama)</h3>
+                                <a href="<?=$resim->url?>" class="btn hide-icon hidden-xs">
+                                    <i class="fa fa-eye"></i><span>@item.ButonYazisi</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="customNavigation gals">
+            <a class="prev-slide transition"> <i class="fa fa-angle-left"></i></a>
+            <a class="next-slide transition"><i class="fa fa-angle-right"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="fixed-column">
+    <div class="column-image fl-wrap full-height">
+        <div class="bg bg-scroll"></div>
+        <div class="overlay"></div>
+    </div>
+    <div class="bg-title alt"><span></span></div>
+    <div class="progress-bar-wrap">
+        <div class="progress-bar"></div>
+    </div>
+</div>
+
+<div class="column-wrap scroll-content">
+    <div class="scroll-nav-holder fl-wrap">
+        <nav class="scroll-nav fl-wrap">
+            <ul>
+                <li>
+                    <a class="scroll-link fbgs" href="#sec1" data-bgscr="images/bg/hizmetler.jpg"
+                       data-bgtex="hizmetler"><span>Hizmetlerimiz</span></a>
+                </li>
+                <li>
+                    <a class="scroll-link" href="#sec2" data-bgscr="images/bg/son_isler.jpg"
+                       data-bgtex="portfolyo"><span>Portfolyo</span></a>
+                </li>
+                <li>
+                    <a class="scroll-link" href="#sec3" data-bgscr="images/bg/musteriler.jpg"
+                       data-bgtex="müşteriler"><span>Referanslar</span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="content">
+        <section data-scrollax-parent="true" id="sec1" class="scroll-con-sec dec-sec">
+            <div class="sec-dec right-rot"></div>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Neler Yaparız?</h2>
+                    <p>Kurumsal Fabrika Olarak Verdiğimiz Hizmetler</p>
+                    <div class="clearfix"></div>
+                    <span class="bold-separator"></span>
+                </div>
+                <div class="gallery-items spad four-column">
+                    @foreach (var item in Model.Hizmetler)
+                    {
+                    <div class="gallery-item web branding">
+                        <div class="grid-item-holder">
+                            <div class="box-item vis-det folio-img fl-wrap">
+                                    <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel"
+                                         alt="@item.HizmetAdi">
+                                    <a href="@Url.Content("~/hizmet/" + SeoUrlGenerator.GenerateSlug(item.HizmetAdi) + "-" + item.Id + ".html")" class="link">
+                                    <i class="fa fa-link"></i>
+                                </a>
+                            </div>
+                            <div class="grid-det fl-wrap">
+                                <h3>
+                                   <a href="@Url.Content("~/hizmet/" + SeoUrlGenerator.GenerateSlug(item.HizmetAdi) + "-" + item.Id + ".html")">@item.HizmetAdi</a>
+                                </h3>
+                                    <span>@item.HizmetKisaAciklama</span>
+                            </div>
+                        </div>
+                    </div>                        
+                    }
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="container">
+                <div class="order-wrap fl-wrap color-bg">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4 class="white-icon">Siz de bu hizmetlerden yararlanmak ister misiniz?</h4>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="@Url.Content("~/iletisim/iletisim-formu.html")" class="ord-link">Bize Ulaşın</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="parallax-title right-pos" data-scrollax="properties: { translateY: '-350px' }">
+                Hizmetler
+            </div>
+        </section>
+
+        <section id="sec2" data-scrollax-parent="true" class="scroll-con-sec dec-sec">
+            <div class="sec-dec right-rot"></div>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Son Çalışmalar</h2>
+                    <div class="clearfix"></div>
+                    <span class="bold-separator"></span>
+                </div>
+                <div class="gallery-items spad four-column hde lightgallery">
+                    @foreach (var item in Model.Portfolyolar)
+                    {
+                        <div class="gallery-item ">
+                            <div class="grid-item-holder">
+                                <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="@item.Baslik">
+                                <div class="box-item hd-box">
+                                    <div class="fl-wrap full-height">
+                                        <div class="hd-box-wrap">
+                                            <h2>
+                                                <a href="@Url.Content("~/portfolyo/" + SeoUrlGenerator.GenerateSlug(item.Baslik) + "-" + item.Id + ".html")" title="@item.Baslik">@item.Baslik</a>
+                                            </h2>
+                              
+                                        </div>
+                                        <a href="@Url.Content("~/portfolyo/" + SeoUrlGenerator.GenerateSlug(item.Baslik) + "-" + item.Id + ".html")" title="@item.Baslik"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="parallax-title right-pos" data-scrollax="properties: { translateY: '-350px' }">
+                Portfolyo
+            </div>
+        </section>
+        <section id="sec3" data-scrollax-parent="true" class="scroll-con-sec dec-sec">
+            <div class="sec-dec right-rot"></div>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Kimlerle Çalıştık?</h2>
+                    <p>Kurumsal Fabrika'yı Tercih Eden Kurum ve Kuruluşlar</p>
+                    <div class="clearfix"></div>
+                    <span class="bold-separator"></span>
+                </div>
+                <div class="clients-list fl-wrap">
+                    <ul>
+                        @foreach (var item in Model.Referanslar)
+                        {
+                            <li>
+                                <a href="@Url.Content("~/referans/" + SeoUrlGenerator.GenerateSlug(item.Baslik) + "-" + item.Id + ".html")" title="@item.Baslik">
+                                    <span>
+                                        <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel"
+                                             alt="@item.Baslik" />
+                                    </span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <a href="./musteriler" class="btn hide-icon"><i class="fa fa-eye"></i><span>Tamamı</span></a>
+            </div>
+            <div class="parallax-title right-pos" data-scrollax="properties: { translateY: '-350px' }">
+                Müşteriler
+            </div>
+        </section>
+        <div class="small-sec fl-wrap">
+            <div class="to-top-wrap">
+                <a class="to-top" href="#">
+                    <i class="fa fa-angle-double-up"></i>
+                    Yukarı
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="arrowpagenav"></div>

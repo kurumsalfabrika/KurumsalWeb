@@ -1,0 +1,55 @@
+﻿@using Kurumsal.Core.Functions
+@{
+    ViewData["Title"] = "Anasayfa";
+}
+@model AnasayfaViewModel
+<div id="banner">
+    <div class="rev_slider_wrapper">
+        <div id="main-banner-slider" class="rev_slider" data-version="5.0.7">
+            <ul>
+
+                <li data-index="rs-280" data-transition="zoomout" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="Title Goes Here" data-description="">
+                    <img src="~/images/home/slide-1.jpg" alt="image" class="rev-slidebg" data-bgparallax="3" data-bgposition="center center" data-duration="10000" data-ease="Linear.easeNone" data-kenburns="on" data-no-retina="" data-offsetend="0 0" data-offsetstart="0 0" data-rotateend="0" data-rotatestart="0" data-scaleend="100" data-scalestart="140">
+                </li>
+
+                <li data-index="rs-18" data-transition="zoomin" data-slotamount="7" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-thumb="images/home/slide-2.jpg" data-rotate="0" data-saveperformance="off" data-title="Title Goes Here" data-description="">
+                    <img src="~/images/home/slide-2.jpg" alt="" data-bgposition="center center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                </li>
+
+                <li data-index="rs-20" data-transition="zoomin" data-slotamount="7" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-thumb="images/home/slide-5.jpg" data-rotate="0" data-saveperformance="off" data-title="Title Goes Here" data-description="">
+                    <img src="~/images/home/slide-5.jpg" alt="" data-bgposition="center center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 -500" data-offsetend="0 500" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="information-banner wow fadeInUp">
+    <div class="container">
+
+        <h6>Şirketimiz 2000 yılında YT Hayvan Sağlık Hizmetleri Ltd. Şti. Adı altında Kayseri’ de kurulmuştur. 2002 yılında Okyanus Veteriner Ecza Deposunu da faaliyet alanımıza ekleyerek müşterilerimize hizmet vermeye devam etmekteyiz.</h6>
+        <a href="contact-us.html" class="p-color-bg tran3s wow fadeInUp">BİZE ULAŞIN</a>
+    </div> <!-- /.container -->
+</div> <!-- /.information-banner -->
+<!-- Popular Course _________________________ -->
+<div class="popular-course wow fadeInUp theme-bg-color" style="margin:0px;">
+    <div class="container">
+        <h2>ÜRÜN GRUPLARI</h2>
+        <div class="row">
+            <div class="theme-slider course-item-wrapper">
+                @foreach (var item in Model.UrunKategoriler)
+                {
+                    <div class="item hvr-float-shadow">
+
+                        <a href="@Url.Content("~/urun-kategori/" + SeoUrlGenerator.GenerateSlug(item.KategoriAdi) + "-" + item.Id + ".html")">
+                        <div class="img-holder"><img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="@item.KategoriAdi"></div>
+                        <div style="background-color:gainsboro;text-align:center;"><h3 style="padding:10px 5px;"> @item.KategoriAdi</h3></div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,197 @@
+﻿@model UserViewModel
+@{
+    ViewBag.Title = "Kullanıcı Yönetimi";
+    ViewBag.pTitle = "Kullanıcı Yönetimi";
+    ViewBag.pageTitle = "Geri";
+    Layout = "~/Views/_Shared/Layouts/_layout_horizontal_topbarlight_kurumsal_web.cshtml";
+}
+
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+<link href="~/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+<link href="~/assets/libs/spectrum-colorpicker2/spectrum.min.css" rel="stylesheet" type="text/css">
+<link href="~/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Update" asp-controller="User" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="sub-heading">
+                            <span>Kişisel Bilgiler</span>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-ad">Ad:</label>
+                            <span asp-validation-for="@Model.Ad" class="text-danger"></span>
+                            <input id="input-ad" asp-for="@Model.Ad" class="form-control">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-soyad">Soyad:</label>
+                            <span asp-validation-for="@Model.Soyad" class="text-danger"></span>
+                            <input id="input-soyad" asp-for="@Model.Soyad" class="form-control">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-email">Email Adresi:</label>
+                            <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                            <input id="input-email" asp-for="@Model.Email" class="form-control input-mask" data-inputmask="'alias': 'email'">
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-telefon">Telefon:</label>
+                            <input id="input-telefon" asp-for="@Model.Telefon" data-inputmask="'mask': '0999-999 99 99'" class="form-control input-mask">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-sifre">Şifre:</label>
+                            <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                            <input type="password" id="input-sifre" asp-for="@Model.Password" class="form-control">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-sifre-tekrar">Şifre Tekrar:</label>
+                            <span asp-validation-for="@Model.RePassword" class="text-danger"></span>
+                            <input type="password" id="input-sifre-tekrar" asp-for="@Model.RePassword" class="form-control">
+                        </div>
+                        <div class="sub-heading">
+                            <span>Fatura Bilgileri</span>
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <label class="form-label" for="input-firma-adi">Firma Adı:</label>
+                            <input id="input-firma-adi" asp-for="@Model.FirmaAdi" class="form-control">
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <label class="form-label" for="input-adres">Adres:</label>
+                            <input id="input-adres" asp-for="@Model.Adres" class="form-control">
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <label class="form-label" for="input-adres-devami">Adres Devamı:</label>
+                            <input id="input-adres-devami" asp-for="@Model.AdresDevam" class="form-control">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-posta-kodu">Posta Kodu:</label>
+                            <input id="input-posta-kodu" asp-for="@Model.PostaKodu" class="form-control">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-ulke">Ülke:</label>
+                            <input id="input-ulke" asp-for="@Model.Ilce" class="form-control">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-sehir">Şehir:</label>
+                            <input id="input-sehir" asp-for="@Model.Sehir" class="form-control">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-ilce">İlçe:</label>
+                            <input id="input-ilce" asp-for="@Model.Ilce" class="form-control">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-vergi-dairesi">Vergi Dairesi:</label>
+                            <input id="input-vergi-dairesi" asp-for="@Model.VergiDairesi" class="form-control">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-vergi-no">Vergi No:</label>
+                            <input id="input-vergi-no" asp-for="@Model.VergiNo" class="form-control">
+                        </div>
+                        <div class="sub-heading">
+                            <span>Ek Gerekli Bilgiler</span>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-uyelik-tipi">Üyelik Tipi:</label>
+
+                            <select class="form-select" asp-for="@Model.UyelikTipi" aria-label="Default select example">
+                                <option selected="" value="0">Seçim Yapınız</option>
+                                <option value="1">Bireysel</option>
+                                <option value="2">Kurumsal</option>
+                            </select>
+
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-uyelik-tipi">Döviz Tipi:</label>
+                            <select class="form-select" asp-for="@Model.DovizTipi" aria-label="Default select example">
+                                <option selected="" value="1">TL</option>
+                                <option value="2">USD</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-gsm">GSM:</label>
+                            <input id="input-gsm" asp-for="@Model.Gsm" data-inputmask="'mask': '0999-999 99 99'" class="form-control input-mask">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-tc-kimlik-no">TC Kimlik No:</label>
+                            <input id="input-tc-kimlik-no" asp-for="@Model.TCKimlikNo" data-inputmask="'mask': '99999999999'" class="form-control input-mask">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-dogum-yili">Doğum Yılı:</label>
+                            <input id="input-dogum-yili" asp-for="@Model.DogumYili" data-inputmask="'mask': '9999'" class="form-control input-mask">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label" for="input-logo">Logo:</label>
+
+                            <div class="input-group">
+                                <input type="file" class="form-control" asp-for="@Model.Dosya" id="customFile">
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label"></label>
+                            <div class="form-check">
+
+                                <input class="form-check-input" asp-for="@Model.SMSBilgilendirme" type="checkbox" id="sms-bilgilendirme">
+                                <label class="form-check-label" for="sms-bilgilendirme">
+                                    SMS Bilgilendirme (Tavsiye Edilir)
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-12 mb-3">
+                            <div class="panel panel-danger tospanel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><span class="fas fa-exclamation-triangle tosicon"></span> &nbsp; Kullanım Koşulları</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="accepttos" class="accepttos">
+                                            Kullanım Koşullarını ve ilgili Sözleşmeyi okudum ve anladım. <a href="hakkimizda/hizmet-sozlesmesi" target="_blank">Kullanım Koşulları</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="col-lg-12 mb-3">
+                            <input type="submit" class="btn btn-primary btn-sm" value="Kaydet" />
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<script src="~/assets/libs/select2/js/select2.min.js"></script>
+<script src="~/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/assets/libs/spectrum-colorpicker2/spectrum.min.js"></script>
+<script src="~/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+<script src="~/assets/libs/admin-resources/bootstrap-filestyle/bootstrap-filestyle.min.js"></script>
+<script src="~/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+
+<script src="~/assets/js/pages/form-advanced.init.js"></script>
+
+
+<!-- form mask -->
+<script src="~/assets/libs/inputmask/jquery.inputmask.min.js"></script>
+
+<!-- form mask init -->
+<script src="~/assets/js/pages/form-mask.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>

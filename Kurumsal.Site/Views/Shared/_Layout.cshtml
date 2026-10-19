@@ -1,0 +1,67 @@
+﻿<!DOCTYPE HTML>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kurumsal Fabrika · Kayseri Web Tasarım · Kayseri Reklam Ajansı</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href="http://www.caddemedya.com.tr" />
+    <link rel="publisher" href="https://plus.google.com/105996487872628051725" />
+
+    <meta itemprop="name" content="Kurumsal Fabrika · Kayseri Web Tasarım">
+    <meta itemprop="description" content="E-Ticaret">
+    <meta itemprop="image" content="http://www.caddemedya.com.tr/images/logo_og.jpg">
+
+    <meta property="fb:app_id" content="286862081767665" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Kurumsal Fabrika · Kayseri Web Tasarım" />
+    <meta property="og:description" content="Kurumsal Fabrika" />
+    <meta property="og:site_name" content="Kurumsal Fabrika · Kayseri Web Tasarım" />
+
+    <meta property="og:url" content="http://www.caddemedya.com.tr" />
+    <meta property="og:image" content="http://www.caddemedya.com.tr/images/logo_og.jpg" />
+
+    <meta name="geo.placename" content="Cadde Medya" />
+    <meta name="geo.position" content="38.723456;35.493084" />
+    <meta name="geo.region" content="Kayseri" />
+    <meta name="ICBM" content="38.723456, 35.493084" />
+
+    <meta name="keywords"
+          content="Kayseri Reklam Ajansı, Kayseri Web Tasarımı, Kayserideki Reklam Ajansları, Dijital Medya Ajansı, Sosyal Medya Pazarlama, Kayseri Google Reklamları, Sosyal Medya Ajansı, Kayseri Ajans İsimleri, Reklam Ajansı Kayseri, Logo Tasarımı, Kayseri Reklam Ajansları, Kayseri İnternet Reklamcılığı, Kayseri Promosyon Ürünleri, Kayseri Sosyal Medya Yönetimi, Seo Yönetimi, Kayseri Makam Bayrağı, Kayseri Yelten Bayrak, Kayseri Olta Bayrak, Kayseri Kırlangıç Bayrak c2020" />
+    <meta name="description" content="Kurumsal Fabrika" />
+    <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/plugins.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="shortcut icon" href="~/images/favicon.ico" asp-append-version="true" />
+
+</head>
+
+<body>
+    <header-tag></header-tag>
+    @RenderBody()
+
+    <footer class="main-footer">
+        <a href="iletisim" class="mail-link">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </a>
+
+
+        <div class="footer-social">
+            <sosyal-medya-tag></sosyal-medya-tag>
+        </div>
+
+        <div class="copyright">
+            &#169; Kurumsal Fabrika 2024 . Tüm hakları Saklıdır.
+        </div>
+    </footer>
+    <div class="share-container isShare" data-share="['facebook','linkedin']"></div>
+
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/scripts.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/fontawesome.init.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

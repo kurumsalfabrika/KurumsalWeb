@@ -1,0 +1,30 @@
+﻿@model SayfaViewModel
+@{
+    ViewData["Title"] = Model.Sayfa.Baslik;
+}
+
+
+<!-- BREADCRUMB ROW -->
+<div class="bg-gray-light p-tb20">
+    <div class="container">
+        <ul class="wt-breadcrumb breadcrumb-style-2">
+            <li><a href="/anasayfa/anasayfa.html"><i class="fa fa-home"></i> Anasayfa</a></li>
+            <li>@Model.Sayfa.Baslik</li>
+        </ul>
+    </div>
+</div>
+<!-- BREADCRUMB ROW END -->
+<!-- SECTION CONTENTG START -->
+<div class="section-full p-t80 p-b50">
+    <div class="container">
+
+        <!-- CONTACT DETAIL BLOCK -->
+        <div class="section-content m-b30">
+            @Html.Raw(Model.Sayfa.Icerik)
+
+        </div>
+
+
+    </div>
+</div>
+<!-- SECTION CONTENT END -->

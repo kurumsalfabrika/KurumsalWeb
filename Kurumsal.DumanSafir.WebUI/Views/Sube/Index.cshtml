@@ -1,0 +1,83 @@
+﻿@model SubeViewModel
+@section Styles {
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <!-- BASE CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.min.css" rel="stylesheet">
+    <link href="~/css/bs-icon-font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="~/pro/css/all.css" rel="stylesheet" />
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <!-- SPECIFIC CSS -->
+    <link href="~/css/carousel_home.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <!-- YOUR CUSTOM CSS -->
+    <link href="~/css/custom.css" rel="stylesheet">
+}
+<section class="parallax_window_in short" data-parallax="scroll" data-image-src="img/subheader_in_1.jpg" data-natural-width="1400" data-natural-height="350">
+    <div id="sub_content_in">
+        <div class="container">
+            <h1>@Model.Sube.SubeAdi</h1>
+        </div>
+    </div>
+</section><!-- End section -->
+
+<main>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div id="carousel-home" style="margin-top: 15px;margin-bottom: 15px;">
+        <div class="owl-carousel owl-theme" data-autoplay="true" data-autoplay-speed="3000">
+            @foreach (var item in Model.Fotograflar)
+            {
+                <div class="owl-slide cover background-image" style="background-image: url('@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel');">
+                    <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.2)">
+                        <div class="container">
+                            @Html.Raw(item.FotografAdi)
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div id="icon_drag_mobile"></div>
+    </div>
+
+    </div>
+    </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <blockquote class="styled float-end">
+                    <p>Adres:  </p>
+                    <p>
+                        <small>@Model.Sube.Adres</small>
+                    </p>
+                </blockquote>
+            </div>
+            <p></p>
+        </div>
+    </div>
+</main>
+
+
+@section Scripts {
+    <!-- Common scripts -->
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/common_scripts_min.js"></script>
+    <script src="~/js/functions.js"></script>
+    <!--Owl carousel/slider -->
+    <script src="~/js/slider.js"></script>
+    <!-- Specific scripts -->
+    <script src="~/js/jquery.validate.js"></script>
+    <script src="~/js/jquery.stepy.min.js"></script>
+    <script src="~/js/quotation-validate.js"></script>
+}

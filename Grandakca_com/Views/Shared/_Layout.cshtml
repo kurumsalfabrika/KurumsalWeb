@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] | Grand Akça Otel Alanya</title>
+    <meta name="description" content="@ViewData["Description"]">
+    <meta name="keywords" content="@ViewData["Keywords"]">
+    <meta name="author" content="Grand Akca Otel">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:url" content="https://www.grandakca.com/">
+    <meta property="og:title" content="Grand Akca Otel | Alkolsüz Aile Tatilinin Adresi">
+    <meta property="og:description" content="Kadınlara özel havuz, aile plajı ve her şey dahil konseptiyle huzurlu bir tatil için Grand Akca Otel'e bekliyoruz.">
+    <meta property="og:image" content="https://www.grandakca.com/wp-content/uploads/2021/07/otel-gorsel-kapak.jpg">
+    <meta property="og:site_name" content="Grand Akca Otel">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Grand Akca Otel | Alkolsüz Aile Tatilinin Adresi">
+    <meta name="twitter:description" content="Kadınlara özel havuz, aile plajı ve her şey dahil konseptiyle huzurlu bir tatil için Grand Akca Otel'e bekliyoruz.">
+    <meta name="twitter:image" content="https://www.grandakca.com/wp-content/uploads/2021/07/otel-gorsel-kapak.jpg">
+    <link rel="canonical" href="https://www.grandakca.com/">
+    <script type="application/ld+json">
+        {
+          "@@context": "https://schema.org",
+          "@@type": "Hotel",
+          "name": "Grand Akca Otel",
+          "image": "https://www.grandakca.com/wp-content/uploads/2021/07/otel-gorsel-kapak.jpg",
+          "description": "Alkolsüz aile oteli konseptiyle, kadın ve erkeklere özel ayrı havuzlar, plaj ve aquapark hizmeti sunan Grand Akca Otel, Gazipaşa'da konumlanmaktadır.",
+          "url": "https://www.grandakca.com/",
+          "address": {
+            "@@type": "PostalAddress",
+            "streetAddress": "Cumhuriyet Mahallesi, Sahil Yolu Caddesi",
+            "addressLocality": "Gazipaşa",
+            "addressRegion": "Antalya",
+            "postalCode": "07900",
+            "addressCountry": "TR"
+          },
+          "telephone": "+90 555 111 22 33",
+          "sameAs": [
+            "https://www.instagram.com/grandakcaotel",
+            "https://www.facebook.com/grandakcaotel"
+          ]
+        }
+    </script>
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/favicon.png" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/default.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/plugin.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MX8J4ZG');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VN38B0SFX0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-VN38B0SFX0');
+    </script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX8J4ZG"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '400174659567736');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=400174659567736&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
+</head>
+<body>
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+    @await Component.InvokeAsync("HeaderComponent")
+    @RenderBody()
+    @await Component.InvokeAsync("FooterComponent")
+    <div id="back-to-top">
+        <a href="#"></a>
+    </div>
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/plugin.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/custom-nav.js"></script>
+    <script src="~/js/custom-swiper1.js"></script>
+    <script src="~/js/custom-singledate.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

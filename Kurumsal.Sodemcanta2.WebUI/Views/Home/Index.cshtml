@@ -1,0 +1,288 @@
+﻿@using Kurumsal.Core.Functions
+@model AnasayfaViewModel;
+
+@section Styles {
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.min.css" rel="stylesheet">
+    <link href="~/css/bs-icon-font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <script src="~/js/modernizr.js"></script>
+    <link href="~/css/custom.css" rel="stylesheet">
+
+
+}
+
+<main>
+    <!-- SubHeader =============================================== -->
+
+    <section class="header-video">
+        <div id="hero_video">
+            <!-- Üst Satır: Başlık ve Alt Başlık -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p style="margin-bottom:5px;">"Ürün ve İşçiliği ile Yüksek Kalitede Çantalar"</p>
+                    </div>
+                </div>
+                <!-- Alt Satır: 6 Sütun, %50 Opak Siyah Arka Planlı Kutucuklar -->
+                <div class="row kutu-row">
+                    <div class="col-2">
+                        <div class="content-box">
+                            <i class="fas fa-chart-line fa-2x"></i>
+                            <div>Pazarlama</div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="content-box">
+                            <i class="fas fa-paint-brush fa-2x"></i>
+                            <div>Tasarım</div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="content-box">
+                            <i class="fas fa-cut fa-2x"></i>
+                            <div>Kesim</div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="content-box">
+                            <i class="fas fa-print fa-2x"></i>
+                            <div>Baskı</div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="content-box">
+                            <i class="fas fa-screwdriver fa-2x"></i>
+                            <div>Dikim</div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="content-box">
+                            <i class="fas fa-cogs fa-2x"></i>
+                            <div>Paketleme</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CSS -->
+        <img src="~/img/video_fix.png" alt="" class="header-video--media" data-video-src="@Model.Ftp.DosyaAdresOnEki/intro"
+             data-teaser-source="@Model.Ftp.DosyaAdresOnEki/intro" data-provider="" data-video-width="1920" data-video-height="960">
+    </section><!-- End Header video -->
+    <div id="get_quote">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h3>Siz de siparişlerinizi oluşturmak için bize ulaşın! </h3>
+                </div>
+                <div class="col-lg-3 text-center text-lg-right">
+                    <a href="/fiyatal/" class="btn-danger btn btn-lg">Fiyat Al</a>
+                </div>
+            </div><!-- End row -->
+        </div><!-- End container -->
+    </div><!-- End Get quote -->
+    <div id="feat_home">
+        <div class="container" style="padding-bottom:30px; padding-top:30px;">
+            <div class="row">
+
+                <div class="row magnific-gallery">
+                    @foreach (var item in Model.Fotograflar)
+                    {
+                        <div class="col-6 col-md-2" style="margin-bottom:20px;">
+                            <a href="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" title="@item.FotografAdi" class="image-link">
+                                <img src="@Model.Ftp.DosyaAdresOnEki@("k_" + item.OneCikanGorsel)" alt="" class="img-fluid zoom-effect">
+                            </a>
+                        </div>
+                    }
+                </div><!-- End row-->
+            </div><!-- End row -->
+        </div>
+    </div><!-- End feat home -->
+    <div id="carousel-home" style="margin-top:0px;">
+        <div class="owl-carousel owl-theme">
+            @foreach (var item in Model.Sliderlar)
+            {
+                <div class="owl-slide ">
+                    <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" />
+                </div>
+            }
+        </div>
+        <div id="icon_drag_mobile"></div>
+    </div>
+    <style>
+        .custom-container {
+            text-align: center;
+            margin-bottom: 20px;
+            background-image: url('https://www.sodemcanta.com.tr/Files/sodem-bina.jpg');
+            background-repeat: no-repeat;
+            background-position: top right;
+            background-size: auto;
+        }
+
+        .video-box, .image-box {
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+    </style>
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-12 col-md-6" style="margin-top:10px;">
+                <h2>İşletmemiz</h2>
+                <p>"Doğada kaybolan, doğa dostu ürünler."</p>
+                <hr class="d-none d-md-flex" />
+                <p>Firmamız, geniş ürün yelpazesi ile, sizler için Türkiye ve Dünyanın her yerine doğa dostu ürünler üretmektedir. Tela çanta ihtiyaçlarınızı, ürünlerinizin kalitesini yansıtan görünüm ile, sizlerin memnuniyetine sunuyoruz. Tasarım, baskı ve dikim ile tamamen kendi bünyemizde üretmiş olduğumuz çantalarımız ile tek amacımız müşteri memnuniyetidir.  Sizlerin de desteği ile; hızlı teslimat, fiyat ve kalite garantisi koşullarıyla, sektöründe lider olma yolunda hızla ilerlemekteyiz. </p>
+            </div>
+            <div class="col-6 d-none d-md-flex">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 video-box">
+                <iframe width="500" height="300" src="https://www.youtube.com/embed/dPx0jr35x_U" title="İşletmemiz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="row">
+                    <div class="col-12 col-md-6 image-box">
+                        <img src="~/img/fabrika-1.jpg" class="img-fluid" />
+                    </div>
+                    <div class="col-12 col-md-6 image-box">
+                        <img src="~/img/fabrika-2.jpg" class="img-fluid" />
+                    </div>
+                    <div class="col-12 col-md-6 image-box">
+                        <img src="~/img/fabrika-3.jpg" class="img-fluid" />
+                    </div>
+                    <div class="col-12 col-md-6 image-box">
+                        <img src="~/img/fabrika-4.jpg" class="img-fluid" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container margin_60_35">
+        <div class="row">
+            @foreach (var item in Model.Sayfalar)
+            {
+                <div class="col-md-3">
+                    <figure class="animated">
+                        <a href="@Url.Content("~/sayfa/" + SeoUrlGenerator.GenerateSlug(item.Baslik) + "-" + item.Id + ".html")">
+                            <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="@item.Baslik" class="img-fluid">
+                        </a>
+                    </figure>
+                    <h3>@item.Baslik</h3>
+                    <p>
+                        @item.SpotMetin
+                    </p>
+                </div>
+            }
+        </div><!-- End row -->
+    </div>
+    <div class="centered-image-container">
+        <img src="https://www.sodemcanta.com.tr/Files/dogayi-sev.jpg" style="width:450px;" alt="Doğayı Sev" />
+    </div>
+    <div class="bg_content1 magnific">
+        <div class="container">
+            <div class="row" style="color:white;">
+                <h1 style="color:white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+                    Doğayı seven ve koruyan <strong style="color:white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Müşterilerimiz</strong>
+                </h1>
+            </div>
+
+
+
+
+            <div class="owl-carousel owl-theme team-carousel container">
+                @foreach (var item in Model.Referanslar)
+                {
+                    <div class="team-item">
+                        <div class="team-item-img">
+                            <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="">
+                        </div>
+                    </div>
+                }
+            </div><!-- End Team Carousel -->
+        </div>
+    </div><!-- End bg_content -->
+
+
+
+</main><!-- End main -->
+@section Scripts {
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/common_scripts_min.js"></script>
+    <script src="~/js/functions.js"></script>
+    <!-- Specific script -->
+    <script src="~/js/video_header.js"></script>
+    <script>
+        HeaderVideo.init({
+            container: $('.header-video'),
+            header: $('.header-video--media'),
+            videoTrigger: $("#video-trigger"),
+            autoPlayVideo: true
+        });
+    </script>
+    <!-- Specific scripts -->
+    <script src="~/js/jquery.validate.js"></script>
+    <script src="~/js/jquery.stepy.min.js"></script>
+    <script src="~/js/quotation-validate.js"></script>
+    <script src="~/js/fontawesome.init.js"></script>
+    <script src="~/js/slider.js"></script>
+    <!-- SPECIFIC SCRIPTS -->
+    <script>
+        'use strict';
+        $(".team-carousel").owlCarousel({
+            items: 5,
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            smartSpeed: 300,
+            responsiveClass: true,
+            responsive: {
+                320: {
+                    items: 1,
+                },
+                768: {
+                    items: 2,
+                },
+                1000: {
+                    items: 5,
+                }
+            }
+        });
+
+        // carousel-home için Owl Carousel'i başlat
+        $("#carousel-home .owl-carousel").owlCarousel({
+            items: 1,
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            smartSpeed: 3000,
+            autoplayTimeout: 3000,
+            animateOut: 'fadeOut', // Slide out animation
+            animateIn: 'fadeIn',  // Slide in animation
+            responsiveClass: true,
+            responsive: {
+                320: {
+                    items: 1,
+                },
+                768: {
+                    items: 1,
+                },
+                1000: {
+                    items: 1,
+                }
+            }
+        });
+    </script>
+
+}
+
+
+

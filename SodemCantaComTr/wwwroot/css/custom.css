@@ -1,0 +1,197 @@
+﻿
+.content-box {
+    background-color: rgba(246, 183, 6, 0.5);
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+
+
+    .content-box:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+.magnific-gallery
+{
+    margin-left:0px;
+}
+
+.content-box-mobile {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    width: auto;
+}
+
+
+@media (max-width: 768px) {
+    #carouselExample {
+        padding: 0 5% !important;
+    }
+}
+
+
+
+@media (min-width: 768px) {
+    #carouselExample {
+        display:none !important;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .kutu-row {
+        display: none;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .dogayi-sev {
+        width: 450px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .kutu-row-mobile {
+        display: none;
+        background-color: #FFF;
+        color:#000;
+    }
+}
+
+#hero_video > div {
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: center;
+    padding: 0 10%;
+}
+
+/* Masaüstünde video gösterimi */
+
+
+.mobile-video {
+    display: none;
+}
+
+/* Mobilde video gösterimi */
+@media (max-width: 768px) {
+    .desktop-video {
+        display: none !important;
+    }
+
+    .mobile-video {
+        display: block;
+        width: 100%; /* Mobil videonun tam genişlikte görünmesi için */
+        height: auto; /* Yükseklik oranını koruyarak genişliğe göre ayarlamak için */
+        margin-top: 130px; /* Videoyu biraz aşağı kaydırmak için üstten boşluk ekleyin */
+    }
+
+        .mobile-video video {
+            width: 100%; /* Videonun tam genişlikte görünmesi için */
+            height: auto; /* Yükseklik oranını koruyarak genişliğe göre ayarlamak için */
+        }
+}
+
+
+@media (max-width: 768px) {
+
+.mobil-referans{
+    display:none;
+}
+
+}
+
+@media (min-width: 768px) {
+    .desktop-referans {
+        display: none;
+    }
+}
+
+
+    .image-link {
+        display: block;
+        border: 1px solid #ccc; /* Gri renkte border */
+        overflow: hidden; /* İçeriği aşmayı engelle */
+    }
+
+    .zoom-effect {
+        transition: transform 0.3s; /* Geçiş efekti */
+    }
+
+        .zoom-effect:hover {
+            transform: scale(1.1); /* Mouse üzerine gelince hafif zoom */
+        }
+
+    .rounded-border {
+        border-radius: 10px; /* Kenarları oval */
+    }
+
+
+    .custom-container {
+        text-align: center;
+        margin-bottom: 20px;
+        background-image: url('https://www.sodemcanta.com.tr/Files/sodem-bina.jpg');
+        background-repeat: no-repeat;
+        background-position: top right;
+        background-size: auto;
+    }
+
+    .video-box, .image-box {
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .custom-container {
+            background-image: none;
+        }
+    }
+
+    .centered-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+
+.urun-resim {
+
+    border:solid 1px #ccc;
+
+}
+
+
+.urun-thumb {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Görsellerin taşma olmadan düzgün şekilde sığmasını sağlar */
+}
+
+.product-slider {
+    margin-bottom:10px;
+}
+
+
+
+.product-slider-nav .slick-slide {
+    margin: 0 5px; /* Thumbnail'lar arasında boşluk */
+}
+
+.urun-box {
+
+    border:solid 1px #ccc;
+    padding:5px;
+    margin-top:5px;
+}

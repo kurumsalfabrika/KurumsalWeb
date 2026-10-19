@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/_IceriLayout.cshtml";
+}
+@using Kurumsal.Core.Functions
+@model FotoGaleriViewModel
+<!-- =========== PAGE TITLE ========== -->
+<div class="page_title gradient_overlay" style="background: url(@($"{Model.Ftp.DosyaAdresOnEki}{Model.FotoGaleri.OneCikanGorsel}"));">
+    <div class="container">
+        <div class="inner">
+            <h1>@Model.FotoGaleri.GaleriAdi</h1>
+            <ol class="breadcrumb">
+                <li><a href="/anasayfa/anasayfa.html">Anasayfa</a></li>
+                <li>@Model.FotoGaleri.GaleriAdi</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="container">
+        <div class="col-lg-12">
+            <h3>@Model.FotoGaleri.SEOAciklama</h3>
+            <p>@Model.FotoGaleri.SEOKelimeler</p>
+        </div>
+    </div>
+    <div class="container">
+        <main id="gallery_page_style_2">
+            <div class="container">
+                <div class="row">
+                    <div class="image-gallery">
+                        @foreach (var item in Model.Fotograflar)
+                        {
+                            <div class="col-md-3 col-sm-6">
+                                <figure>
+                                    <a href="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" class="hover_effect h_lightbox h_blue">
+                                        <img src="@($"{Model.Ftp.DosyaAdresOnEki}k_{item.OneCikanGorsel}")" class="img-responsive" alt="Image">
+                                    </a>
+                                </figure>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</main>
+
+

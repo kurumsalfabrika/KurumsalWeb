@@ -1,0 +1,121 @@
+@{
+    ViewData["Title"] = "İletişim";
+}
+
+@section Styles {
+    <style>
+        .contact-us-page {
+            margin-bottom: 110px;
+        }
+
+        .contact-us-page .contact-intro {
+            background: #fff;
+            border: 1px solid #edeaea;
+            padding: 34px 32px 30px;
+            margin-bottom: 30px;
+        }
+
+        .contact-us-page .contact-intro p {
+            margin-bottom: 18px;
+        }
+
+        .contact-us-page .contact-map {
+            background: #fff;
+            border: 1px solid #edeaea;
+            padding: 10px;
+        }
+
+        .contact-us-page .contact-map iframe {
+            width: 100%;
+            height: 360px;
+            border: 0;
+            display: block;
+        }
+
+        .contact-us-page .contactUs-address ul li {
+            width: 100%;
+            max-width: 360px;
+        }
+
+        .contact-us-page .contact-note {
+            background: #fff;
+            border-left: 4px solid #cd2122;
+            padding: 22px 24px;
+            margin-top: 10px;
+        }
+
+        @@media (max-width: 991px) {
+            .contact-us-page .contactUs-address {
+                padding-left: 0;
+                margin-top: 50px;
+            }
+
+            .contact-us-page .contactUs-address ul li {
+                max-width: none;
+            }
+        }
+    </style>
+}
+
+<div class="inner-page-banner">
+    <div class="opacity">
+        <div class="container">
+            <h2>İletişim</h2>
+        </div>
+    </div>
+</div>
+
+<div class="page-breadcrum">
+    <div class="container">
+        <ul>
+            <li><a href="/anasayfa/anasayfa.html">Anasayfa</a></li>
+            <li>-</li>
+            <li>İletişim</li>
+        </ul>
+    </div>
+</div>
+
+<div class="contact-us-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                <div class="contact-intro">
+                    <h3>Bize Ulaşın</h3>
+                    <p>Veterinerlik ve hayvan sağlığı alanındaki ürünlerimiz, sipariş süreçleri ve iş birlikleri hakkında bizimle doğrudan iletişime geçebilirsiniz.</p>
+                    <p>Telefon, e-posta veya adres bilgilerimiz üzerinden hızlıca ulaşabilir; dilerseniz aşağıdaki harita üzerinden konumumuzu görüntüleyebilirsiniz.</p>
+                </div>
+
+                <div class="contact-map">
+                    <iframe
+                        src="https://www.google.com/maps?q=Mithatpa%C5%9Fa%20Mh.%20Gizem%20Sk.%20No%3A2%2FA%20KAYSER%C4%B0&z=16&output=embed"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Okyanus Veteriner Ecza Deposu Konumu"></iframe>
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 contactUs-address">
+                <h3>İletişim Bilgileri</h3>
+                <ul>
+                    <li>
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        <a href="mailto:info@okyanusveterinereczadeposu.com">info@okyanusveterinereczadeposu.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <a href="tel:+903522312898">+90 352 231 28 98</a><br />
+                        <a href="tel:+905453123129">+90 545 312 31 29</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        Mithatpaşa Mh. Gizem Sk. No:2/A KAYSERİ
+                    </li>
+                </ul>
+
+                <div class="contact-note">
+                    <p>Hafta içi mesai saatlerinde taleplerinize daha hızlı dönüş sağlanmaktadır.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

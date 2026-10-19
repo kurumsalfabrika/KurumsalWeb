@@ -1,0 +1,108 @@
+﻿@using Kurumsal.Entities.Concrete
+@{
+
+    @model Ftp
+    ViewBag.pTitle = "SAYFA İŞLEMLERİ";
+    ViewBag.Title = "Sayfa İşlemleri";
+    ViewBag.pageTitle = "Sayfalar";
+    Layout = "~/Views/_Shared/Layouts/_layout_horizontal_topbarlight_kurumsal_web.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/assets/libs/toastr/build/toastr.min.css">
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form id="ftpForm" asp-action="AddOrUpdate" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" id="editId" asp-for="Id" name="Id">
+                    <div class="row mb-3">
+                        <label for="FtpURL" class="col-sm-2 col-form-label">Ftp URL</label>
+                        <div class="col-sm-10">
+                            <input asp-for="FtpURL" type="text" class="form-control" placeholder="ftp.alanadi.com" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="UserName" class="col-sm-2 col-form-label">Kullanıcı Adı</label>
+                        <div class="col-sm-10">
+                            <input asp-for="UserName" type="text" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <label for="Password" class="col-sm-2 col-form-label">Şifre</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Password" type="password" class="form-control" >
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="FilePath" class="col-sm-2 col-form-label">Yükleme Klasörü</label>
+                        <div class="col-sm-10">
+                            <input asp-for="FilePath" type="text" class="form-control" placeholder="/Images" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="DosyaAdresOnEki" class="col-sm-2 col-form-label">Dosyaya Erişim Adres Öneki</label>
+                        <div class="col-sm-10">
+                            <input asp-for="DosyaAdresOnEki" type="text" class="form-control" placeholder="https://www.alanadi.com/dosyalar/" required>
+                        </div>
+                    </div>
+
+                    <!-- Form Gönderim Butonu -->
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<!-- toastr plugin -->
+<script src="~/assets/libs/toastr/build/toastr.min.js"></script>
+
+<!-- toastr init -->
+<script src="~/assets/js/pages/toastr.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#ftpForm').on('submit', function (e) {
+            e.preventDefault(); // Formun normal submit işlemini engelle
+            var formData = new FormData(this);
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: formData,
+                contentType: false, // Çoklu form verisi gönderirken false olmalı
+                processData: false, // jQuery'nin veriyi işlemesini engeller
+                success: function (response) {
+                    if (response.success) {
+                        toastr.success(response.message);
+                        // Opsiyonel olarak başka bir sayfaya yönlendirme
+                //        window.location.href = '/desired-location';
+                    } else {
+                        toastr.error(response.message);
+                    }
+                },
+                error: function (xhr) {
+                    toastr.error("İşlem başarısız: Sunucu hatası.");
+                }
+            });
+        });
+    });
+</script>

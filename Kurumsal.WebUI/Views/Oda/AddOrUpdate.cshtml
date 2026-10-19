@@ -1,0 +1,306 @@
+﻿@{
+
+    @model OdaViewModel
+    ViewBag.pTitle = "HABER İŞLEMLERİ";
+    ViewBag.Title = "Oda İşlemleri";
+    ViewBag.pageTitle = "Odaler";
+    Layout = "~/Views/_Shared/Layouts/_layout_horizontal_topbarlight_kurumsal_web.cshtml";
+}
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-body">
+
+                <form asp-action="AddOrUpdate" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" id="editSayfaId" asp-for="Oda.Id" name="Oda.Id">
+
+                    <div class="row mb-3">
+                        <label for="Sira" class="col-sm-2 col-form-label">Sıra</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Oda.Sira" type="number" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="OdaKategoriId" class="col-sm-2 col-form-label">Oda Kategorisi</label>
+                        <div class="col-sm-10">
+                            <select asp-for="Oda.OdaKategoriId" id="odaKategoriId" asp-items="Model.OdaKategoriList" class="form-control">
+                                <option value="">Kategori Seçiniz</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="FotoGaleriId" class="col-sm-2 col-form-label">Foto Galeri</label>
+                        <div class="col-sm-10">
+                            <select asp-for="Oda.FotoGaleriId" id="fotoGaleriId" asp-items="Model.FotoGaleriList" class="form-control">
+                                <option value="">Galeri Seçiniz</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Baslik" class="col-sm-2 col-form-label">Oda Adı</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Oda.OdaAdi" id="odaAdiInput" class="form-control" placeholder="Oda Adı Yazınız">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label for="MaxYetiskin" class="col-form-label">Max Yetişkin Sayısı</label>
+                            <input asp-for="Oda.MaxYetiskin" id="maxYetiskinSayisiInput" class="form-control" type="number">
+                        </div>
+                        <div class="col-6">
+                            <label for="MaxCocuk" class="col-form-label">Max Çocuk Sayısı</label>
+                            <input asp-for="Oda.MaxCocuk" id="maxCocukSayisiInput" class="form-control" type="number">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label for="OdaGenislik" class="col-form-label">Oda Genişliği</label>
+                            <input asp-for="Oda.OdaGenislik" id="odaGenislikInput" class="form-control" type="number">
+                        </div>
+                        <div class="col-6">
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3">
+                        <label for="OneCikanGorsel" class="col-sm-2 col-form-label">Öne Çıkan Görsel</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="oneCikanGorsel" asp-for="Dosya" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="DosyaAdi" class="col-sm-2 col-form-label">Dosya Adı</label>
+                        <div class="col-sm-10">
+                            <input id="dosyaAdiInput" asp-for="Oda.OneCikanGorsel" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="SpotMetin" class="col-sm-2 col-form-label">Spot Metin</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Oda.SpotMetin" class="form-control" type="text" name="Oda.SpotMetin">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="GunlukUcret" class="col-sm-2 col-form-label">Günlük Ücret</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Oda.GunlukUcret" id="gunlukUcretInput" class="form-control" type="number">
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3">
+                        <label for="GunlukUcret1" class="col-sm-2 col-form-label">Günlük Ücret 1</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Oda.GunlukUcret1" class="form-control" type="number">
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3">
+                        <label for="GunlukUcret2" class="col-sm-2 col-form-label">Günlük Ücret 2</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Oda.GunlukUcret2" class="form-control" type="number">
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mb-3">
+                        <label for="GunlukUcret3" class="col-sm-2 col-form-label">Günlük Ücret 3</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Oda.GunlukUcret3" class="form-control" type="number">
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="row mb-3">
+                        <textarea id="elm1" asp-for="Oda.Icerik" for="Oda.Icerik" name="Oda.Icerik"></textarea>
+                    </div>
+
+
+                    <!-- SEO Açıklama -->
+                    <div class="row mb-3">
+                        <label for="SEOAciklama" class="col-sm-2 col-form-label">SEO Açıklama</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Oda.SEOAciklama" class="form-control" placeholder="SEO Açıklama Metni">
+                        </div>
+                    </div>
+
+
+
+                    <!-- SEO Kelimeler -->
+                    <div class="row mb-3">
+                        <label for="SEOKelimeler" class="col-sm-2 col-form-label">SEO Kelimeler</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Oda.SEOKelimeler" class="form-control" placeholder="SEO Kelimelerini ,(virgül) ile ayırarak giriniz">
+                        </div>
+                    </div>
+
+
+
+                    <!-- Form Gönderim Butonu -->
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row"><h5 id="kategoriAdi"></h5></div>
+                <div class="row"><h4 id="odaAdiText">@Model.Oda.OdaAdi</h4></div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h4><i class="fa fa-user"></i> <span id="maxYetiskinSayisi">@Model.Oda.MaxYetiskin</span></h4>
+                    </div>
+                    <div class="col-sm-4">
+                        <h4><i class="fa fa-child"></i><span id="maxCocukSayisi">@Model.Oda.MaxCocuk</span> </h4>
+                    </div>
+                    <div class="col-sm-4">
+                        <h4><i class="fa fa-ruler"></i> <span id="odaGenislik">@Model.Oda.OdaGenislik</span> m² </h4>
+                    </div>
+                </div>
+
+                <div class="row"><img id="dosyaAdi" src="@Model.Ftp.DosyaAdresOnEki@Model.Oda.OneCikanGorsel" class="img-fluid" /></div>
+                <div class="row" id="spotMetin">@Html.Raw(Model.Oda.SpotMetin)</div>
+
+                <div class="row"><h4 id="gunlukUcret">@Model.Oda.GunlukUcret.ToString("N2")</h4></div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- end col -->
+</div> <!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<!--tinymce js-->
+<script src="~/assets/libs/tinymce/tinymce.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/form-editor.init.js"></script>
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Sweet alert init js-->
+<script src="~/assets/js/pages/sweet-alerts.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // DOM öğelerine erişimde olası bir hata kontrolü
+        var odaAdiAlinan = document.getElementById('odaAdiInput');
+        var odaAdiYazilan = document.getElementById('odaAdiText');
+        var kategoriIdInput = document.getElementById('odaKategoriId');
+        var kategoriAdiInput = document.getElementById('kategoriAdi');
+        var fileInput = document.getElementById('oneCikanGorsel');
+        var fileNameInput = document.getElementById('dosyaAdiInput');
+        var elm2 = document.getElementById('elm2'); // Elm2 elementini yakalayın
+
+        if (!kategoriIdInput || !kategoriAdiInput || !fileInput || !fileNameInput || !elm2) {
+            console.error("Bir veya daha fazla DOM öğesi bulunamadı.");
+            return;
+        }
+
+        document.getElementById('odaGenislikInput').addEventListener('change', function () {
+
+            document.getElementById('odaGenislik').innerText = document.getElementById('odaGenislikInput').value;
+        });
+
+        tinymce.init({
+            selector: 'textarea#elm2',
+            setup: function (editor) {
+                editor.on('change', function () {
+                    var elm2Content = editor.getContent();
+                    document.getElementById('spotMetin').innerHTML = elm2Content;
+                });
+            }
+        });
+
+        document.getElementById('maxYetiskinSayisiInput').addEventListener('change', function () {
+
+            document.getElementById('maxYetiskinSayisi').innerText = document.getElementById('maxYetiskinSayisiInput').value;
+        });
+        document.getElementById('maxCocukSayisiInput').addEventListener('change', function () {
+
+            document.getElementById('maxCocukSayisi').innerText = document.getElementById('maxCocukSayisiInput').value;
+        });
+
+
+        document.getElementById('gunlukUcretInput').addEventListener('change', function () {
+            var formattedValue = parseFloat(this.value).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+            document.getElementById('gunlukUcret').innerText = formattedValue;
+        });
+
+
+        odaAdiAlinan.addEventListener('change', function () {
+
+            odaAdiYazilan.innerText = odaAdiAlinan.value;
+        });
+
+
+
+
+        kategoriIdInput.addEventListener('change', function () {
+            var selectedOption = kategoriIdInput.options[kategoriIdInput.selectedIndex];
+            kategoriAdiInput.innerText = selectedOption.textContent;
+        });
+
+        fileInput.addEventListener('change', function () {
+            if (this.files.length > 0) {
+                var selectedFile = this.files[0];
+                var fileName = selectedFile.name;
+                var fileNameWithoutExtension = fileName.replace(/\.[^/.]+$/, ""); // Uzantıyı kaldır
+                var fileURL = URL.createObjectURL(selectedFile); // Dosyanın URL'sini al
+                fileNameInput.value = fileNameWithoutExtension; // Dosya adını input alanına yerleştir
+                document.getElementById('dosyaAdi').src = fileURL; // Dosyanın URL'sini src özniteliği olarak ayarla
+                swal("Dosya Seçildi!", "Dosya Adı alanı SEO açısından büyük önem arz etmektedir. Lütfen dosya adınızı belirlerken özen gösteriniz ve çok fazla uzun olmasın!", "success");
+            }
+        });
+
+        // Fonksiyonu bir değişkene atayarak kullanıma hazırla
+        var showSweetAlert = function () {
+            swal({
+                title: "Dosya Adı Düzenleme",
+                text: "Dosya Adı alanı SEO açısından büyük önem arz etmektedir. Lütfen dosya adınızı belirlerken özen gösteriniz ve çok fazla uzun olmasın!",
+                icon: "info",
+                button: "Tamam",
+            }).then((value) => {
+                // SweetAlert gösterildikten sonra, olay dinleyicisini kaldır
+                fileNameInput.removeEventListener('click', showSweetAlert);
+            });
+        };
+
+        // Olay dinleyicisini ekle
+        fileNameInput.addEventListener('click', showSweetAlert);
+    });
+
+</script>

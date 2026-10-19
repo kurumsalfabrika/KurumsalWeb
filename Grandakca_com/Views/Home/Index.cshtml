@@ -1,0 +1,434 @@
+﻿@model AnasayfaViewModel
+@{
+    ViewData["Title"] = "Grand Akca Otel - Alkolsüz Her Şey Dahil Aile Oteli";
+    ViewData["DescripSon"] = "Alkolsüz her şey dahil aile oteli konsepSyle Grand Akca Otel'de kadınlara, erkeklere ve ailelere özel havuzlar, aile plajı, aquapark, konforlu odalar ve seçkin lezzetler sizleri bekliyor.";
+    ViewData["Keywords"] = "grand akca otel, alkolsüz taSl, aile oteli, gazipaşa otel, kadınlara özel havuz, aile plajı, alkolsüz her şey dahil otel, gazipaşa havalimanına 5 dakika";
+}
+@using Kurumsal.Core.Functions
+
+<style>
+    @@media (max-width: 576px) {
+        #gunlukReklamModal .modal-dialog
+
+    {
+        margin: 0;
+        max-width: 100%;
+    }
+
+    #gunlukReklamModal .modal-content {
+        border-radius: 0;
+    }
+
+    #gunlukReklamModal .modal-body img {
+        width: 100%;
+        height: auto;
+    }
+
+    }
+</style>
+
+
+@{
+    string resimYolu = null;
+
+    if (DateTime.Now < new DateTime(2025, 4, 18))
+    {
+        var gun = (int)DateTime.Now.DayOfWeek; // Pazar = 0, Pazartesi = 1, ..., Cumartesi = 6
+        resimYolu = $"/reklam{gun}.jpg"; // reklam0.jpg, reklam1.jpg, ..., reklam6.jpg
+    }
+}
+@if (!string.IsNullOrEmpty(resimYolu))
+{
+    <div class="modal fade" id="gunlukReklamModal" tabindex="-1" aria-labelledby="gunlukReklamModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 90%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gunlukReklamModalLabel">Erken Rezervasyonda Son Günler</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body p-0 text-center">
+                    <img src="@resimYolu" alt="Günün Reklamı" class="img-fluid w-100" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var myModal = new bootstrap.Modal(document.getElementById('gunlukReklamModal'));
+            myModal.show();
+        });
+    </script>
+}
+
+
+<!-- banner starts -->
+<section class="banner">
+    <div class="slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+
+                @foreach (var item in Model.Sliderlar)
+                {
+                    <div class="swiper-slide" style="background-image: url(@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel?format=webp)">
+                    <div class="swiper-content">
+                            <h1 data-animation="animated fadeInUp">@Html.Raw(item.SliderBaslik)</h1>
+                        <div class="slider-icons" style="display: flex; justify-content: center; gap: 40px; margin-top: 30px; color: white;">
+                                @Html.Raw(item.IkinciSatir)
+                        </div>
+                    </div>
+                </div>
+                    
+                }
+
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+
+    <div class="banner-form form-style-1 form-style-3">
+        <div class="container">
+            <script>
+                var grouphotels = false;
+                var widgeturl = "https://grand-akca.rezervasyonal.com/";
+                var defaultadultcount = 2; // Default Yetişkin Sayısı
+                var maxchild = 3; // Maximum Çocuk Sayısı
+                var maxchildage = [0, 12]; //yaş aralığı. var maxchildage = 8; yaş aralığı 0 - 8 yaş arası olacaktır.
+                var maxadult = 4; // Maximum Yetişkin Sayısı
+                var mainWidget = true;
+                var exitWidget = false;
+                var currency = "TRY"; // Para Birimi
+                var lang = "tr"; // "tr" veya "en"
+            </script>
+            <script src="https://www.rezervasyonal.com/widget/widgetbar/assets/widget.js"></script>
+            <div id="elektraweb-widget-area" style="background-color:#fff;"></div>
+        </div>
+    </div>
+</section>
+
+<div class="section-title text-center mt-5 mb-5">
+    <!-- SVG ikon -->
+
+</div>
+<section class="position-relative mesafe-banner">
+    <div class="container">
+        <div class="mesafe-wrapper">
+            <h4 class="mesafe">
+                “Grand Akca Otel, <b>alkolsüz her şey dahil aile oteli</b> konseptiyle hizmet vermektedir. Kadınlara,
+                erkeklere ve ailelere özel ayrı havuzları, spa merkezi, aquaparkı ve aile plajı ile misafirlerine
+                konforlu ve huzurlu bir tatil sunar. Türk ve dünya mudağından helal ve seçkin lezzetlerin
+                sunulduğu ayrıcalıklı muhafazakâr tatil deneyimi sizleri bekliyor. <b>
+                    Gazipaşa-Alanya
+                    Havalimanı’na sadece 5 dakika mesafede yer almaktadır.
+                </b>”
+            </h4>
+        </div>
+    </div>
+</section>
+
+<!-- banner Ends -->
+<section class="hizmetlerimiz-section pb-1  ">
+    <div class="container">
+        <div class="section-title text-center mt-5 mb-5">
+            <!-- SVG ikon -->
+
+        </div>
+        <div class="row mb-5">
+            <!-- Görsel -->
+            <div class="col-md-6">
+                <div class="image-hover-zoom rounded-image h-100">
+                    <img src="~/images/suit.jpg?format=webp" alt="Oda ve Süitlerimiz" class="img-fluid hizmet-img h-100 w-100 object-fit-cover" />
+                </div>
+            </div>
+            <div class="col-md-6 d-flex bg-white align-items-center">
+                <div class="bg-white p-5 text-center w-100">
+                    <h4 class="hizmet-baslik">KONAKLAMA</h4>
+                    <p class="hizmet-yazi">
+                        Alanya Gazipaşa’da aile odaklı ve alkolsüz konaklama konseptiyle hizmet veren
+                        <strong>Grand Akca Otel</strong>, modern tasarıma sahip oda ve süitleriyle misafirlerine huzurlu bir tatil deneyimi sunar. Ailelerin ihtiyaçları düşünülerek tasarlanan ferah odalarda rahat ve keyifli bir konaklama atmosferi bir arada sunulmaktadır.
+                    </p>
+                    <a href="/odalar/oda-ve-suitlerimiz.html" class="read-more-icon">
+                        <div class="ikon-circle">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6 d-flex bg-white align-items-center">
+                <div class="bg-white p-5 text-center w-100">
+                    <h4 class="hizmet-baslik">YİYECEK & İÇECEK</h4>
+                    <p class="hizmet-yazi">
+                        Alkolsüz her şey dahil konseptiyle sunulan zengin açık büfelerde, Türk ve dünya mutfağından özenle hazırlanan helal ve seçkin lezzetler misafirlerimizle buluşmaktadır. Gün boyu devam eden yiyecek ve içecek servisleri, usta şeflerimizin özenle hazırladığı ana yemekler, tatlılar ve atıştırmalıklarla tatilinize lezzet katan ayrıcalıklı bir gastronomi deneyimi sunmaktadır.
+                    </p>
+                    <a href="/yiyecek-icecek/grand-akca-restaurant.html" class="read-more-icon">
+                        <div class="ikon-circle">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="image-hover-zoom rounded-image h-100">
+                    <img src="~/images/yiyecek.jpg?format=webp" alt="Oda ve Süitlerimiz" class="img-fluid hizmet-img h-100 w-100 object-fit-cover" />
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <!-- Görsel -->
+            <div class="col-md-6">
+                <div class="image-hover-zoom rounded-image h-100">
+                    <img src="~/images/havuz.jpg?format=webp" alt="Oda ve Süitlerimiz" class="img-fluid hizmet-img h-100 w-100 object-fit-cover" />
+                </div>
+            </div>
+
+            <!-- Yazı Kısmı -->
+            <div class="col-md-6 d-flex bg-white align-items-center">
+                <div class="bg-white p-5 text-center w-100">
+                    <h4 class="hizmet-baslik">HAVUZ & PLAJ</h4>
+                    <p class="hizmet-yazi">
+                        Grand Akca Otel'de kadınlara, erkeklere ve ailelere özel ayrı havuz alanları bulunmaktadır. Dışarıdan görünmeyecek şekilde tasarlanan korunaklı kadınlar havuzu, misafirlerimize özgür ve konforlu bir yüzme deneyimi sunmaktadır. Aquapark, geniş yüzme havuzları ve aile plajı ile hem yetişkinler hem de çocuklar için eğlenceli ve keyifli bir tatil imkânı sağlamaktadır.
+                    </p>
+                    <a href="/havuz/grand-akca-havuzlar.html" class="read-more-icon">
+                        <div class="ikon-circle">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="position-relative" style="z-index: 1;">
+    <!-- Siyah kutu arkada -->
+    <div class="text-center" style="position: absolute; bottom: -100px; left: 0; right: 0; height: 300px; background-color: #3A3238; z-index: 1;">
+        <div class="text-center text-white py-5" style="position: relative; z-index: 2;">
+            <div class="svg-icon mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="20" viewBox="0 0 60 20" fill="none">
+                    <path d="M5 10C10 -5 20 25 30 10C40 -5 50 25 55 10" stroke="#ffffff" stroke-width="1.5" fill="none" />
+                </svg>
+            </div>
+            <h2 style="font-size: 36px; font-weight: bold; color: #ffffff;">ODA & SÜİTLERİMİZ</h2>
+            <div style="font-size: 14px; letter-spacing: 2px; color: #caa552;">ODA</div>
+            <div style="width: 30px; height: 2px; background-color: #caa552; margin: 0 auto;"></div>
+        </div>
+    </div>
+</section>
+<section class="py-5" style="background-color: #f9f9f9;">
+    <div class="container">
+        <div class="row g-4">
+            @foreach (var item in Model.Odalar)
+            {
+                <div class="col-md-3 col-lg-3">
+                    <a href="@Url.Content("~/odadetay/" + SeoUrlGenerator.GenerateSlug(item.OdaAdi) + "-" + item.Id + ".html")" style="text-decoration: none; color: inherit;">
+                        <div class="bg-white rounded-3 shadow-sm overflow-hidden h-100 card-hover-up">
+                            <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel?format=webp" alt="@item.OdaAdi" class="img-fluid">
+                            <div class="p-3">
+                                <h5 class="mb-2">@item.OdaAdi</h5>
+                                <p class="mb-3 small">@item.SpotMetin</p>
+                                <div class="d-flex justify-content-between small text-muted px-1">
+                                    <span><i class="fas fa-user"></i> @item.MaxYetiskin</span>
+                                    <span><i class="fas fa-baby"></i> @item.MaxCocuk</span>
+                                    <span><i class="fas fa-ruler-combined"></i> @item.OdaGenislik</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="py-5 text-center">
+    <div class="container">
+        <!-- Başlık -->
+        <div class="mb-5">
+            <div class="svg-icon mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="20" viewBox="0 0 60 20" fill="none">
+                    <path d="M5 10C10 -5 20 25 30 10C40 -5 50 25 55 10" stroke="#000" stroke-width="1.5" fill="none" />
+                </svg>
+            </div>
+            <h2 class="fw-bold">Grand Akca Otel Ayrıcalıkları</h2>
+            <p class="text-muted">Duygu ve deneyimleri ön plana çıkaran eşsiz bir konsept.</p>
+        </div>
+
+        <!-- 1. Satır -->
+        <!-- 1. Satır -->
+        <div class="row justify-content-center g-4 mb-4">
+
+            <div class="col-6 col-md-3">
+                <div class="service-item">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-glass-cheers fa-2x"></i>
+                    </div>
+                    <p class="mt-2 text-uppercase small">Alkolsüz Her Şey Dahil</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="service-item">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-swimmer fa-2x"></i>
+                    </div>
+                    <p class="mt-2 text-uppercase small">Kadınlara Özel Havuz</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="service-item">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-water fa-2x"></i>
+                    </div>
+                    <p class="mt-2 text-uppercase small">Aquapark</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="service-item">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-utensils fa-2x"></i>
+                    </div>
+                    <p class="mt-2 text-uppercase small">Helal Yiyecek & İçecek</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- 2. Satır -->
+        <div class="row justify-content-center g-4">
+
+            <div class="col-6 col-md-3">
+                <div class="service-item">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-umbrella-beach fa-2x"></i>
+                    </div>
+                    <p class="mt-2 text-uppercase small">Aile Plajı</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="service-item">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-spa fa-2x"></i>
+                    </div>
+                    <p class="mt-2 text-uppercase small">Spa & Türk Hamamı</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="service-item">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-wifi fa-2x"></i>
+                    </div>
+                    <p class="mt-2 text-uppercase small">Ücretsiz Wi-Fi</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="service-item">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-broom fa-2x"></i>
+                    </div>
+                    <p class="mt-2 text-uppercase small">Günlük Oda Temizliği</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="services service-style-1 service-style-2 mt-5">
+    <div class="container-fluid">
+        <div class="section-title">
+            <h2 class="mar-0">Foto <span>Galeri</span></h2>
+        </div>
+        <div class="service-outer">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="~/images/gallery/1.jpg?format=webp" alt="Image" />
+                        </div>
+                        <div class="service-content">
+                            <h4 class="mar-0"><a href="/foto-galeri/grand-akca-foto-galeri.html" class="white">Lobi</a></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="~/images/gallery/2.jpg?format=webp" alt="Image" />
+                        </div>
+                        <div class="service-content">
+                            <h4 class="mar-0"><a href="/foto-galeri/grand-akca-foto-galeri.html" class="white">Aile Havuzu</a></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="~/images/gallery/3.jpg?format=webp" alt="Image" />
+                        </div>
+                        <div class="service-content">
+                            <h4 class="mar-0"><a href="/foto-galeri/grand-akca-foto-galeri.html" class="white">Aquapark</a></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="~/images/gallery/4.jpg?format=webp" alt="Image" />
+                        </div>
+                        <div class="service-content">
+                            <h4 class="mar-0"><a href="/foto-galeri/grand-akca-foto-galeri.html" class="white">Kadınlar Havuzu</a></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="~/images/gallery/5.jpg?format=webp" alt="Image" />
+                        </div>
+                        <div class="service-content">
+                            <h4 class="mar-0"><a href="/foto-galeri/grand-akca-foto-galeri.html" class="white">Restoran</a></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="~/images/gallery/6.jpg?format=webp" alt="Image" />
+                        </div>
+                        <div class="service-content">
+                            <h4 class="mar-0"><a href="/foto-galeri/grand-akca-foto-galeri.html" class="white">Açık Büfe</a></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="~/images/gallery/7.jpg?format=webp" alt="Image" />
+                        </div>
+                        <div class="service-content">
+                            <h4 class="mar-0"><a href="/foto-galeri/grand-akca-foto-galeri.html" class="white">Sosyal Alanlar</a></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+                        <div class="service-image">
+                            <img src="~/images/gallery/8.jpg" alt="Image" />
+                        </div>
+                        <div class="service-content">
+                            <h4 class="mar-0"><a href="/foto-galeri/grand-akca-foto-galeri.html" class="white">Genel Görünüm</a></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Ends -->

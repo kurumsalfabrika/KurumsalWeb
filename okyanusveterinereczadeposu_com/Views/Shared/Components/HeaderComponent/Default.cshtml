@@ -1,0 +1,389 @@
+﻿@model GenelViewModel
+
+<header class="main-header">
+	<div class="header-brand-strip">
+		<div class="container header-brand-strip-inner">
+			<div class="header-brand header-brand-left">
+				<a href="/anasayfa/index.html" aria-label="Okyanus Veteriner Ecza Deposu">
+					<img src="~/images/logo/logo.png" alt="Okyanus Veteriner Ecza Deposu">
+				</a>
+			</div>
+			<div class="header-brand header-brand-right">
+				<a href="/anasayfa/index.html" aria-label="YT Hayvan Saglik Hizmetleri">
+					<img src="~/images/logo/logo-2.png" alt="YT Hayvan Saglik Hizmetleri">
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="top-header">
+		<div class="container">
+			<div class="left-side float-left">
+				<ul>
+					<li>
+						<span class="icon round-border"><i class="ficon flaticon-signs"></i></span>
+						<a href="javascript:void(0);" class="tran3s">Mithatpaşa Mh. Gizem Sk. 2/A Kocasinan/KAYSERİ</a>
+					</li>
+					<li>
+						<span class="icon round-border"><i class="ficon flaticon-multimedia"></i></span>
+						<a href="mailto:info@okyanusveterinereczadeposu.com" class="tran3s">info@okyanusveterinereczadeposu.com</a>
+					</li>
+					<li>
+						<span class="icon round-border"><i class="ficon flaticon-technology"></i></span>
+						<a href="tel:+903522312898" class="tran3s">+90 352 231 28 98</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="right-side float-right">
+				<ul>
+					<li>
+						<div class="lang-switcher">
+							<button type="button" id="btnTR" onclick="setLanguage('tr')">TR</button>
+							<button type="button" id="btnEN" onclick="setLanguage('en')">EN</button>
+						</div>
+					</li>
+					<li>
+						<a href="#" class="tran3s round-border icon">
+							<i class="fa fa-facebook" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="tran3s round-border icon">
+							<i class="fa fa-instagram" aria-hidden="true"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="google_translate_element"></div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="main-menu-wrapper clear-fix">
+			<div class="container">
+				<nav class="navbar header-navbar">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+
+					<div class="collapse navbar-collapse" id="navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							@foreach (var item in Model.Menuler.Where(x => x.AnaMenuId == 0 && x.MenuYeriId == 1).ToList())
+							{
+								if (Model.Menuler.Count(a => a.AnaMenuId == item.Id) == 0)
+								{
+									<li><a href="@item.BaglantiAdresi">@item.MenuAdi</a></li>
+								}
+								else
+								{
+									<li class="dropdown-holder">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.MenuAdi</a>
+										<ul class="sub-menu">
+											@foreach (var altitem in Model.Menuler.Where(c => c.AnaMenuId == item.Id))
+											{
+												<li><a href="@altitem.BaglantiAdresi">@altitem.MenuAdi</a></li>
+											}
+										</ul>
+									</li>
+								}
+							}
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
+
+<style>
+	.header-brand-strip {
+		background: #ffffff;
+		padding: 12px 0 0;
+		position: relative;
+		z-index: 3;
+	}
+
+	.header-brand-strip-inner {
+		position: relative;
+		min-height: 78px;
+	}
+
+	.header-brand {
+		position: absolute;
+		top: 0;
+		width: 195px;
+		display: flex;
+		align-items: flex-start;
+	}
+
+	.header-brand a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.header-brand img {
+		max-height: 86px;
+		width: auto;
+	}
+
+	.header-brand-left {
+		left: 0;
+		animation: brandSlideLeft 4.8s ease-in-out infinite;
+	}
+
+	.header-brand-right {
+		right: 0;
+		justify-content: flex-end;
+		animation: brandSlideRight 4.8s ease-in-out infinite;
+	}
+
+	.top-header {
+		position: relative;
+		z-index: 2;
+	}
+
+	.main-menu-wrapper {
+		margin-top: 0;
+		padding: 0;
+		min-height: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: transparent;
+	}
+
+	.main-menu-wrapper > .container {
+		width: auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: #cd2122;
+		padding: 0 34px;
+	}
+
+	.header-navbar {
+		float: none;
+		width: auto;
+		min-height: 100px;
+	}
+
+	.header-navbar .navbar-collapse {
+		padding: 0;
+	}
+
+	.header-navbar .nav.navbar-nav {
+		width: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		float: none;
+	}
+
+	.header-navbar .nav > li {
+		float: none;
+	}
+
+	.lang-switcher {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		margin-top: 6px;
+	}
+
+		.lang-switcher button {
+			background: transparent;
+			border: 1px solid #ddd;
+			padding: 6px 12px;
+			border-radius: 20px;
+			cursor: pointer;
+			font-size: 13px;
+			line-height: 1;
+			transition: all 0.3s ease;
+		}
+
+			.lang-switcher button:hover,
+			.lang-switcher button.active {
+				background: #1e9d49;
+				color: #fff;
+				border-color: #1e9d49;
+			}
+
+	#google_translate_element {
+		position: absolute;
+		left: -9999px;
+		top: -9999px;
+		visibility: hidden;
+	}
+
+	.goog-te-banner-frame.skiptranslate {
+		display: none !important;
+	}
+
+	body {
+		top: 0 !important;
+	}
+
+	.goog-logo-link,
+	.goog-te-gadget span,
+	.goog-te-gadget-simple img {
+		display: none !important;
+	}
+
+	.goog-te-gadget {
+		font-size: 0 !important;
+		color: transparent !important;
+	}
+
+	@@keyframes brandSlideLeft {
+		0%, 100% {
+			transform: translateX(0);
+		}
+
+		50% {
+			transform: translateX(34px);
+		}
+	}
+
+	@@keyframes brandSlideRight {
+		0%, 100% {
+			transform: translateX(0);
+		}
+
+		50% {
+			transform: translateX(-34px);
+		}
+	}
+
+	@@media (max-width: 1199px) {
+		.header-brand {
+			width: 170px;
+		}
+
+		.header-brand img {
+			max-height: 74px;
+		}
+
+		.main-menu-wrapper {
+			padding: 0;
+		}
+
+		.main-menu-wrapper > .container {
+			padding: 0 24px;
+		}
+	}
+
+	@@media (max-width: 991px) {
+		.header-brand-strip {
+			padding-top: 10px;
+		}
+
+		.header-brand-strip-inner {
+			min-height: 64px;
+		}
+
+		.header-brand {
+			width: 138px;
+			animation: none;
+		}
+
+		.header-brand img {
+			max-height: 62px;
+		}
+
+		.main-menu-wrapper {
+			padding: 0;
+			min-height: auto;
+		}
+
+		.main-menu-wrapper > .container {
+			display: block;
+			width: 100%;
+			padding: 0;
+		}
+
+		.header-navbar {
+			min-height: auto;
+			width: 100%;
+		}
+
+		.header-navbar .nav.navbar-nav {
+			display: block;
+		}
+	}
+
+	@@media (max-width: 767px) {
+		.header-brand-strip {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	function googleTranslateElementInit() {
+		new google.translate.TranslateElement(
+			{
+				pageLanguage: 'tr',
+				includedLanguages: 'tr,en',
+				autoDisplay: false
+			},
+			'google_translate_element'
+		);
+
+		updateLanguageButtons();
+	}
+
+	function setCookie(name, value) {
+		document.cookie = name + "=" + value + ";path=/";
+		document.cookie = name + "=" + value + ";path=/;domain=" + window.location.hostname;
+	}
+
+	function getCookie(name) {
+		var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+		if (match) return match[2];
+		return null;
+	}
+
+	function updateLanguageButtons() {
+		var trBtn = document.getElementById('btnTR');
+		var enBtn = document.getElementById('btnEN');
+
+		if (!trBtn || !enBtn) return;
+
+		trBtn.classList.remove('active');
+		enBtn.classList.remove('active');
+
+		var langCookie = getCookie('googtrans');
+
+		if (langCookie && langCookie.indexOf('/tr/en') > -1) {
+			enBtn.classList.add('active');
+		} else {
+			trBtn.classList.add('active');
+		}
+	}
+
+	function setLanguage(lang) {
+		if (lang === 'en') {
+			setCookie('googtrans', '/tr/en');
+		} else {
+			setCookie('googtrans', '/tr/tr');
+		}
+
+		updateLanguageButtons();
+		location.reload();
+	}
+
+	document.addEventListener('DOMContentLoaded', function () {
+		updateLanguageButtons();
+	});
+</script>
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

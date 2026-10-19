@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OKYANUS VETERİNER ECZA DEPOSU || @ViewData["Title"]</title>
+    <link rel="icon" type="image/png" sizes="56x56" href="~/images/fav-icon/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/responsive.css">
+    <!-- Fix Internet Explorer ______________________________________-->
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="vendor/html5shiv.js"></script>
+        <script src="vendor/respond.js"></script>
+    <![endif]-->
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <div class="main-page-wrapper theme-bg-color">
+		@await Component.InvokeAsync("HeaderComponent")
+		@RenderBody()
+	
+		@await Component.InvokeAsync("FooterComponent")
+		<!-- Scroll Top Button -->
+		<button class="scroll-top tran3s p-color-bg">
+			<i class="fa fa-angle-up" aria-hidden="true"></i>
+		</button>
+		<!-- pre loader  -->
+
+        <a href="https://wa.me/905453123129"
+           class="whatsapp-float"
+           target="_blank"
+           aria-label="WhatsApp Bize Ulaşın">
+            <span class="whatsapp-text">Bize Ulaşın</span>
+            <i class="fa fa-whatsapp whatsapp-icon"></i>
+        </a>
+
+        <!-- Js File_________________________________ -->
+        <!-- j Query -->
+        <script type="text/javascript" src="~/vendor/jquery-2.1.4.js"></script>
+
+        <!-- Bootstrap JS -->
+        <script type="text/javascript" src="~/vendor/bootstrap/bootstrap.min.js"></script>
+
+        <!-- Vendor js _________ -->
+        <!-- revolution -->
+        <script src="~/vendor/revolution/jquery.themepunch.tools.min.js"></script>
+        <script src="~/vendor/revolution/jquery.themepunch.revolution.min.js"></script>
+        <script type="text/javascript" src="~/vendor/revolution/revolution.extension.slideanims.min.js"></script>
+        <script type="text/javascript" src="~/vendor/revolution/revolution.extension.layeranimation.min.js"></script>
+        <script type="text/javascript" src="~/vendor/revolution/revolution.extension.navigation.min.js"></script>
+        <script type="text/javascript" src="~/vendor/revolution/revolution.extension.kenburn.min.js"></script>
+        <script type="text/javascript" src="~/vendor/revolution/revolution.extension.actions.min.js"></script>
+
+        <!-- Google map js -->
+        <script src="http://maps.google.com/maps/api/js"></script> <!-- Gmap Helper -->
+        <script src="~/vendor/gmap.js"></script>
+        <!-- Bootstrap Select JS -->
+        <script type="text/javascript" src="~/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
+        <!-- Time picker -->
+        <script type="text/javascript" src="~/vendor/time-picker/jquery.timepicker.min.js"></script>
+        <!-- WOW js -->
+        <script type="text/javascript" src="~/vendor/WOW-master/dist/wow.min.js"></script>
+        <!-- owl.carousel -->
+        <script type="text/javascript" src="~/vendor/owl-carousel/owl.carousel.min.js"></script>
+        <!-- js count to -->
+        <script type="text/javascript" src="~/vendor/jquery.appear.js"></script>
+        <script type="text/javascript" src="~/vendor/jquery.countTo.js"></script>
+
+        <!-- Theme js -->
+        <script type="text/javascript" src="~/js/theme.js"></script>
+
+
+
+
+
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
+</body>
+</html>

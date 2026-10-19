@@ -1,0 +1,271 @@
+﻿@using Kurumsal.Core.Functions
+@model AnasayfaViewModel
+
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<!-- SLIDER START -->
+<div class="main-slider style-two default-banner">
+    <div class="tp-banner-container">
+        <div class="tp-banner">
+            <!-- START REVOLUTION SLIDER 5.4.1 -->
+            <div id="rev_slider_1014_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="typewriter-effect" data-source="gallery">
+                <div id="rev_slider_1014_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.1">
+                    <ul>
+
+                        @{
+                            int indexValue = 1000;
+                        }
+
+                        @foreach (var item in Model.Sliderlar)
+                        {
+                            <!-- SLIDE 1 -->
+                            <li data-index="@indexValue" data-transition="slidingoverlayhorizontal" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="~/assets/images/main-slider/slider2/slide2.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                <!-- MAIN IMAGE -->
+                                <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel?format=webp" alt="" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                                <!-- LAYERS -->
+                                <!-- LAYER NR. 1 [ for overlay ] -->
+                                <div class="tp-caption tp-shape tp-shapewrapper "
+                                     id="slide-200-layer-1"
+                                     data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                     data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                     data-width="full"
+                                     data-height="full"
+                                     data-whitespace="nowrap"
+                                     data-type="shape"
+                                     data-basealign="slide"
+                                     data-responsive_offset="off"
+                                     data-responsive="off"
+                                     data-frames='[
+                                            {"from":"opacity:0;","speed":1000,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},
+                                            {"delay":"wait","speed":1000,"to":"opacity:0;","ease":"Power4.easeOut"}
+                                            ]'
+                                     data-textAlign="['left','left','left','left']"
+                                     data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]"
+                                     data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                     style="z-index: 12;background-color:rgba(0, 0, 0, 0.10);border-color:rgba(0, 0, 0, 0);border-width:0px;">
+                                </div>
+
+                                <!-- LAYER NR. 2 [ for title ] -->
+                                <div class="tp-caption   tp-resizeme"
+                                     id="slide-200-layer-2"
+                                     data-x="['left','left','left','left']" data-hoffset="['48','30','30','100']"
+                                     data-y="['top','top','top','top']" data-voffset="['300','300','300','300']"
+                                     data-fontsize="['60','60','60','50']"
+                                     data-lineheight="['70','70','70','60']"
+                                     data-width="['700','700','700','700']"
+                                     data-height="['none','none','none','none']"
+                                     data-whitespace="['normal','normal','normal','normal']"
+                                     data-type="text"
+                                     data-responsive_offset="on"
+                                     data-frames='[
+                                            {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":500,"ease":"Power4.easeOut"},
+                                            {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
+                                            ]'
+                                     data-textAlign="['left','left','left','left']"
+                                     data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]"
+                                     data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                     style="z-index: 13;
+                                            white-space: normal;
+                                            font-weight: 700;
+                                            color: rgba(255, 255, 255, 1.00);
+                                            border-width:0px;">
+                                    <span class="text-uppercase" style="font-family:'Roboto' ;"><span class="site-text-primary">@item.SliderBaslik </span> @item.IkinciSatir</span>
+                                </div>
+
+                                <!-- LAYER NR. 3 [ for paragraph] -->
+                                <div class="tp-caption  tp-resizeme"
+                                     id="slide-200-layer-3"
+                                     data-x="['left','left','left','left']" data-hoffset="['48','30','30','100']"
+                                     data-y="['top','top','top','top']" data-voffset="['400','400','400','400']"
+                                     data-fontsize="['18','18','18','30']"
+                                     data-lineheight="['30','30','30','40']"
+                                     data-width="['650','650','650','650']"
+                                     data-height="['none','none','none','none']"
+                                     data-whitespace="['normal','normal','normal','normal']"
+                                     data-type="text"
+                                     data-responsive_offset="on"
+                                     data-frames='[
+                                            {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":1000,"ease":"Power4.easeOut"},
+                                            {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
+                                            ]'
+                                     data-textAlign="['left','left','left','left']"
+                                     data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]"
+                                     data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                     style="z-index: 13;
+                                            font-weight: 500;
+                                            color: rgba(255, 255, 255, 0.85);
+                                            border-width:0px;">
+                                    <span style="font-family:'Roboto';">
+                                  @item.Aciklama </span>
+                                </div>
+
+                                @if (!string.IsNullOrEmpty(item.ButonYazisi))
+                                {
+                                    <!-- LAYER NR. 4 [ for readmore button ] -->
+                                    <div class="tp-caption tp-resizeme"
+                                         id="slide-200-layer-4"
+                                         data-x="['left','left','left','left']" data-hoffset="['48','30','30','100']"
+                                         data-y="['top','top','top','top']" data-voffset="['530','530','530','630']"
+                                         data-lineheight="['none','none','none','none']"
+                                         data-width="['300','300','300','300']"
+                                         data-height="['none','none','none','none']"
+                                         data-whitespace="['normal','normal','normal','normal']"
+                                         data-type="text"
+                                         data-responsive_offset="on"
+                                         data-frames='[
+                        {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeOut"},
+                        {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
+                        ]'
+                                         data-textAlign="['left','left','left','left']"
+                                         data-paddingtop="[0,0,0,0]"
+                                         data-paddingright="[0,0,0,0]"
+                                         data-paddingbottom="[0,0,0,0]"
+                                         data-paddingleft="[0,0,0,0]"
+                                         style="z-index:13; text-transform:uppercase; font-weight:700;">
+                                        <a href="@item.SliderURL" class="site-button">@item.ButonYazisi</a>
+                                    </div>
+                                }
+
+
+
+
+                            </li>
+
+                            indexValue += 1000;
+                        }
+
+
+     
+                    </ul>
+                    <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+                </div>
+            </div>
+            <!-- END REVOLUTION SLIDER -->
+        </div>
+    </div>
+</div>
+<!-- SLIDER END -->
+<div class="call-to-action-wrap call-to-action-skew site-bg-primary bg-no-repeat" style="background-image:url(~/assets/images/background/bg-4.png);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-7">
+                <div class="call-to-action-left p-tb20 p-r50">
+                    <h4 class="text-uppercase m-b10">Kalite ve Güvenle projelerinizde yer almaktan mutluluk duyarız.</h4>
+                    <p>Sizde projelerinizde sağlam ve kaliteli ürünler kullanarak adınızdan söz ettirmek istiyorsanız şimdi bizimle iletişime geçin.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-5">
+                <div class="call-to-action-right p-tb30">
+                    <a href="/iletisim/bize-ulasin.html" class="site-button-secondry  m-r15 text-uppercase font-weight-600">
+                        İLETİŞİM  <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- OUR CLIENT SLIDER START -->
+<div class="section-full p-t80 p-b50">
+    <div class="container">
+
+        <!-- TITLE START -->
+        <div class="section-head text-center">
+            <h2 class="text-uppercase">Markalar</h2>
+            <div class="wt-separator-outer">
+                <div class="wt-separator style-square">
+                    <span class="separator-left site-bg-primary"></span>
+                    <span class="separator-right site-bg-primary"></span>
+                </div>
+            </div>
+            <p>Satışını yaptığımız markalarımız; kalite, dayanıklılık ve yenilik konusunda sektörde öncü isimlerden oluşmaktadır. Müşterilerimize en güvenilir ve performansı yüksek ürünleri sunmaktan gurur duyuyoruz.</p>
+        </div>
+        <!-- TITLE END -->
+        <!-- IMAGE CAROUSEL START -->
+        <div class="section-content m-b30">
+            <div class="owl-carousel client-logo-carousel">
+
+
+                @foreach (var marka in Model.Markalar.OrderBy(m => m.MarkaSira))
+                {
+                    <div class="item">
+                        <div class="ow-client-logo">
+                            <div class="client-logo wt-img-effect on-color">
+                                <a href="/marka/@SeoUrlGenerator.GenerateSlug(marka.MarkaAdi)-kirilmazlar.html">
+                                    
+                                    <img src="@Model.Ftp.DosyaAdresOnEki@marka.OneCikanGorsel" alt="@marka.MarkaAdi"></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+        <!-- IMAGE CAROUSEL START -->
+    </div>
+
+</div>
+<!-- OUR CLIENT SLIDER END -->
+<!-- LATEST PROJECT SECTION START -->
+<div class="section-full bg-white p-t10">
+
+    <div class="container">
+        <div class="section-head text-center">
+
+            <h2 class="text-uppercase ">ŞİRKETİMİZ</h2>
+
+        </div>
+    </div>
+    <div class="container-fluid">
+
+        <div class="portfolio-wrap mfp-gallery no-col-gap row">
+
+            @if (Model.Fotograflar != null && Model.Fotograflar.Any())
+            {
+                foreach (var foto in Model.Fotograflar
+                .OrderByDescending(x => x.Ekleme)
+                .Take(8))
+                {
+                    <div class="masonry-item cat-1 col-xl-3 col-lg-3 col-md-6">
+                        <div class="wt-gallery-bx">
+                            <div class="wt-thum-bx wt-img-overlay1 wt-img-effect zoom-slow">
+                                <a href="@($"/fotogaleri/galeri-detay-{foto.FotoGaleriId}.html")">
+
+                                    <img src="@($"{Model.Ftp.DosyaAdresOnEki}k_{foto.OneCikanGorsel}")" alt="@foto.FotografAdi" />
+                                </a>
+                                <div class="overlay-bx">
+                                    <div class="overlay-icon">
+                                        <a href="@($"/fotogaleri/galeri-detay-{foto.FotoGaleriId}.html")">
+
+                                            <i class="fa fa-external-link wt-icon-box-xs"></i>
+                                        </a>
+                                        <a href="@Model.Ftp.DosyaAdresOnEki@foto.OneCikanGorsel" class="mfp-link">
+                                            <i class="fa fa-arrows-alt wt-icon-box-xs"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>Henüz fotoğraf eklenmemiş.</p>
+            }
+
+
+
+        </div>
+
+    </div>
+</div>
+<!-- LATEST PROJECT SECTION END -->

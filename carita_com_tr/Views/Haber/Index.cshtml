@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Gökhan Eraslan İnşaat - KAYSERİ";
+}
+@model HaberViewModel
+@using Kurumsal.Core.Functions
+
+
+
+<div class="detaypagetop">
+    <div class="bg1"></div>
+    <div>
+        <img src="~/img/altbanner2.jpg" class="imgcover" />
+        <div class="grdbg"></div>
+        <div class="grdbgbottom"></div>
+        <div class="detaypagetoptitle txtcenter">
+            <h1>HABERLER</h1>
+        </div>
+    </div>
+
+</div>
+<div class="pagedetail">
+
+    <div class="projelist">
+        <div class="treediv proje">
+            @foreach (var item in Model.Haberler)
+            {
+                <div >
+                    <a href="@Url.Content("~/haber-detay/" + SeoUrlGenerator.GenerateSlug(item.Baslik) + "-" + item.Id + ".html")">
+                        <div class="zoom">
+                            <img src="@Model.Ftp.DosyaAdresOnEki@("k_" + item.OneCikanGorsel)" class="imgcover" />
+                            <div class="bg30"></div>
+                            <div class="div-shape-alan">
+                                <div class="projetitle">
+                                    <h1>
+                                        @item.Baslik
+                                        <p><img src="img/next.svg"></p>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,130 @@
+﻿@using Kurumsal.Core.Functions
+@model UrunViewModel
+
+@section Styles {
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.min.css" rel="stylesheet">
+    <link href="~/css/bs-icon-font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <script src="~/js/modernizr.js"></script>
+    <link href="~/css/shop.css" rel="stylesheet">
+    <link href="~/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+}
+
+<section class="parallax_window_in short" data-image-src="https://www.sodemcanta.com.tr/img/header_bg_black.jpg" data-parallax="scroll" data-natural-width="1400" data-natural-height="350">
+    <div id="sub_content_in">
+        <div class="container">
+            <h1 style="margin-bottom: 40px;">@Model.UrunKategori.KategoriAdi / @Model.Urun.UrunKodu</h1>
+        </div>
+    </div>
+</section><!-- End section -->
+
+<main>
+    <div class="container margin_60_35">
+        <div class="row">
+            <div class="col-lg-9">
+                <!-- Soldaki 9 birimlik sütun -->
+                <div class="container">
+                    <div class="row">
+                      
+                            @if (Model.Urun == null)
+                            {
+                                <div class="alert alert-warning" role="alert">
+                                    Ürün bulunamadı.
+                                </div>
+                            }
+                            else
+                            {
+                            <div class="col-7">
+                                <div class="product-slider">
+                                    <div><img src="@Model.Ftp.DosyaAdresOnEki@Model.Urun.OneCikanGorsel" alt="" class="img-fluid urun-resim"></div>
+                                    @foreach (var item in Model.Fotograflar)
+                                    {
+                                        <div><img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="" class="img-fluid urun-resim"></div>
+                                    }
+                                </div>
+                                <div class="product-slider-nav">
+
+                             
+                                            <div class="col-lg-3 col-3 "><img src="@Model.Ftp.DosyaAdresOnEki@Model.Urun.OneCikanGorsel" alt="" class="img-fluid urun-thumb"></div>
+                                            @foreach (var item in Model.Fotograflar)
+                                            {
+                                            <div class="col-lg-3  col-3"><img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="" class="img-fluid urun-thumb"></div>
+                                            }
+                             
+
+                                </div>
+                            </div>
+
+                                <div class="col-5">
+
+                                    <div class="col-12"><h3>@Model.Urun.UrunKodu</h3></div>
+                                    <hr />
+                                    <div class="col-12"><span>@Html.Raw(Model.Urun.Icerik)</span></div>
+
+                                </div>
+                            }
+                   
+                    </div><!-- End row -->
+                </div>
+            </div><!-- End col-lg-9 -->
+
+            <div class="col-lg-3">
+                <aside class="sidebar">
+                    <!-- En sağdaki 3 birimlik sütun -->
+                    <div class="widget" id="cat_shop">
+                        <h4>Kategoriler</h4>
+                        <ul>
+                            @foreach (var item in Model.UrunKategoriler.Where(x => x.UstKategoriId == null))
+                            {
+                                <li><a href="@Url.Content("~/urunkategori/" + SeoUrlGenerator.GenerateSlug(item.KategoriAdi) + "-" + item.Id + ".html")">@item.KategoriAdi</a></li>
+                                @foreach (var altitem in Model.UrunKategoriler.Where(x => x.UstKategoriId == item.Id))
+                                {
+                                    <li><a href="@Url.Content("~/urunkategori/" + SeoUrlGenerator.GenerateSlug(altitem.KategoriAdi) + "-" + altitem.Id + ".html")">-> @altitem.KategoriAdi</a></li>
+                                }
+                            }
+                        </ul>
+                    </div><!-- End widget -->
+                </aside>
+                <!-- İçerik buraya gelecek -->
+            </div><!-- End col-lg-3 -->
+        </div><!-- End row -->
+    </div><!-- End container -->
+</main><!-- End main -->
+@section Scripts {
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/common_scripts_min.js"></script>
+    <script src="~/js/functions.js"></script>
+    <script src="~/js/fontawesome.init.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.product-slider').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                fade: true,
+                asNavFor: '.product-slider-nav'
+            });
+
+            $('.product-slider-nav').slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                asNavFor: '.product-slider',
+                dots: false,
+                centerMode: true,
+                focusOnSelect: true
+            });
+        });
+
+    </script>
+
+}

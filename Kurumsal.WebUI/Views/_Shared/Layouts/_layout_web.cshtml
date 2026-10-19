@@ -1,0 +1,549 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title | Kurumsal Fabrika - CRM </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/favicon.ico">
+    <!-- Bootstrap Css -->
+    <link href="~/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+
+    <!-- Icons Css -->
+    <link href="~/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- App Css-->
+    <link href="~/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+    <link href="~/css/site.css" rel="stylesheet" />
+
+    @RenderSection("styles", required: false)
+
+</head>
+<body data-topbar="light" data-layout="horizontal">
+    <div id="layout-wrapper">
+        <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <div class="navbar-brand-box">
+                        <a href=@Url.Action("Index", "Dashboard") class="logo logo-dark">
+                            <LogoTag></LogoTag>
+                        </a>
+                        <a href=@Url.Action("Index", "Dashboard") class="logo logo-light">
+                            <LogoTag></LogoTag>
+                        </a>
+                    </div>
+                    <button type="button" class="btn btn-sm px-3 font-size-24 d-lg-none header-item" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+                        <i class="ri-menu-2-line align-middle"></i>
+                    </button>
+                </div>
+                <div class="d-flex">
+                    <div class="dropdown d-inline-block d-lg-none ms-2">
+                        <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="ri-search-line"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                             aria-labelledby="page-header-search-dropdown">
+
+                            <form class="p-3">
+                                <div class="mb-3 m-0">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search ...">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="submit"><i class="ri-search-line"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="dropdown d-none d-lg-inline-block ms-1">
+                        <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
+                            <i class="ri-fullscreen-line"></i>
+                        </button>
+                    </div>
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="ri-notification-3-line"></i>
+                            <span class="noti-dot"></span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                             aria-labelledby="page-header-notifications-dropdown">
+                            <div class="p-3">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h6 class="m-0"> Uyarılar </h6>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a href="#!" class="small"> Tümü</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-simplebar style="max-height: 230px;">
+                                <a href="" class="text-reset notification-item">
+                                    <div class="d-flex">
+                                        <div class="avatar-xs me-3">
+                                            <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                                <i class="ri-shopping-cart-line"></i>
+                                            </span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h6 class="mb-1">Kabul İşlemi Yapılacak</h6>
+                                            <div class="font-size-12 text-muted">
+                                                <p class="mb-1">Bugün kabul işlemi yapılacak yer var.</p>
+                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 dk. önce</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="" class="text-reset notification-item">
+                                    <div class="d-flex">
+                                        <img src="~/assets/images/users/avatar-3.jpg"
+                                             class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                        <div class="flex-1">
+                                            <h6 class="mb-1">James Lemire</h6>
+                                            <div class="font-size-12 text-muted">
+                                                <p class="mb-1">It will seem like simplified English.</p>
+                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 1 hours ago</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="" class="text-reset notification-item">
+                                    <div class="d-flex">
+                                        <div class="avatar-xs me-3">
+                                            <span class="avatar-title bg-success rounded-circle font-size-16">
+                                                <i class="ri-checkbox-circle-line"></i>
+                                            </span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h6 class="mb-1">Your item is shipped</h6>
+                                            <div class="font-size-12 text-muted">
+                                                <p class="mb-1">If several languages coalesce the grammar</p>
+                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="" class="text-reset notification-item">
+                                    <div class="d-flex">
+                                        <img src="~/assets/images/users/avatar-4.jpg"
+                                             class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                        <div class="flex-1">
+                                            <h6 class="mb-1">Salena Layfield</h6>
+                                            <div class="font-size-12 text-muted">
+                                                <p class="mb-1">As a skeptical Cambridge friend of mine occidental.</p>
+                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 1 hours ago</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="p-2 border-top">
+                                <div class="d-grid">
+                                    <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+                                        <i class="mdi mdi-arrow-right-circle me-1"></i> Tümünü Gör...
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="dropdown d-inline-block user-dropdown">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="~/assets/images/users/avatar-2.jpg"
+                                 alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ms-1">Mustafa KARABENLİ</span>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <!-- item-->
+                            <a class="dropdown-item" href="#"><i class="ri-user-line align-middle me-1"></i> Profil</a>
+                            <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end mt-1">2</span><i class="ri-settings-2-line align-middle me-1"></i> Mesajlar</a>
+                            <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end mt-1">2</span><i class="ri-settings-2-line align-middle me-1"></i> Hatırlatmalar</a>
+                            <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end mt-1">2</span><i class="ri-settings-2-line align-middle me-1"></i> Notlar</a>
+                            <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end mt-1">11</span><i class="ri-settings-2-line align-middle me-1"></i> Ayarlar</a>
+                            <a class="dropdown-item" href="#"><i class="ri-lock-unlock-line align-middle me-1"></i> Ekranı Kilitle</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href=@Url.Action("Logout", "User")><i class="ri-shut-down-line align-middle me-1 text-danger"></i> Çıkış</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                            <i class="ri-settings-2-line"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <div class="topnav">
+            <div class="container-fluid">
+                <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+
+                    <div class="collapse navbar-collapse" id="topnav-menu-content">
+                        <ul class="navbar-nav">
+
+                            <li class="nav-item">
+                                <a class="nav-link" href=@Url.Action("Index", "WebDashboard")>
+                                    <i class="ri-dashboard-line me-2"></i> Başlangıç
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href=@Url.Action("Index", "WebGenelAyar")>
+                                    <i class="ri-dashboard-line me-2"></i> Genel Ayarlar
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button">
+                                    <i class="ri-apps-2-line me-2"></i>AI İçerik Yönetimi <div class="arrow-down"></div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                                    <a href=@Url.Action("Index", "WebSayfa") class="dropdown-item">AI Sayfalar</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href=@Url.Action("Index", "Urun") class="dropdown-item">Ürünler</a>
+                                    <a href=@Url.Action("AddOrUpdate", "Urun") class="dropdown-item">Ürün Ekle</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href=@Url.Action("Index", "UrunKategori") class="dropdown-item">Ürün Kategorileri</a>
+                                    <a href=@Url.Action("AddOrUpdate", "UrunKategori") class="dropdown-item">Ürün Kategori Ekle</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href=@Url.Action("Index", "Marka") class="dropdown-item">Markalar</a>
+                                    <a href=@Url.Action("AddOrUpdate", "Marka") class="dropdown-item">Marka Ekle</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button">
+                                    <i class="ri-apps-2-line me-2"></i>İçerik Yönetimi <div class="arrow-down"></div>
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-ecommerce" role="button">
+                                            Oda Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-ecommerce">
+                                            <a href=@Url.Action("Index", "Oda") class="dropdown-item">Odalar</a>
+                                            <a href=@Url.Action("AddOrUpdate", "Oda") class="dropdown-item">Yeni Oda Ekle</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a href=@Url.Action("Index", "Rezervasyon") class="dropdown-item">Rezervasyonlar</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-ecommerce" role="button">
+                                            Şube Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-ecommerce">
+                                            <a href=@Url.Action("Index", "Sube") class="dropdown-item">Şubeler</a>
+                                            <a href=@Url.Action("AddOrUpdate", "Sube") class="dropdown-item">Yeni Şube Ekle</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-ecommerce" role="button">
+                                            Yorum Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-ecommerce">
+                                            <a href=@Url.Action("Index", "Yorum") class="dropdown-item">Yorumlar</a>
+                                            <a href=@Url.Action("AddOrUpdate", "Yorum") class="dropdown-item">Yeni Yorum Ekle</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-ecommerce" role="button">
+                                            Sayfa Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-ecommerce">
+                                            <a href=@Url.Action("Index", "Sayfa") class="dropdown-item">Sayfalar</a>
+                                            <a href=@Url.Action("AddOrUpdate", "Sayfa") class="dropdown-item">Yeni Sayfa Ekle</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a href=@Url.Action("Index", "SayfaKategori") class="dropdown-item">Sayfa Kategorileri</a>
+                                            <a href=@Url.Action("AddOrUpdate", "SayfaKategori") class="dropdown-item">Sayfa Kategorisi Ekle</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-referans" role="button">
+                                            Referans Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-referans">
+                                            <a href=@Url.Action("Index", "Referans") class="dropdown-item">Referanslar</a>
+                                            <a href=@Url.Action("AddOrUpdate", "Referans") class="dropdown-item">Yeni Referans Ekle</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-referans" role="button">
+                                            Blog Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-referans">
+                                            <a href=@Url.Action("Index", "Blog") class="dropdown-item">Bloglar</a>
+                                            <a href=@Url.Action("AddOrUpdate", "Blog") class="dropdown-item">Yeni Blog Ekle</a>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-referans" role="button">
+                                            Haber Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-referans">
+                                            <a href=@Url.Action("Index", "Haber") class="dropdown-item">Haberler</a>
+                                            <a href=@Url.Action("AddOrUpdate", "Haber") class="dropdown-item">Yeni Haber Ekle</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a href=@Url.Action("Index", "HaberKategori") class="dropdown-item">Haber Kategorileri</a>
+                                            <a href=@Url.Action("AddOrUpdate", "HaberKategori") class="dropdown-item">Haber Kategorisi Ekle</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-referans" role="button">
+                                            S.S.S. Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-referans">
+                                            <a href=@Url.Action("Index", "SSS") class="dropdown-item">Sıkça Sorulan Sorular</a>
+                                            <a href=@Url.Action("AddOrUpdate", "SSS") class="dropdown-item">Yeni S.S.S. Ekle</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a href=@Url.Action("Index", "SSSKategori") class="dropdown-item">S.S.S. Kategorileri</a>
+                                            <a href=@Url.Action("AddOrUpdate", "SSSKategori") class="dropdown-item">S.S.S. Kategorisi Ekle</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-referans" role="button">
+                                            Hizmet Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-referans">
+                                            <a href=@Url.Action("Index", "Hizmet") class="dropdown-item">Hizmetler</a>
+                                            <a href=@Url.Action("AddOrUpdate", "Hizmet") class="dropdown-item">Yeni Hizmet Ekle</a>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-referans" role="button">
+                                            Yorum Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-referans">
+                                            <a href=@Url.Action("Index", "Sayfa") class="dropdown-item">Yorumlar</a>
+                                            <a href=@Url.Action("AddOrUpdate", "Sayfa") class="dropdown-item">Yeni Yorum Ekle</a>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-referans" role="button">
+                                            Proje Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-referans">
+                                            <a href=@Url.Action("Index", "InsaatProje") class="dropdown-item">Projeler</a>
+                                            <a href=@Url.Action("AddOrUpdate", "InsaatProje") class="dropdown-item">Yeni Proje Ekle</a>
+
+                                            <div class="dropdown-divider"></div>
+                                            <a href=@Url.Action("Index", "SayfaKategori") class="dropdown-item">Proje Kategorileri</a>
+                                            <a href=@Url.Action("AddOrUpdate", "SayfaKategori") class="dropdown-item">Proje Kategorisi Ekle</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-referans" role="button">
+                                            Ödeme Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-referans">
+                                            <a href=@Url.Action("Index", "Sayfa") class="dropdown-item">Bankalar</a>
+                                            <a href=@Url.Action("AddOrUpdate", "Sayfa") class="dropdown-item">Yeni Banka Ekle</a>
+
+                                            <div class="dropdown-divider"></div>
+                                            <a href=@Url.Action("Index", "SayfaKategori") class="dropdown-item">Sanal POS Ayarları</a>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-referans" role="button">
+                                            İletişim Yönetimi <div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-referans">
+                                            <a href=@Url.Action("Index", "Iletisim") class="dropdown-item">İletişim Mesajları</a>
+
+                                            <div class="dropdown-divider"></div>
+                                            <a href=@Url.Action("Index", "IletisimAyar") class="dropdown-item">İletişim Adresleri</a>
+                                            <a href=@Url.Action("AddOrUpdate", "IletisimAyar") class="dropdown-item">İletişim Adresi Ekle</a>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-referans" role="button">
+                                            Sosyal Medya Yönetimi<div class="arrow-down"></div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="topnav-referans">
+                                            <a href=@Url.Action("Index", "SosyalMedyaAdres") class="dropdown-item">Sosyal Medya Adresleri</a>
+                                            <a href=@Url.Action("AddOrUpdate", "SosyalMedyaAdres") class="dropdown-item">Sosyal Medya Ekle</a>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </li>
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button">
+                                    <i class="ri-apps-2-line me-2"></i>Menü Yönetimi <div class="arrow-down"></div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                                    <a href=@Url.Action("Index", "Menu") class="dropdown-item">Menüler</a>
+                                    <a href=@Url.Action("AddOrUpdate", "Menu") class="dropdown-item">Menü Ekle</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button">
+                                    <i class="ri-apps-2-line me-2"></i>Medya Yönetimi <div class="arrow-down"></div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                                    <a href=@Url.Action("Index", "FotoGaleri") class="dropdown-item">Foto Galeri</a>
+                                    <a href=@Url.Action("Index", "VideoGaleri") class="dropdown-item">Video Galeri</a>
+                                    <a href=@Url.Action("Index", "Slider") class="dropdown-item">Slider Yönetimi</a>
+                                    <a href=@Url.Action("Index", "Story") class="dropdown-item">Story/Hikaye Yönetimi</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href=@Url.Action("Index", "Portfolyo") class="dropdown-item">Portfolyo Yönetimi</a>
+                                    <a href=@Url.Action("AddOrUpdate", "Portfolyo") class="dropdown-item">Portfolyo Ekle</a>
+                                    <a href=@Url.Action("Index", "PortfolyoKategori") class="dropdown-item">Portfolyo Kategori Yönetimi</a>
+                                    <a href=@Url.Action("AddOrUpdate", "PortfolyoKategori") class="dropdown-item">Portfolyo Katekori Ekle</a>
+                                </div>
+                            </li>
+
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button">
+                                    <i class="ri-apps-2-line me-2"></i>Seo Yönetimi <div class="arrow-down"></div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                                    <a href=@Url.Action("AddOrUpdate", "Cari") class="dropdown-item">SEO Ayarları</a>
+                                </div>
+                            </li>
+
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button">
+                                    <i class="ri-apps-2-line me-2"></i>Ayarlar <div class="arrow-down"></div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                                    <a href=@Url.Action("Index", "SiteAyar") class="dropdown-item">Site Ayarları</a>
+                                    <a href=@Url.Action("AddOrUpdate", "Cari") class="dropdown-item">Renk Ayarları</a>
+                                    <a href=@Url.Action("AddOrUpdate", "Cari") class="dropdown-item">SMS Ayarları</a>
+                                    <a href=@Url.Action("Index", "MailAyar") class="dropdown-item">E-Posta Ayarları</a>
+                                    <a href=@Url.Action("Index", "Ftp") class="dropdown-item">Ftp Ayarları</a>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">@ViewBag.pTitle</h4>
+
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: history.back();">@ViewBag.pageTitle</a></li>
+                                        <li class="breadcrumb-item active">@ViewBag.pTitle</li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                    @RenderBody()
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <script>document.write(new Date().getFullYear())</script> © Kurumsal Fabrika.
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                AG Plan Proje Mühendislik İnşaat San ve Tic. Ltd. Şti. Kalan Süre (245 gün)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <!-- Right Sidebar -->
+    <div class="right-bar">
+        <div data-simplebar class="h-100">
+            <div class="rightbar-title d-flex align-items-center px-3 py-4">
+
+                <h5 class="m-0 me-2">Görünüm</h5>
+
+                <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                    <i class="mdi mdi-close noti-icon"></i>
+                </a>
+            </div>
+
+            <!-- Settings -->
+            <hr class="mt-0" />
+            <h6 class="text-center mb-0">Görünüm Değiştir</h6>
+
+            <div class="p-4">
+                <div class="mb-2">
+                    <img src="~/assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="layout-1">
+                </div>
+
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch" checked>
+                    <label class="form-check-label" for="light-mode-switch">Açık Mod</label>
+                </div>
+
+                <div class="mb-2">
+                    <img src="~/assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="layout-2">
+                </div>
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch" data-bsStyle="~assets/css/bootstrap-dark.min.css" data-appStyle="~assets/css/app-dark.min.css">
+                    <label class="form-check-label" for="dark-mode-switch">Koyu Mod</label>
+                </div>
+
+                <div class="mb-2">
+                    <img src="~/assets/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="layout-3">
+                </div>
+                <div class="form-check form-switch mb-5">
+                    <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch" data-appStyle="~assets/css/app-rtl.min.css">
+                    <label class="form-check-label" for="rtl-mode-switch">RTL Mod</label>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div class="rightbar-overlay"></div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

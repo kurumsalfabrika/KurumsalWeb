@@ -1,0 +1,88 @@
+﻿
+
+.sub-heading {
+    height: 0;
+    border-top: 1px solid #DDD;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+    .sub-heading span {
+        display: inline-block;
+        position: relative;
+        padding: 0 17px;
+        top: -11px;
+        font-size: 14px;
+        font-weight:700;
+        color: #058;
+        background-color: #fff;
+    }
+
+.panel-danger 
+{
+    border-color: #ebccd1;
+}
+
+.hr-mini {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.actions {
+    text-align: right !important; /* İçeriği sağa yasla */
+}
+
+.menu-add-button {
+    margin-right: 10px;
+}
+
+/* Tablo sütun genişlikleri için özel stiller */
+.table-id, .table-date, .table-actions {
+    max-width: 100px; /* Maksimum genişlik 100px */
+    overflow: hidden; /* Taşma durumunda içeriği gizle */
+    text-overflow: ellipsis; /* Taşan metni üç nokta ile kısalt */
+    white-space: nowrap; /* Metni aynı satırda tut */
+}
+/* Tablo sütun genişlikleri için özel stiller */
+.table-id {
+    max-width: 50px; /* Maksimum genişlik 100px */
+    overflow: hidden; /* Taşma durumunda içeriği gizle */
+    text-overflow: ellipsis; /* Taşan metni üç nokta ile kısalt */
+    white-space: nowrap; /* Metni aynı satırda tut */
+}
+
+/* Tablo sütun genişlikleri için özel stiller */
+.table-actions {
+    max-width: 100px; /* Maksimum genişlik 100px */
+    overflow: hidden; /* Taşma durumunda içeriği gizle */
+    text-overflow: ellipsis; /* Taşan metni üç nokta ile kısalt */
+    white-space: nowrap; /* Metni aynı satırda tut */
+}
+
+    .table-actions button {
+        margin-right: 4px; /* Düğmeler arası boşluk */
+    }
+
+
+.tooltip-input {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 300px;
+}
+
+    .tooltip-input:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        left: 0;
+        top: 100%;
+        white-space: nowrap;
+        z-index: 10;
+        background-color: black;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px #00000070;
+    }

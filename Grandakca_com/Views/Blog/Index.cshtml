@@ -1,0 +1,62 @@
+﻿@using Kurumsal.Core.Functions
+@using Kurumsal.Entities.Concrete
+@model SayfaViewModel
+
+@{
+    ViewData["Title"] = "Grand Akca Otel - Alkolsüz Her Şey Dahil Aile Oteli";
+    ViewData["DescripSon"] = "Alkolsüz her şey dahil aile oteli konsepSyle Grand Akca Otel'de kadınlara, erkeklere ve ailelere özel havuzlar, aile plajı, aquapark, konforlu odalar ve seçkin lezzetler sizleri bekliyor.";
+    ViewData["Keywords"] = "grand akca otel, alkolsüz taSl, aile oteli, gazipaşa otel, kadınlara özel havuz, aile plajı, alkolsüz her şey dahil otel, gazipaşa havalimanına 5 dakika";
+}
+
+<!-- breadcrumb Starts -->
+<section class="breadcrumb-outer">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>Blog Yazıları</h2>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/anasayfa/anasayfa.html">Anasayfa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Blog Yazıları</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb Endss -->
+<!-- detail starts -->
+<section class="details">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-content">
+                    <div class="row">
+
+                        @foreach (var item in Model.Bloglar.OrderByDescending(x=>x.YayinTarihi))
+                        {
+
+                            <div class="col-lg-12 col-md-12">
+                                <div class="news-item row align-items-start">
+                                    <div class="col-12 col-lg-3 mb-3 mb-lg-0">
+                                        <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="@item.Baslik" class="img-fluid" />
+                                    </div>
+                                    <div class="col-12 col-lg-9">
+                                        <div class="news-content">
+                                            <p class="date">@item.YayinTarihi.ToString("dd MMMM yyyy HH:mm:ss")</p>
+                                            <h4>@item.Baslik</h4>
+                                            <p>@Html.Raw(item.SpotMetin)</p>
+                                            <a href="@Url.Content("~/blogdetay/" + SeoUrlGenerator.GenerateSlug(item.Baslik) + "-" + item.Id + ".html")">Devamı <i class="fas fa-angle-double-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- detail Ends -->

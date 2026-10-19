@@ -1,0 +1,55 @@
+﻿@model AnasayfaViewModel
+    <!-- META -->
+    <!-- Sayfa Başlığı -->
+<title>Kırılmazlar Yapı Malzemeleri / @ViewData["Title"]</title>
+
+    <!-- Temel SEO Etiketleri -->
+    <meta name="description" content="@ViewData["Description"]"> <!-- 150-160 karakter arası -->
+    <meta name="keywords" content="@ViewData["Keywords"]">
+    <meta name="author" content="Kurumsal Fabrika">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph: Sosyal Medya Paylaşımları için -->
+    <meta property="og:title" content="@ViewData["Title"]">
+    <meta property="og:description" content="@ViewData["Description"]">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="@Context.Request.Scheme://@Context.Request.Host@Context.Request.Path">
+    <meta property="og:image" content="@ViewData["OgImage"]"> <!-- paylaşımda çıkacak görsel URL -->
+    <!-- Twitter Kartları -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@ViewData["Title"]">
+    <meta name="twitter:description" content="@ViewData["Description"]">
+    <meta name="twitter:image" content="@ViewData["OgImage"]">
+
+    <!-- Mobil Uyumluluk -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Dil -->
+    <meta http-equiv="Content-Language" content="tr">
+
+    <!-- Charset (zaten varsa tekrar eklemeyin) -->
+    <meta charset="utf-8">
+
+    <!-- FAVICONS ICON -->
+    <link rel="icon" href="@Model.Ftp.DosyaAdresOnEki@Model.SiteAyar.Favicon" type="image/x-icon">
+<link rel="shortcut icon" type="image/x-icon" href="@Model.Ftp.DosyaAdresOnEki@Model.SiteAyar.Favicon">
+    <!-- PAGE TITLE HERE -->
+ 
+    <!-- MOBILE SPECIFIC -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/bootstrap.min.css"><!-- BOOTSTRAP STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/fontawesome/css/font-awesome.min.css"><!-- FONTAWESOME STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/flaticon.min.css"><!-- FLATICON STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/animate.min.css"><!-- ANIMATE STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/owl.carousel.min.css"><!-- OWL CAROUSEL STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/bootstrap-select.min.css"><!-- BOOTSTRAP SELECT BOX STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/magnific-popup.min.css"><!-- MAGNIFIC POPUP STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/loader.min.css"><!-- LOADER STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/style.css"><!-- MAIN STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" class="skin" href="~/assets/css/skin/skin-1.css"><!-- THEME COLOR CHANGE STYLE SHEET -->
+    <!-- REVOLUTION SLIDER CSS -->
+    <link rel="stylesheet" type="text/css" href="~/assets/plugins/revolution/revolution/css/settings.css">
+    <!-- REVOLUTION NAVIGATION STYLE -->
+    <link rel="stylesheet" type="text/css" href="~/assets/plugins/revolution/revolution/css/navigation.css">
+
+

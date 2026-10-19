@@ -1,0 +1,307 @@
+﻿@{
+    @model UrunViewModel
+    ViewBag.pTitle = "ÜRÜN İŞLEMLERİ";
+    ViewBag.Title = "Ürün İşlemleri";
+    ViewBag.pageTitle = "Ürünler";
+    Layout = "~/Views/_Shared/Layouts/_layout_horizontal_topbarlight_kurumsal_web.cshtml";
+}
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+<!-- twitter-bootstrap-wizard css -->
+<link rel="stylesheet" href="~/assets/libs/twitter-bootstrap-wizard/prettify.css">
+
+<!-- select2 css -->
+<link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+
+<!-- dropzone css -->
+<link href="~/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form asp-action="AddOrUpdate" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" id="editSayfaId" asp-for="Urun.Id" name="Urun.Id">
+
+                    <div class="row mb-3">
+                        <label for="Sira" class="col-sm-2 col-form-label">Sıra</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Urun.Sira" type="number" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="UrunKodu" class="col-sm-2 col-form-label">Ürün Kodu</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Urun.UrunKodu" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <label for="StokKodu" class="col-sm-2 col-form-label">Stok Kodu</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Urun.StokKodu" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="UrunKategoriId" class="col-sm-2 col-form-label">Urun Kategorisi</label>
+                        <div class="col-sm-10">
+                            <select asp-for="Urun.UrunKategoriId" asp-items="Model.UrunKategoriList" class="form-control">
+                                <option value="">Kategori Seçiniz</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Baslik" class="col-sm-2 col-form-label">Ürün Adı</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Urun.Baslik" class="form-control" placeholder="Sayfanızın başlığı">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Fiyat" class="col-sm-2 col-form-label">Fiyat</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Urun.Fiyat" class="form-control" type="number">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="IndirimliFiyat" class="col-sm-2 col-form-label">İndirimli Fiyat</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Urun.IndirimliFiyat" class="form-control" type="number">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="VitrindeGoster" class="col-sm-2 col-form-label">Vitrinde Göster</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Urun.VitrindeGoster" class="form-check-input" type="checkbox" id="VitrindeGoster">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="AnaSayfaVitrinResmi" class="col-sm-2 col-form-label">Vitrin Fotoğraf</label>
+                        <div class="col-sm-10">
+                            <input type="file" asp-for="DosyaVitrin" class="form-control" >
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="VitrinUrunBaslik" class="col-sm-2 col-form-label">Vitrin Ürün adı</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Urun.VitrinUrunBaslik" class="form-control" placeholder="Vitrin Başlığı">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="VitrinUrunAciklama" class="col-sm-2 col-form-label">Vitrin ürün açıklaması </label>
+                        <div class="col-sm-10">
+                            <input asp-for="Urun.VitrinUrunAciklama" class="form-control" placeholder="Vitrin Ürün Açıklama">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="OneCikanGorsel" class="col-sm-2 col-form-label">Ana Fotoğraf</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="oneCikanGorsel" asp-for="Dosya" class="form-control">
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mb-3">
+                        <label for="DosyaAdi" class="col-sm-2 col-form-label">Ana Fotoğraf Adı</label>
+                        <div class="col-sm-10">
+                            <input id="dosyaAdi" asp-for="Urun.OneCikanGorsel" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="SpotMetin" class="col-sm-2 col-form-label">Spot Metin</label>
+                        <div class="col-sm-10">
+                            <textarea id="elm2" asp-for="Urun.SpotMetin" for="Urun.SpotMetin" name="Urun.SpotMetin"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <textarea id="elm1" asp-for="Urun.Icerik" for="Urun.Icerik" name="Urun.Icerik"></textarea>
+                    </div>
+
+                    <!-- SEO Açıklama -->
+                    <div class="row mb-3">
+                        <label for="SEOAciklama" class="col-sm-2 col-form-label">SEO Açıklama</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Urun.SEOAciklama" class="form-control" placeholder="SEO Açıklama Metni">
+                        </div>
+                    </div>
+
+                    <!-- SEO Kelimeler -->
+                    <div class="row mb-3">
+                        <label for="SEOKelimeler" class="col-sm-2 col-form-label">SEO Kelimeler</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Urun.SEOKelimeler" class="form-control" placeholder="SEO Kelimelerini ,(virgül) ile ayırarak giriniz">
+                        </div>
+                    </div>
+
+                    <!-- Form Gönderim Butonu -->
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+                <h4>Fotoğraf Galerisi</h4>
+                <div class="row">
+                    @foreach (var fotograf in Model.Fotograflar)
+                    {
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="@Model.Ftp.DosyaAdresOnEki@("k_" + fotograf.OneCikanGorsel)" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <button class="btn btn-danger col-12" onclick="deleteFoto(@fotograf.Id)">Sil</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <hr>
+                <h4>Fotoğraf Ekle</h4>
+                <form id="fotoEkleForm">
+                    <div class="row mb-3">
+                        <div class="col-sm-10">
+                            <input type="file" id="newFoto" name="newFoto" class="form-control">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-success" onclick="addFoto(@Model.Urun.Id)">Ekle</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<!--tinymce js-->
+<script src="~/assets/libs/tinymce/tinymce.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/form-editor.init.js"></script>
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Sweet alert init js-->
+<script src="~/assets/js/pages/sweet-alerts.init.js"></script>
+
+<!-- twitter-bootstrap-wizard js -->
+<script src="~/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+
+<script src="~/assets/libs/twitter-bootstrap-wizard/prettify.js"></script>
+
+<!-- select 2 plugin -->
+<script src="~/assets/libs/select2/js/select2.min.js"></script>
+
+<!-- dropzone plugin -->
+<script src="~/assets/libs/dropzone/min/dropzone.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/ecommerce-add-product.init.js"></script>
+
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Sweet alert init js-->
+<script src="~/assets/js/pages/sweet-alerts.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+<script>
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var fileInput = document.getElementById('oneCikanGorsel');
+        var fileNameInput = document.getElementById('dosyaAdi');
+
+        fileInput.addEventListener('change', function () {
+            if (this.files.length > 0) {
+                var fileName = this.files[0].name;
+                var fileNameWithoutExtension = fileName.replace(/\.[^/.]+$/, ""); // Uzantıyı kaldır
+
+                fileNameInput.value = fileNameWithoutExtension; // Dosya adını input alanına yerleştir
+                // SweetAlert ile bildirim göster
+                swal("Dosya Seçildi!", "Dosya Adı alanı SEO açısından büyük önem arz etmektedir. Lütfen dosya adınızı belirlerken özen gösteriniz ve çok fazla uzun olmasın!", "success");
+            }
+        });
+
+        // Fonksiyonu bir değişkene atayarak kullanıma hazırla
+        var showSweetAlert = function () {
+            swal({
+                title: "Dosya Adı Düzenleme",
+                text: "Dosya Adı alanı SEO açısından büyük önem arz etmektedir. Lütfen dosya adınızı belirlerken özen gösteriniz ve çok fazla uzun olmasın!",
+                icon: "info",
+                button: "Tamam",
+            }).then((value) => {
+                // SweetAlert gösterildikten sonra, olay dinleyicisini kaldır
+                fileNameInput.removeEventListener('click', showSweetAlert);
+            });
+        };
+
+        // Olay dinleyicisini ekle
+        fileNameInput.addEventListener('click', showSweetAlert);
+    });
+
+    function addFoto(urunId) {
+        var formData = new FormData();
+        var fileInput = document.getElementById('newFoto');
+        var file = fileInput.files[0];
+        formData.append('dosya', file);
+
+        $.ajax({
+            url: '/Urun/AddFoto?urunId=' + urunId,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function () {
+                alert('Fotoğraf eklenirken bir hata oluştu.');
+            }
+        });
+    }
+
+    function deleteFoto(id) {
+        swal({
+            title: "Emin misiniz?",
+            text: "Bu fotoğrafı silmek istediğinizden emin misiniz?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: '/Urun/DeleteFoto?id=' + id,
+                    type: 'POST',
+                    success: function (response) {
+                        if (response.success) {
+                            location.reload();
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Fotoğraf silinirken bir hata oluştu.');
+                    }
+                });
+            }
+        });
+    }
+</script>

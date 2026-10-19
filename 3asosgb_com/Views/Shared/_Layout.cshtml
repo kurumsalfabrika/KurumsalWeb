@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    @{
+        var metaTitle = ViewData["Title"] as string ?? "3 AS Ortak Sağlık ve Güvenlik Birimi";
+        var metaDescription = ViewData["Description"] as string ?? "3 AS OSGB; iş sağlığı ve güvenliği alanında uzman kadrosuyla işyeri hekimi, iş güvenliği uzmanı, risk analizi, eğitim, danışmanlık ve denetim hizmetleri sunan profesyonel bir Ortak Sağlık Güvenlik Birimi'dir.";
+        var metaKeywords = ViewData["Kelimeler"] as string ?? "iş sağlığı ve güvenliği, OSGB, işyeri hekimi, iş güvenliği uzmanı, İSG eğitimi, risk analizi, ISO 45001, danışmanlık, sağlık taraması";
+        var siteUrl = Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.Path;
+        var imageUrl = Url.Content("~/assets/images/favicons/og-default.jpg"); // varsayılan OG görseli
+    }
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="~/assets/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="~/assets/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="~/assets/images/favicons/site.webmanifest" />
+
+    <title>@metaTitle</title>
+    <meta name="description" content="@metaDescription" />
+    <meta name="keywords" content="@metaKeywords" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:title" content="@metaTitle" />
+    <meta property="og:description" content="@metaDescription" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="@siteUrl" />
+    <meta property="og:image" content="@imageUrl" />
+    <meta property="og:site_name" content="3 AS OSGB" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="@metaTitle" />
+    <meta name="twitter:description" content="@metaDescription" />
+    <meta name="twitter:image" content="@imageUrl" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/assets/vendors/bootstrap-select/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="~/assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="~/assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/assets/vendors/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="~/assets/vendors/jarallax/jarallax.css" />
+    <link rel="stylesheet" href="~/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+    <link rel="stylesheet" href="~/assets/vendors/nouislider/nouislider.min.css" />
+    <link rel="stylesheet" href="~/assets/vendors/nouislider/nouislider.pips.css" />
+    <link rel="stylesheet" href="~/assets/vendors/ion.rangeSlider/css/ion.rangeSlider.min.css" />
+    <link rel="stylesheet" href="~/assets/vendors/tiny-slider/tiny-slider.css" />
+    <link rel="stylesheet" href="~/assets/vendors/insuba-icons/style.css" />
+    <link rel="stylesheet" href="~/assets/vendors/owl-carousel/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/assets/vendors/owl-carousel/css/owl.theme.default.min.css" />
+    @await RenderSectionAsync("Styles", required: false)
+    <!-- template styles -->
+    <link rel="stylesheet" href="~/assets/css/insuba.css" />
+</head>
+
+<body class="">
+
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+
+        @await Component.InvokeAsync("HeaderComponent")
+        @RenderBody()
+        @await Component.InvokeAsync("FooterComponent")
+    </div><!-- /.page-wrapper -->
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div><!-- /.mobile-nav__overlay -->
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"><i class="icon-close"></i></span>
+            <div class="logo-box logo-retina">
+                <a href="index.html" aria-label="logo image">
+                    <img src="~/assets/images/logo-light.png" width="212" alt="" />
+                </a>
+            </div><!-- /.logo-box -->
+            <div class="mobile-nav__container"></div><!-- /.mobile-nav__container -->
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <span class="mobile-nav__contact__icon"><i class="fa fa-envelope"></i></span>
+                    <a href="mailto:info@3asosgb.com">info@3asosgb.com</a>
+                </li>
+                <li>
+                    <span class="mobile-nav__contact__icon"><i class="fa fa-phone-alt"></i></span>
+                    <a href="tel:+903522228788">+90 352 222 87 88</a>
+                </li>
+            </ul><!-- /.mobile-nav__contact -->
+            <div class="mobile-nav__social social-links">
+                <a href="https://facebook.com">
+                    <span class="social-links__icon">
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        <span class="sr-only">Facebook</span>
+                    </span><!-- /.social-links__icon -->
+                </a>
+                <a href="https://pinterest.com">
+                    <span class="social-links__icon">
+                        <i class="fab fa-pinterest-p" aria-hidden="true"></i>
+                        <span class="sr-only">Pinterest</span>
+                    </span><!-- /.social-links__icon -->
+                </a>
+                <a href="https://twitter.com">
+                    <span class="social-links__icon">
+                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sr-only">Twitter</span>
+                    </span><!-- /.social-links__icon -->
+                </a>
+                <a href="https://instagram.com">
+                    <span class="social-links__icon">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sr-only">Instagram</span>
+                    </span><!-- /.social-links__icon -->
+                </a>
+            </div><!-- /.mobile-nav__social -->
+        </div><!-- /.mobile-nav__content -->
+    </div><!-- /.mobile-nav__wrapper -->
+
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__text">back top</span>
+        <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    </a>
+
+    <script src="~/assets/vendors/jquery/jquery-3.7.0.min.js"></script>
+    <script src="~/assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="~/assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="~/assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="~/assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="~/assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="~/assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="~/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="~/assets/vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+    <script src="~/assets/vendors/tiny-slider/tiny-slider.js"></script>
+    <script src="~/assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="~/assets/vendors/owl-carousel/js/owl.carousel.min.js"></script>
+    <script src="~/assets/vendors/wow/wow.js"></script>
+    <script src="~/assets/vendors/imagesloaded/imagesloaded.min.js"></script>
+    <script src="~/assets/vendors/isotope/isotope.js"></script>
+    <script src="~/assets/vendors/countdown/countdown.min.js"></script>
+    <script src="~/assets/vendors/jquery-circleType/jquery.circleType.js"></script>
+    <script src="~/assets/vendors/jquery-lettering/jquery.lettering.min.js"></script>
+    <script src="~/assets/vendors/chart/chart.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <!-- template js -->
+    <script src="~/assets/js/insuba.js"></script>
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .whatsapp-icon {
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-text {
+            background-color: #25D366;
+            color: white;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover .whatsapp-text {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+    </style>
+
+    <a href="https://wa.me/905493838372" target="_blank" class="whatsapp-float" aria-label="WhatsApp ile iletişime geç">
+        <div class="whatsapp-icon">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="whatsapp-text">WhatsApp’tan iletişim kur</div>
+    </a>
+
+</body>
+
+</html>
+

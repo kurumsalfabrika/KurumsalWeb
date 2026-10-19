@@ -1,0 +1,116 @@
+﻿@model AnasayfaViewModel
+<div class="header">
+    <div class="topbar topbar--one">
+        <div class="topbar__bg"></div><!-- /.topbar__bg -->
+        <div class="container-fluid">
+            <div class="topbar__inner">
+                <ul class="list-unstyled topbar__info">
+                    <li>
+                        <div class="topbar__info__icon-box topbar__info__icon--email">
+                            <span class="topbar__info__icon">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </div>
+                        <a href="mailto:@Model.IletisimAyar.IletisimEposta">@Model.IletisimAyar.IletisimEposta</a>
+                    </li>
+                    <li>
+                        <div class="topbar__info__icon-box">
+                            <span class="topbar__info__icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </span>
+                        </div>
+                        <a href="tel:@Model.IletisimAyar.Telefon1?.Replace(" ", "")">@Model.IletisimAyar.Telefon1</a>
+                    </li>
+
+                </ul><!-- /.list-unstyled topbar__info -->
+                <div class="topbar__right">
+                    <div class="topbar__social social-links">
+
+                        @foreach (var item in Model.SosyalMedyaAdresler)
+                        {
+                            <a href="@item.Url" target="_blank">
+                                <span class="social-links__icon">
+                                    <i class="@item.Ikon" aria-hidden="true"></i>
+                                    <span class="sr-only">@item.Ad</span>
+                                </span><!-- /.social-links__icon -->
+                            </a>
+                        }
+                    </div><!-- /.topbar__social social-links -->
+
+                </div><!-- /.topbar__right -->
+            </div><!-- /.topbar__inner -->
+        </div><!-- /.container-fluid -->
+    </div><!-- /.topbar -->
+
+    <header class="main-header main-header--one sticky-header sticky-header--normal">
+        <div class="container-fluid">
+            <div class="main-header__inner">
+                <div class="main-header__logo logo-retina">
+                    <a href="/anasayfa/3asosgb.html">
+                        <img src="@Model.Ftp.DosyaAdresOnEki@Model.SiteAyar.HeaderLogoKoyuRenk" alt="3 AS Ortak Sağlık Güvenlik Birimi"
+                             width="212">
+                    </a>
+                </div><!-- /.main-header__logo -->
+                <div class="main-header__right">
+                    <div class="mobile-nav__btn mobile-nav__toggler">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div><!-- /.mobile-nav__toggler -->
+                    <nav class="main-header__nav main-menu">
+                        <ul class="main-menu__list">
+
+
+                            @foreach (var item in Model.AnaMenuler)
+                            {
+
+                                @if (Model.Menuler.Where(x => x.AnaMenuId == item.Id).Count() == 0)
+                                {
+
+                                    <li >
+                                        <a href="@item.BaglantiAdresi">@item.MenuAdi</a>
+                                    </li>
+                                }
+                                else
+                                {
+
+
+                                    <li class="dropdown">
+                                        <a href="@item.BaglantiAdresi">@item.MenuAdi</a>
+                                        <ul>
+
+                                            @foreach (var itemAlt in Model.Menuler.Where(a => a.AnaMenuId == item.Id))
+                                            {
+                                                <li>
+                                                    <a href="@itemAlt.BaglantiAdresi">@itemAlt.MenuAdi</a>
+                                                </li>
+                                            }
+
+                                        </ul>
+                                    </li>
+
+                                }
+
+                            }
+
+
+                        </ul>
+                    </nav><!-- /.main-header__nav -->
+
+                    <a href="https://app.3asosgb.com" class="main-header__user">
+                        <span class="main-header__user__icon">
+                            <i class="icon-user-2" aria-hidden="true"></i>
+                            <span class="sr-only">Kullanıcı Girişi</span>
+                        </span>
+                    </a><!-- /.main-header__user -->
+                    <a href="/teklif/teklis-iste.html" class="insuba-btn insuba-btn--base main-header__btn">
+                        <span>Teklif İste</span>
+                        <span class="insuba-btn__icon-box">
+                            <span class="insuba-btn__icon"><i class="fas fa-arrow-right"></i></span>
+                        </span>
+                    </a><!-- /.insuba-btn main-header__btn -->
+                </div><!-- /.main-header__right -->
+            </div><!-- /.main-header__inner -->
+        </div><!-- /.container-fluid -->
+    </header><!-- /.main-header -->
+</div><!-- /.header -->

@@ -1,0 +1,61 @@
+﻿@model FotoGaleriViewModel
+@{
+    ViewData["Title"] = "Grand Akca Otel - Alkolsüz Her Şey Dahil Aile Oteli";
+    ViewData["DescripSon"] = "Alkolsüz her şey dahil aile oteli konsepSyle Grand Akca Otel'de kadınlara, erkeklere ve ailelere özel havuzlar, aile plajı, aquapark, konforlu odalar ve seçkin lezzetler sizleri bekliyor.";
+    ViewData["Keywords"] = "grand akca otel, alkolsüz taSl, aile oteli, gazipaşa otel, kadınlara özel havuz, aile plajı, alkolsüz her şey dahil otel, gazipaşa havalimanına 5 dakika";
+}
+@using Kurumsal.Core.Functions
+<section class="breadcrumb-outer">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>Foto Galeri</h2>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/anasayfa/grandakca-ana-sayfa.html">Anasayfa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Foto Galeri</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb Ends -->
+<!-- Gallery starts -->
+<section class="content gallery" data-ref="container-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mt_filter">
+                    <ul class="list-inline text-center filter">
+                        <li class="active"><a href="#" data-filter="*">TÜMÜ</a></li>
+
+                        @foreach (var item in Model.FotoGaleriler)
+                        {
+                            <li><a href="#" data-filter=".@SeoUrlGenerator.GenerateSlug(item.GaleriAdi)">@item.GaleriAdi</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mar-top-50">
+            <div class="row isotopeContainer">
+                @foreach (var item in Model.FotoGaleriler)
+                {
+                    @foreach (var foto in Model.Fotograflar.Where(x => x.FotoGaleriId == item.Id))
+                    {
+                    <div class="isotopeSelector @SeoUrlGenerator.GenerateSlug(item.GaleriAdi) col-lg-3 col-md-6">
+                            <div class="gallery-item">
+                                <div class="gallery-image">
+                                    <a href="@($"{Model.Ftp.DosyaAdresOnEki}{foto.OneCikanGorsel}")" data-lightbox="gallery" data-title="Title">
+                                    <img src="@($"{Model.Ftp.DosyaAdresOnEki}k_{foto.OneCikanGorsel}")" alt="image" /></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Gallery Ends -->

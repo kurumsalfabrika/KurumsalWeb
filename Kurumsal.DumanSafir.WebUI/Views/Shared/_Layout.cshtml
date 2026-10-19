@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="HOMEALARMS - Alarms and security systems site template">
+    <meta name="author" content="Ansonika">
+    <title>@ViewData["Title"]</title>
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="~/img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="~/img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="~/img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="~/img/apple-touch-icon-144x144-precomposed.png">
+
+    @await RenderSectionAsync("Styles", required: false)
+
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="sk-spinner sk-spinner-wave">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
+        </div>
+    </div>
+    <div class="layer"></div><
+    <header-tag></header-tag>
+    @RenderBody()
+    <footer-tag></footer-tag>
+    <div id="toTop"></div>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

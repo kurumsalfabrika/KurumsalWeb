@@ -1,0 +1,80 @@
+﻿@model FotoGaleriViewModel
+@section Styles {
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <!-- BASE CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.min.css" rel="stylesheet">
+    <link href="~/css/bs-icon-font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="~/pro/css/all.css" rel="stylesheet" />
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <!-- SPECIFIC CSS -->
+    <link href="~/css/carousel_home.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <!-- YOUR CUSTOM CSS -->
+    <link href="~/css/custom.css" rel="stylesheet">
+}
+<style>
+    .photo-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px; /* Fotoğraflar arasındaki boşluk */
+    }
+
+        .photo-gallery .photo-item {
+            width: calc(16.6667% - 10px); /* 6 sütunlu grid, aralarındaki boşluk da hesaba katılarak */
+            box-sizing: border-box;
+            border: 2px solid #ddd; /* Kenarlık */
+            padding: 5px; /* İç boşluk */
+            background-color: white;
+        }
+
+            .photo-gallery .photo-item img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+</style>
+
+<section class="parallax_window_in short" data-parallax="scroll" data-image-src="~/img/subheader_in_3.jpg" data-natural-width="1400" data-natural-height="350">
+    <div id="sub_content_in">
+        <div class="container">
+            <h1>FOTO GALERİ</h1>
+        </div>
+    </div>
+</section><!-- End section -->
+<main style="margin-bottom: 373.188px;">
+    <div class="container margin_60_35">
+        <div class="row magnific-gallery">
+            <div class="photo-gallery">
+                @foreach (var item in Model.Fotograflar)
+                {
+                    <div class="photo-item">
+                        <a href="@($"{Model.Ftp.DosyaAdresOnEki}{item.OneCikanGorsel}")" class="magnific-popup">
+                            <img src="@($"{Model.Ftp.DosyaAdresOnEki}k_{item.OneCikanGorsel}")" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                }
+            </div>
+        </div><!-- End row -->
+    </div><!-- End container -->
+</main>
+
+@section Scripts {
+    <!-- Common scripts -->
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/common_scripts_min.js"></script>
+    <script src="~/js/functions.js"></script>
+    <!--Owl carousel/slider -->
+    <script src="~/js/slider.js"></script>
+    <!-- Specific scripts -->
+    <script src="~/js/jquery.validate.js"></script>
+    <script src="~/js/jquery.stepy.min.js"></script>
+    <script src="~/js/quotation-validate.js"></script>
+}

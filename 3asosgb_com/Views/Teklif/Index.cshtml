@@ -1,0 +1,105 @@
+﻿@using Kurumsal.Core.Functions
+@model AnasayfaViewModel
+
+<style>
+    .contact-one .col-lg-12 {
+        overflow: visible;
+        height: auto !important;
+    }
+
+    .contact-one__form {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+    }
+
+    .contact-one {
+        padding-bottom: 80px; /* formun altında nefes alanı bırak */
+    }
+
+    .section-space {
+        position: relative;
+        height: auto !important;
+    }
+</style>
+
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url(~/assets/images/backgrounds/page-header-bg.jpg);"></div>
+    <div class="container">
+        <div class="page-header__content">
+            <h2 class="page-header__title">Teklif Alın</h2>
+            <ul class="insuba-breadcrumb list-unstyled">
+                <li><a href="/anasayfa/3asosgb.html">Anasayfa</a></li>
+                <li><span>Teklif Formu</span></li>
+            </ul>
+        </div>
+    </div>
+    <img src="~/assets/images/resources/page-header-1-1.png" alt="3 AS Ortak Sağlık Güvenlik Birimi" class="page-header__image" />
+    <div class="page-header__shape-two"></div>
+    <div class="page-header__shape-three"></div>
+    <div class="page-header__shape-four"></div>
+</section>
+
+<!-- TEKLİF FORMU -->
+<section class="contact-one section-space" style="z-index:25000000;" >
+    <div class="container">
+        <div class="row gutter-y-40">
+            <div class="col-lg-12">
+                <div class="contact-one__content">
+                    <div class="sec-title">
+                        <h3 class="sec-title__title">Hizmetlerimiz İçin Teklif Alın</h3>
+                        <p class="sec-title__text">
+                            3 AS OSGB olarak iş güvenliği, işyeri hekimliği ve risk analizi gibi hizmetlerimiz için size özel teklif hazırlıyoruz.
+                        </p>
+                    </div>
+
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">@TempData["Success"]</div>
+                }
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["Error"]</div>
+                }
+
+                <form method="post" asp-action="TeklifGonder" asp-controller="Teklif" class="contact-one__form">
+                    <div class="row gutter-y-20">
+                        <div class="col-md-6">
+                            <input type="text" name="AdSoyad" placeholder="Ad Soyad" required class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" name="Email" placeholder="E-posta Adresiniz" required class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="Telefon" placeholder="Telefon" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <select name="Hizmet" class="form-select" required>
+                                <option value="">Hizmet Seçiniz</option>
+                                <option>İşyeri Hekimliği</option>
+                                <option>İş Güvenliği Uzmanlığı</option>
+                                <option>Risk Analizi</option>
+                                <option>İSG Eğitimi</option>
+                                <option>Diğer</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="number" name="CalisanSayisi" placeholder="Çalışan Sayısı" class="form-control" />
+                        </div>
+                        <div class="col-md-12">
+                            <textarea name="Mesaj" placeholder="Detaylı açıklama veya notlar..." rows="5" required class="form-control"></textarea>
+                        </div>
+                        <div class="col-md-12 text-start mt-2">
+                            <button type="submit" class="btn btn-danger">Teklif İste</button>
+                        </div>
+                    </div>
+                </form>
+                   
+            </div>
+            </div>
+        </div>
+    </div> <div class="clearfix"></div>
+</section>
+
+<div class="clearfix"></div>

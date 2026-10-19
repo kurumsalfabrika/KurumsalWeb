@@ -1,0 +1,76 @@
+﻿@using Kurumsal.Core.Functions
+
+
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url(~/assets/images/backgrounds/page-header-bg.jpg);"></div>
+    <div class="container">
+        <div class="page-header__content">
+            <h2 class="page-header__title">Sınıf Sorgulama</h2>
+            <ul class="insuba-breadcrumb list-unstyled">
+                <li><a href="/anasayfa/3asosgb.html">Anasayfa</a></li>
+                <li><span>Sınıf Sorgulama</span></li>
+            </ul>
+        </div>
+    </div>
+
+        <img src="~/assets/images/resources/page-header-1-1.png" alt="3 AS Ortak Sağlık Güvenlik Birimi" class="page-header__image" />
+
+    <div class="page-header__shape-two"></div>
+    <div class="page-header__shape-three"></div>
+    <div class="page-header__shape-four"></div>
+</section>
+
+<section class="about-one about-one--about section-space">
+    <div class="container">
+        <div class="row gutter-y-50 align-items-center">
+            <div class="col-lg-12">
+                <input type="text" id="naceKod" placeholder="Örn: 01.11.07" class="form-control mb-3" />
+                <button class="btn btn-primary mt-2" onclick="sorgula()">Sorgula</button>
+                <div class="sonuc mt-4 p-3 border rounded" id="sonuc" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        let naceVerisi = [];
+
+        fetch("/veri/nace_kodlari.json")
+            .then(response => response.json())
+            .then(data => { naceVerisi = data; })
+            .catch(error => console.error("JSON verisi yüklenemedi", error));
+
+        function sorgula() {
+            const kod = document.getElementById("naceKod").value.trim();
+            const sonuc = naceVerisi.find(x => x.Kod === kod);
+            const div = document.getElementById("sonuc");
+
+            if (sonuc) {
+                let sinifClass = sonuc.TehlikeSinifi.toLowerCase().replace(" ", "-");
+                div.innerHTML = `
+                    <p><strong>Kod:</strong> ${sonuc.Kod}</p>
+                    <p><strong>Tanım:</strong> ${sonuc.Tanimi}</p>
+                    <p><strong>Tehlike Sınıfı:</strong> <span class="${sinifClass}">${sonuc.TehlikeSinifi}</span></p>
+                `;
+            } else {
+                div.innerHTML = `<p>Bu koda ait kayıt bulunamadı.</p>`;
+            }
+
+            div.style.display = 'block';
+        }
+    </script>
+    <style>
+        .az-tehlikeli {
+            color: green;
+        }
+
+        .tehlikeli {
+            color: orange;
+        }
+
+        .cok-tehlikeli {
+            color: red;
+        }
+    </style>
+}

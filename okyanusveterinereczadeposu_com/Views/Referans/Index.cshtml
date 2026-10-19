@@ -1,0 +1,48 @@
+﻿@using Kurumsal.Core.Functions
+
+@model RefaransViewModel
+@{
+	ViewData["Title"] = "Çalıştığımız Firmalar";
+}
+<!-- Inner Page Main Banner __________________ -->
+<div class="inner-page-banner">
+	<div class="opacity">
+		<div class="container">
+			<h2>Çalıştığımız Firmalar</h2>
+		</div> <!-- /.container -->
+	</div> <!-- /.opacity -->
+</div> <!-- /.inner-page-banner -->
+<!-- Page Breadcrum __________________________ -->
+<div class="page-breadcrum">
+	<div class="container">
+		<ul>
+			<li><a href="/anasayfa/anasayfa.html">Anasayfa</a></li>
+			<li>-</li>
+			<li>Çalıştığımız Firmalar</li>
+		</ul>
+	</div> <!-- /.container -->
+</div> <!-- /.page-breadcrum -->
+<!-- Blog V2 __________________________ -->
+<div class="blog-v2">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="row latest-news blog-v1">
+
+					@foreach (var item in Model.Referanslar)
+					{
+					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+						
+						<img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" />
+						<br />
+					</div> <!-- /.single-post -->
+					}
+
+
+				</div>
+			</div>
+
+		</div>
+	</div> <!-- /.container -->
+</div> <!-- /.blog-v2 -->

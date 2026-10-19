@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_IceriLayout.cshtml";
+}
+@using Kurumsal.Core.Functions
+@model SayfaViewModel
+<!-- =========== PAGE TITLE ========== -->
+<div class="page_title gradient_overlay" style="background: url(@($"{Model.Ftp.DosyaAdresOnEki}{Model.Sayfa.OneCikanGorsel}"));">
+    <div class="container">
+        <div class="inner">
+            <h1>@Model.Sayfa.Baslik</h1>
+            <ol class="breadcrumb">
+                <li><a href="/anasayfa/anasayfa.html">Anasayfa</a></li>
+                <li>@Model.Sayfa.Baslik</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- =========== MAIN ========== -->
+<main>
+    <div class="container">
+   
+        <p>@Html.Raw(Model.Sayfa.Icerik) </p>
+ </div>
+</main>
+
+

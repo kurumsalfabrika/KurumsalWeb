@@ -1,0 +1,104 @@
+﻿@model AnasayfaViewModel
+@{
+    ViewData["Title"] = "Grand Akca Otel - Alkolsüz Her Şey Dahil Aile Oteli";
+    ViewData["DescripSon"] = "Alkolsüz her şey dahil aile oteli konsepSyle Grand Akca Otel'de kadınlara, erkeklere ve ailelere özel havuzlar, aile plajı, aquapark, konforlu odalar ve seçkin lezzetler sizleri bekliyor.";
+    ViewData["Keywords"] = "grand akca otel, alkolsüz taSl, aile oteli, gazipaşa otel, kadınlara özel havuz, aile plajı, alkolsüz her şey dahil otel, gazipaşa havalimanına 5 dakika";
+}
+@using Kurumsal.Core.Functions
+<section class="breadcrumb-outer">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>İletişim</h2>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/anasayfa/grand-akca-ana-sayfa.html">Anasayfa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">İletişim</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb Ends -->
+<!-- contact starts -->
+<section class="contact pad-top-0 contact1">
+    <div class="mar-bottom-60">
+        <div class="map-container" >
+            <iframe style="z-index:1000;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3216.874007139342!2d32.27978155082283!3d36.26683767996416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14dcf4b15bcd0e89%3A0x677fc1ea8d44292!2sGrand%20Akca%20Otel!5e0!3m2!1str!2str!4v1606386011700!5m2!1str!2str" width="100%" height="500" frameborder="0" style="border: 0px; pointer-events: none;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </div>
+
+    <style>
+        .info-box {
+            background-color: #2c2f33;
+            color: #c6a348; /* Gold yazı */
+            border-radius: 8px;
+            padding: 25px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-text {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .info-icon-right {
+            font-size: 26px;
+            background-color: #c6a348;
+            color: #2c2f33;
+            padding: 12px;
+            border-radius: 50%;
+            margin-left: 15px;
+            flex-shrink: 0;
+        }
+    </style>
+
+
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="info-box">
+                        <div class="info-text">
+                            @Model.IletisimAyar.FirmaAdres
+                        </div>
+                        <div class="info-icon-right">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-box">
+                        <div class="info-text">
+                        @Model.IletisimAyar.Telefon1<br />
+                        @Model.IletisimAyar.GSM
+                        </div>
+                        <div class="info-icon-right">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-box">
+                        <div class="info-text">
+                        @Model.IletisimAyar.IletisimEposta
+                        </div>
+                        <div class="info-icon-right">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+
+</section>
+<!-- contact Ends -->
+@section Scripts {
+    <script src="~/js/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=@{@Model.IletisimAyar.XKoordinat}&callback=initMap" async defer></script>
+}

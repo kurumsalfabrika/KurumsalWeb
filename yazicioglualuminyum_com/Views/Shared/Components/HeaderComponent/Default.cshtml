@@ -1,0 +1,202 @@
+﻿@model GenelViewModel
+
+
+@{
+    var menuler = Model.Menuler?.ToList() ?? new List<Kurumsal.Entities.Concrete.Menu>();
+    var ftpOnEki = Model.Ftp?.DosyaAdresOnEki ?? string.Empty;
+    var acikLogoDosyasi = Model.SiteAyar?.HeaderLogoAcikRenk;
+    var koyuLogoDosyasi = Model.SiteAyar?.HeaderLogoKoyuRenk;
+    var acikLogo = string.IsNullOrWhiteSpace(acikLogoDosyasi)
+        ? Url.Content("~/assets/img/logo/logo1.png")
+        : $"{ftpOnEki}{acikLogoDosyasi}";
+    var koyuLogo = string.IsNullOrWhiteSpace(koyuLogoDosyasi)
+        ? Url.Content("~/assets/img/logo/logo2.png")
+        : $"{ftpOnEki}{koyuLogoDosyasi}";
+    var iletisim = Model.Iletisim;
+    var telefonlar = new[]
+    {
+        iletisim?.Telefon1,
+        iletisim?.Telefon2,
+        iletisim?.Telefon3,
+        iletisim?.Telefon4,
+        iletisim?.GSM
+    }
+    .Where(x => !string.IsNullOrWhiteSpace(x))
+    .Distinct()
+    .ToList();
+    var sosyalMedyaAdresleri = Model.SosyalMedyaAdresler?.ToList()
+        ?? new List<Kurumsal.Entities.Concrete.SosyalMedyaAdres>();
+}
+
+<header>
+    <div class="header-area homepage1 header header-sticky d-none d-lg-block " id="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="header-elements">
+                        <div class="site-logo">
+                            <a href="/anasayfa/yazicioglu.html"><img src="@koyuLogo" alt="@Model.SiteAyar?.SiteAdi"></a>
+                        </div>
+                        <div class="main-menu">
+                            <ul>
+                                @foreach (var item in menuler.Where(x => x.AnaMenuId == 0).ToList())
+                                {
+                                    @if (menuler.All(a => a.AnaMenuId != item.Id))
+                                    {
+                                        <li><a class="plus" href="@item.BaglantiAdresi">@item.MenuAdi</a></li>
+                                    }
+                                    else
+                                    {
+                                  
+                                        <li>
+                                            <a class="plus" href="@item.BaglantiAdresi">@item.MenuAdi <i class="fa-solid fa-angle-down"></i></a>
+
+
+                                            <ul class="dropdown-padding">
+                                                @foreach (var altitem in menuler.Where(c => c.AnaMenuId == item.Id))
+                                                {
+                                                    <li><a href="@altitem.BaglantiAdresi">@altitem.MenuAdi</a></li>
+                                                }
+                                            </ul>
+                                       </li>
+                                    }
+                                }
+                   
+                            </ul>
+                        </div>
+                        <div class="btn-area">
+                            <a href="/iletisim/bizimle-iletisime-gecin.html" class="header-btn1">İLETİŞİM <span><i class="fa-solid fa-arrow-right"></i></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<!--=====HEADER END =======-->
+<!--===== MOBILE HEADER STARTS =======-->
+<div class="mobile-header mobile-haeder1 d-block d-lg-none">
+    <div class="container-fluid">
+        <div class="col-12">
+            <div class="mobile-header-elements">
+                <div class="mobile-logo">
+                    <a href="/anasayfa/yazicioglu.html"><img src="@acikLogo" alt="@Model.SiteAyar?.SiteAdi"></a>
+                </div>
+                <div class="mobile-nav-icon dots-menu">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mobile-sidebar mobile-sidebar1">
+    <div class="logosicon-area">
+        <div class="logos">
+            <img src="@koyuLogo" alt="@Model.SiteAyar?.SiteAdi">
+        </div>
+        <div class="menu-close">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+    </div>
+    <div class="mobile-nav mobile-nav1">
+        <ul class="mobile-nav-list nav-list1">
+            @foreach (var item in menuler.Where(x => x.AnaMenuId == 0).ToList())
+            {
+                @if (menuler.All(x => x.AnaMenuId != item.Id))
+                {
+                    <li>
+                        <a href="@item.BaglantiAdresi">@item.MenuAdi</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="@item.BaglantiAdresi">@item.MenuAdi</a>
+                        <ul class="sub-menu">
+                            @foreach (var altitem in menuler.Where(x => x.AnaMenuId == item.Id))
+                            {
+                                <li>
+                                    <a href="@altitem.BaglantiAdresi">@altitem.MenuAdi</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+        </ul>
+
+        <div class="allmobilesection">
+            <a href="/iletisim/bizimle-iletisime-gecin.html" class="header-btn1">İletişime Geç <span><i class="fa-solid fa-arrow-right"></i></span></a>
+            <div class="single-footer">
+                <h3>İletişim Bilgileri</h3>
+                <div class="footer1-contact-info">
+                    @foreach (var telefon in telefonlar)
+                    {
+                        <div class="contact-info-single">
+                            <div class="contact-info-icon">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <a href="tel:@telefon">@telefon</a>
+                            </div>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(iletisim?.IletisimEposta))
+                    {
+                        <div class="contact-info-single">
+                            <div class="contact-info-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <a href="mailto:@iletisim.IletisimEposta">@iletisim.IletisimEposta</a>
+                            </div>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(iletisim?.FirmaAdres))
+                    {
+                        <div class="single-footer">
+                            <h3>Adresimiz</h3>
+                            <div class="contact-info-single">
+                                <div class="contact-info-icon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="contact-info-text">
+                                    <span>@iletisim.FirmaAdres</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @if (sosyalMedyaAdresleri.Any())
+                    {
+                        <div class="single-footer">
+                            <h3>Sosyal Medya</h3>
+                            <div class="social-links-mobile-menu">
+                                <ul>
+                                    @foreach (var sosyalMedya in sosyalMedyaAdresleri)
+                                    {
+                                        <li>
+                                            <a href="@sosyalMedya.Url"
+                                               title="@sosyalMedya.Ad"
+                                               aria-label="@sosyalMedya.Ad"
+                                               target="@(sosyalMedya.YeniSekmedeAcilsin ? "_blank" : "_self")"
+                                               rel="@(sosyalMedya.YeniSekmedeAcilsin ? "noopener noreferrer" : null)">
+                                                <i class="@sosyalMedya.Ikon"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--===== MOBILE HEADER STARTS =======-->

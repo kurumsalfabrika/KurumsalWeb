@@ -1,0 +1,21 @@
+﻿using System.Xml.Serialization;
+
+namespace GOSAS.VirtualPos.Core.Objects
+{
+#pragma warning disable S101 // Types should be named in PascalCase
+
+    /// <summary>
+    /// Amount information for variable recurrent payment
+    /// <para lang="tr">Değişken tekrarlayan ödeme için tutar bilgileri</para> 
+    /// </summary>
+    [XmlType(AnonymousType = true)]
+    public abstract class GVPOSPaymentListBase<T> where T : GVPOSPaymentBase
+    {
+        /// <summary>
+        /// Amount information for payment
+        /// <para lang="tr">Ödeme için miktar bilgisi</para> 
+        /// </summary>
+        [XmlElement("Payment", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public T[] Payment { get; set; }
+    }
+}

@@ -1,0 +1,151 @@
+/* Color Theme File */
+
+a,
+.theme_color,
+.btn-style-one:hover,
+.main-slider .text,
+.list-style-one li .icon,
+.main-footer .contact-widget .form-group input[type="submit"],
+.main-footer .contact-widget button,
+.main-footer .links-widget .list li a:hover,
+.main-footer .links-widget .list li a:before,
+.services-block .inner-box h3 a:hover,
+.services-block-two .inner-box h3 a:hover,
+.news-block .inner-box .lower-content .read-more,
+.news-block .inner-box .lower-content h3 a:hover,
+.testimonial-block .inner-box .designation span,
+.header-style-two .info-box .icon-box,
+.header-style-two .info-box li,
+.header-style-two .header-top .top-left ul > li > a > .fa,
+.header-style-two .header-top .top-right .social-links a:hover,
+.number-block .inner-box h3 a:hover,
+.social-icon-two li a:hover,
+.news-post .inner-box .post-date,
+.customer-block .inner-box .lower-box .read-more,
+.customer-block .inner-box .lower-box h3 a:hover,
+.testimonial-block-two .inner-box .designation,
+.team-block .inner-box .text-outer .designation,
+.who-we-are-section .image-column .read-more,
+.page-title .bread-crumb li,
+.blog-cat li a:hover,
+.shop-item .inner-box .lower-box h4 a:hover,
+.sidebar .related-posts .post a, .sidebar .related-posts .post a:hover,
+.sidebar .related-posts .post .price,
+.shop-single .info-column .rating .fa,
+.product-info-tabs .prod-tabs .reviews-container .reply,
+.product-info-tabs .prod-tabs .reviews-container .rev-header .rating,
+.product-info-tabs .prod-tabs .rating a,
+.shop-item .inner-box .lower-box .price,
+.contact-info .inner .icon-box,
+.sidebar-page-container .comments-area .comment-time,
+.news-block-two .inner-box .image h3 a:hover,
+.sidebar .popular-posts .post a, .sidebar .popular-posts .post a:hover,
+.main-header .header-top .top-right .social-links a:hover,
+.gallery-item-two .overlay-box .overlay-inner h3 a:hover,
+.page-title .bread-crumb li a:hover, .page-title .bread-crumb li a.current,
+.mission-block .inner-box .content-column .inner-content .read-more,
+.mission-block .inner-box .content-column .inner-content h3 a:hover,
+.gallery-block .inner-box .image-box .overlay-box .overlay-inner .content h3 a:hover,
+.story-section .content-column .content-inner .read-more{
+	color:#39CCCC;
+}
+
+.rangeslider-widget .noUi-handle{
+	background-color:#39CCCC !important;
+}
+
+/*Background Color*/
+.btn-style-one,
+.scroll-to-top:hover,
+.sec-title:before,
+.sec-title:after,
+.video-box .text:before,
+.social-icon-one li a:hover,
+.main-header .header-top .top-right,
+.news-block .inner-box .image .post-date,
+.main-menu .navigation > li > ul > li:hover > a,
+.main-menu .navigation > li > ul > li  > ul > li > a:hover,
+.sticky-header .main-menu .navigation > li:hover > a,
+.sticky-header .main-menu .navigation > li.current > a,
+.gallery-item .overlay-box,
+.social-icon-two li a,
+.list-style-two li:before,
+.sidebar .popular-tags a:hover,
+.social-icon-three li a:hover,
+.styled-pagination li a:hover, .styled-pagination li a.active,
+.testimonial-section-two .owl-dots .owl-dot.active span,
+.testimonial-section-two .owl-dots .owl-dot:hover span,
+.project-tab .project-carousel .owl-dots .owl-dot.active span,
+.project-tab .project-carousel .owl-dots .owl-dot:hover span,
+.news-block-two .inner-box .image .post-date,
+.news-block-two .inner-box .lower-content .post-share-options .tags a:hover,
+.main-footer .subscribe-widget .form-group input[type="submit"], .main-footer .subscribe-widget button,
+.project-tab .product-tab-btns .p-tab-btn:hover, .project-tab .product-tab-btns .p-tab-btn.active-btn,
+.testimonial-section .owl-dots .owl-dot.active span, .testimonial-section .owl-dots .owl-dot:hover span,
+.sticky-header .main-menu .navigation > li.current-menu-item > a{
+	background-color:#39CCCC;
+}
+
+
+/*Border Color*/
+
+.btn-style-one,
+.btn-style-one:hover,
+.main-menu .navigation > li > ul,
+.main-menu .navigation > li > ul > li > ul,
+.main-header .search-panel input:focus,
+.main-header .search-panel select:focus,
+.sec-title-two .inner-title:before,
+.sec-title-two .inner-title:after,
+.sidebar .popular-tags a:hover,
+.social-icon-three li a:hover,
+.styled-pagination li a:hover, .styled-pagination li a.active,
+.client-section .sponsors-outer .image-box:hover,
+.testimonial-section .owl-dots .owl-dot.active span, .testimonial-section .owl-dots .owl-dot:hover span,
+.gallery-section .filters .filter.active, .gallery-section .filters .filter:hover,
+.main-header .nav-outer .dropdown-outer .dropdown-menu,
+.comment-form .form-group input[type="text"]:focus,
+.comment-form .form-group input[type="email"]:focus,
+.comment-form .form-group textarea:focus,
+.sidebar-page-container .comments-area .comment-box .author-thumb,
+.sidebar-page-container .comments-area .comment-box:hover,
+.contact-info .inner .icon-box,
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus,
+.news-block-two .inner-box .lower-content .text blockquote,
+.main-menu .navigation > li > a:hover, .main-menu .navigation > li.current a{
+	border-color:#39CCCC;
+}
+
+/*RGBA Color Light*/
+.counter-section:before{
+	background-color:rgba(57,204,204,0.93);
+}
+
+/*RGBA Color Dark*/
+
+@media only screen and (max-width: 767px){
+	
+	.main-menu .navbar-header .navbar-toggle{
+		border-color:#39CCCC;
+	}
+	
+	.main-menu .navbar-header .navbar-toggle,
+	.main-menu .navbar-collapse > .navigation,
+	.main-menu .navbar-collapse > .navigation > li > ul,
+	.main-menu .navbar-collapse > .navigation > li > ul > li > ul,
+	.main-menu .navbar-collapse > .navigation > li > a,
+	.main-menu .navbar-collapse > .navigation > li > ul > li > a,
+	.main-menu .navbar-collapse > .navigation > li > ul > li > ul > li > a,
+	.main-menu .navbar-collapse > .navigation > li > a:hover,
+	.main-menu .navbar-collapse > .navigation > li > a:active,
+	.main-menu .navbar-collapse > .navigation > li > a:focus,
+	.main-menu .navbar-collapse > .navigation > li:hover > a,
+	.main-menu .navbar-collapse > .navigation > li > ul > li:hover > a,
+	.main-menu .navbar-collapse > .navigation > li > ul > li > ul > li:hover > a,
+	.main-menu .navbar-collapse > .navigation > li.current > a,
+	.main-menu .navbar-collapse > .navigation > li.current-menu-item > a,
+	.header-style-two.inner-header .main-menu .navigation > li > a{
+		background-color:#39CCCC;
+	}
+	
+}

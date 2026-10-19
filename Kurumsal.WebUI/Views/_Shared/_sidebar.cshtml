@@ -1,0 +1,114 @@
+﻿<!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu">
+
+    <div data-simplebar class="h-100">
+
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li class="menu-title">Menu</li>
+
+                <li>
+                    <a href=@Url.Action("Index", "Dashboard") class="waves-effect">
+                        <i class="ri-dashboard-line"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-settings-2-fill"></i>
+                        <span>Sayfa</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href=@Url.Action("Index", "Sayfa")>Sayfalar</a></li>
+                        <li><a href=@Url.Action("AddOrUpdate", "Sayfa")>Yeni Ekle</a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-settings-2-fill"></i>
+                        <span>Menü</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href=@Url.Action("Index", "Menu")>Menüler</a></li>
+                        <li><a href=@Url.Action("AddOrUpdate", "Menu")>Yeni Ekle</a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-settings-2-fill"></i>
+                        <span>İnşaat Proje</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href=@Url.Action("Index", "InsaatProje")>Projeler</a></li>
+                        <li><a href=@Url.Action("AddOrUpdate", "InsaatProje")>Yeni Ekle</a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-settings-2-fill"></i>
+                        <span>Slider Yönetimi</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href=@Url.Action("Index", "Slider")>Sliderlar</a></li>
+                        <li><a href=@Url.Action("AddOrUpdate", "Slider")>Yeni Ekle</a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-settings-2-fill"></i>
+                        <span>Foto Galeri Yönetimi</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href=@Url.Action("Index", "FotoGaleri")>Foto Galeriler</a></li>
+                        <li><a href=@Url.Action("AddOrUpdate", "FotoGaleri")>Yeni Ekle</a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-settings-2-fill"></i>
+                        <span>Ürün Yönetimi</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href=@Url.Action("Index", "Urun")>Ürünler</a></li>
+                        <li><a href=@Url.Action("AddOrUpdate", "Urun")>Ürün Ekle</a></li>
+                        <li><a href=@Url.Action("Index", "UrunKategori")>Ürün Kategorileri</a></li>
+                        <li><a href=@Url.Action("AddOrUpdate", "UrunKategori")>KategoriEkle</a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-settings-2-fill"></i>
+                        <span>Ayarlar</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href=@Url.Action("Index", "GenelAyar")>Genel Ayarlar</a></li>
+                        <li><a href=@Url.Action("Index", "SMSAyar")>SMS Ayarları</a></li>
+                        <li><a href=@Url.Action("Index", "EmailAyar")>E-Mail Ayarları</a></li>
+                        <li><a href=@Url.Action("Index", "Iletisim")>İletişim Ayarları</a></li>
+                    </ul>
+                </li>
+
+
+
+            </ul>
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>
+<!-- Left Sidebar End -->

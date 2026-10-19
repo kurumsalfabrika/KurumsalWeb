@@ -1,0 +1,66 @@
+﻿@using Kurumsal.Core.Functions
+@model SayfaViewModel
+
+@section Styles {
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.min.css" rel="stylesheet">
+    <link href="~/css/bs-icon-font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <script src="~/js/modernizr.js"></script>
+    <link href="~/css/shop.css" rel="stylesheet">
+    <link href="~/css/custom.css" rel="stylesheet">
+}
+
+<section class="parallax_window_in short" data-parallax="scroll" data-image-src="@Model.Ftp.DosyaAdresOnEki@Model.Sayfa.OneCikanGorsel" data-natural-width="1400" data-natural-height="350">
+    <div id="sub_content_in">
+        <div class="container">
+            <h1 style="margin-bottom: 40px;">@Model.Sayfa.Baslik</h1>
+        </div>
+    </div>
+</section><!-- End section -->
+
+<main>
+    <div class="container margin_60_35">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="row">
+                            @if (Model.Sayfa == null)
+                            {
+                                <div class="alert alert-warning" role="alert">
+                                    Sayfa bulunamadı.
+                                </div>
+                            }
+                            else
+                            {
+              
+                                <div class="col-12">
+
+                                    <div class="col-12"><h3>@Model.Sayfa.Baslik</h3></div>
+                                    <hr />
+                                    <div class="col-12"><span>@Html.Raw(Model.Sayfa.Icerik)</span></div>
+
+                                </div>
+                            }
+                        </div><!-- End row-->
+                    </div><!-- End row -->
+                </div>
+            </div><!-- End col-lg-9 -->
+
+
+        </div><!-- End row -->
+    </div><!-- End container -->
+</main><!-- End main -->
+@section Scripts {
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/common_scripts_min.js"></script>
+    <script src="~/js/functions.js"></script>
+    <script src="~/js/fontawesome.init.js"></script>
+}

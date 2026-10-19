@@ -1,0 +1,186 @@
+﻿@using Kurumsal.Core.Functions
+@model OdaViewModel
+@{
+    ViewData["Title"] = "Grand Akca Otel - Odalar / "+Model.Oda.OdaAdi;
+    ViewData["Description"] = "Alkolsüz her şey dahil aile oteli konseptiyle Grand Akca Otel'de kadın ve ailelere özel havuzlar, aile plajı, aquapark, konforlu odalar ve eşsiz lezzetler sizi bekliyor.";
+    ViewData["Keywords"] = "grand akca otel, islami otel, alkolsüz tatil, aile oteli, gazipaşa otel, alanya islami otel, kadınlara özel havuz, aile plajı, her şey dahil otel";
+}
+
+@{
+    var currentUrl = Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.Path + Context.Request.QueryString;
+}
+
+
+<section class="breadcrumb-outer">
+    <div class="container">
+        <div class="breadcrumb-content">
+
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/anasayfa/grand-akca-ana-sayfa.html">Anasayfa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.Oda.OdaAdi</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb Ends -->
+
+
+<section class="position-relative text-center  text-white diger-odalar-banner">
+    <div class="container">
+        <h2 class="display-5 fw-bold">@Model.Oda.OdaAdi</h2>
+        <p class="lead">
+
+            <div class="room-services-horizontal">
+                <div><i class="fas fa-user"></i> @Model.Oda.MaxYetiskin Yetişkin</div>
+                <div><i class="fas fa-baby"></i> @Model.Oda.MaxCocuk Çocuk</div>
+                <div><i class="fas fa-ruler-combined"></i> @Model.Oda.OdaGenislik m²</div>
+            </div>
+
+        </p>
+    </div>
+</section>
+
+<!-- details starts-->
+<section class="details">
+    <div class="container">
+        <div class="detail-slider">
+            <div class="slider-1 slider-for">
+
+                @if (Model.Fotograflar != null && Model.Fotograflar.Any())
+                {
+                    foreach (var item in Model.Fotograflar)
+                    {
+                        <div class="detail-slider-item">
+                            <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="image" />
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="detail-slider-item">
+                        <img src="~/images/default-oda.jpg" alt="Varsayılan görsel" />
+                    </div>
+                }
+
+            </div>
+            <div class="slider-1 slider-nav">
+
+
+
+            </div>
+        </div>
+        <div class="detail-content">
+            <div class="detail-title">
+                <div class="title-left">
+                    <h3>@Model.Oda.OdaAdi</h3>
+
+                </div>
+                <div class="title-right pull-right">
+                    <ul>
+                        <li class="facebook">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=@currentUrl" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="twitter">
+                            <a href="https://twitter.com/intent/tweet?url=@currentUrl" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="linkedin">
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=@currentUrl" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="pinterest">
+                            <a href="https://pinterest.com/pin/create/button/?url=@currentUrl" target="_blank">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="detail-overview">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="overview-outer">
+                            <div class="overview-content mar-bottom-30">
+                                <h4>Oda Hakkında</h4>
+                                @Html.Raw(Model.Oda.Icerik)
+                            </div>
+           
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="overwiew-map room-info-box">
+                            <div><i class="fas fa-user"></i> @Model.Oda.MaxYetiskin Yetişkin</div>
+                            <div><i class="fas fa-baby"></i> @Model.Oda.MaxCocuk Çocuk</div>
+                            <div><i class="fas fa-ruler-combined"></i> @Model.Oda.OdaGenislik m²</div>
+                        </div>
+
+                        <div class="rezervasyon-box mt-4 p-4">
+                            <h5 class="fw-bold mb-3">DİREK REZERVASYON</h5>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-phone-alt me-2"></i>
+                                <span>0242 572 25 72</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-envelope me-2"></i>
+                                <span>info@grandakca.com</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-services-horizontal text-center">
+                <div><i class="fas fa-wifi"></i> Bedava Wifi</div>
+                <div><i class="fas fa-fan"></i> Klima</div>
+                <div><i class="fas fa-wine-glass-alt"></i> Minibar</div>
+                <div><i class="fas fa-lock"></i> Safe Kasası</div>
+                <div><i class="fas fa-phone"></i> Telefon</div>
+                <div><i class="fas fa-tv"></i> Tv & Uydu</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- details Ends-->
+<section class="position-relative text-center py-5 text-white diger-odalar-banner">
+    <div class="container">
+        <h2 class="display-5 fw-bold">Diğer Odalarımız</h2>
+        <p class="lead">Konforlu, şık ve huzurlu bir tatil için ideal odalarımızı keşfedin.</p>
+    </div>
+</section>
+
+<section class="py-5" style="background-color: #f9f9f9;">
+    <div class="container">
+        <div class="row g-4">
+            @foreach (var item in Model.Odalar)
+            {
+                <div class="col-md-3 col-lg-3">
+                    <a href="@Url.Content("~/odadetay/" + SeoUrlGenerator.GenerateSlug(item.OdaAdi) + "-" + item.Id + ".html")" style="text-decoration: none; color: inherit;">
+                        <div class="bg-white rounded-3 shadow-sm overflow-hidden h-100 card-hover-up">
+                            <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="@item.OdaAdi" class="img-fluid">
+                            <div class="p-3">
+                                <h5 class="mb-2">@item.OdaAdi</h5>
+                                <p class="mb-3 small">@item.SpotMetin</p>
+                                <div class="d-flex justify-content-between small text-muted px-1">
+                                    <span><i class="fas fa-user"></i> @item.MaxYetiskin</span>
+                                    <span><i class="fas fa-baby"></i> @item.MaxCocuk</span>
+                                    <span><i class="fas fa-ruler-combined"></i> @item.OdaGenislik</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,76 @@
+﻿@model HeaderViewModel
+<header class="main_header_area">
+    <div class="header-content">
+        <div class="container">
+            <div class="links links-left">
+                <ul>
+                    <li>
+                        <a href="mailto:@Model.IletisimAyar.IletisimEposta"><i class="fa fa-envelope" aria-hidden="true"></i> @Model.IletisimAyar.IletisimEposta</a>
+                    </li>
+                    <li>
+                        <a href="tel:@Model.IletisimAyar.Telefon1.Replace(" ","")"><i class="fa fa-phone" aria-hidden="true"></i> @Model.IletisimAyar.Telefon1</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="links links-right pull-right">
+                <ul>
+                    <li>
+                        <ul class="social-links">
+                            @foreach (var item in Model.SosyalMedyaAdresler)
+                            {
+                                <li>
+                                    <a href="@item.Url" title="@item.Ad" target="_blank"><i class="@item.Ikon" aria-hidden="true"></i></a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header_menu affix-top">
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <a class="navbar-brand" title="@Model.SiteAyar.SiteAdi" href="/anasayfa/grand-akca-otel.html">
+                        <img alt="@Model.SiteAyar.SiteAdi" src="@Model.Ftp.DosyaAdresOnEki@Model.SiteAyar.HeaderLogoAcikRenk" class="logo-white" />
+                        <img alt="@Model.SiteAyar.SiteAdi" src="@Model.Ftp.DosyaAdresOnEki@Model.SiteAyar.HeaderLogoKoyuRenk" class="logo-black" />
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav" id="responsive-menu">
+                        @foreach (var item in Model.AnaMenuler.Where(x => x.MenuYeriId==1).OrderBy(x => x.MenuSira))
+                        {
+                            @if (Model.Menuler.Where(x => x.AnaMenuId == item.Id).Count() == 0)
+                            {
+                                <li>
+                                    <a title="@item.MenuAciklama" href="@item.BaglantiAdresi">@item.MenuAdi</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="submenu dropdown">
+                                    <a title="@item.MenuAciklama" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        @item.MenuAdi<i class="fa fa-angle-down" aria-hidden="true"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        @foreach (var itemAlt in Model.Menuler.Where(a => a.AnaMenuId == item.Id))
+                                        {
+                                            <li>
+                                                <a title="@itemAlt.MenuAciklama" target="@itemAlt.YeniPenceredeAc" href="@itemAlt.BaglantiAdresi">@itemAlt.MenuAdi</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <div class="nav-btn">
+                        <a href="https://grand-akca.rezervasyonal.com/?currency=TRY&language=tr&Checkin=2026-03-05&Checkout=2026-03-06&Adult=2" title="Online Rezervasyon" target="_blank" class="btn btn-orange">Rezervasyon Yap</a>
+                    </div>
+                </div>
+                <div id="slicknav-mobile"></div>
+            </nav>
+        </div>
+    </div>
+</header>

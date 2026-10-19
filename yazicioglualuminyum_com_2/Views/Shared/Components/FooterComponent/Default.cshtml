@@ -1,0 +1,99 @@
+﻿@model GenelViewModel
+
+
+<footer class="site-footer-three">
+    <div class="site-footer-three__shape-bg"
+         style="background-image: url(~/assets/images/shapes/site-footer-three-bg-shape.png);"></div>
+    <div class="container">
+
+        <div class="site-footer-three__middle">
+            <div class="row">
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                    <div class="footer-widget-three__column footer-widget-three__about">
+                        <div class="footer-widget-three__logo">
+                            <a href="index.html"><img src="@Model.Ftp.DosyaAdresOnEki@Model.SiteAyar.FooterLogo" alt=""></a>
+                        </div>
+                        <p class="footer-widget-three__about-text">@Model.SiteAyar.KisaHakkindaYazisi
+                        </p>
+                        <div class="site-footer-three__social">
+
+                            @foreach (var item in Model.SosyalMedyaAdresler)
+                            {
+                                <a href="@item.Url"><i class="@item.Ikon"></i></a>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                    <div class="footer-widget-three__column footer-widget-three__usefull-link">
+                        <div class="footer-widget-three__title-box">
+                            <h3 class="footer-widget-three__title">Hızlı Menüler</h3>
+                        </div>
+                        <div class="footer-widget-three__link-box">
+                            <ul class="footer-widget-three__link list-unstyled">
+                                @foreach (var item in Model.Menuler.Where(x => x.MenuYeriId == 3).ToList())
+                                {
+                                    <li><a href="@item.BaglantiAdresi">@item.MenuAdi</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-5 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                    <div class="footer-widget-three__contact-box">
+                        <div class="footer-widget-three__title-box">
+                            <h3 class="footer-widget-three__title">Bize Ulaşın</h3>
+                        </div>
+                        <ul class="footer-widget-three__contact list-unstyled">
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-call"></span>
+                                </div>
+                                <div class="content">
+                                    <p><a href="tel:@Model.Iletisim.Telefon1">@Model.Iletisim.Telefon1</a></p>
+                                    <p><a href="tel:@Model.Iletisim.Telefon2">@Model.Iletisim.Telefon2</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-mail"></span>
+                                </div>
+                                <div class="content">
+                                    <p>
+                                        <a href="mailto:@Model.Iletisim.IletisimEposta">@Model.Iletisim.IletisimEposta</a>
+                                    </p>
+                           
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-map"></span>
+                                </div>
+                                <div class="content">
+                                    <p>@Model.Iletisim.FirmaAdres</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-footer-three__bottom">
+        <div class="container">
+            <div class="site-footer-three__bottom-inner">
+                <p class="site-footer-three__bottom-text">
+                    © Copyright 2026 by  Yazıcıoğlu Alüminyum.
+                    All Rights Reserved.
+                </p>
+                <ul class="list-unstyled site-footer-three__bottom-menu">
+                    <li><a href="#">Yardım</a></li>
+                    <li><a href="#">Site Kullanım Koşulları</a></li>
+                    <li><a href="#">KVKK</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Site Footer End-->

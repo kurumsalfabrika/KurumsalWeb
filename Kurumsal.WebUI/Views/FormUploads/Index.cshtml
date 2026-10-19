@@ -1,0 +1,160 @@
+﻿@{
+    ViewBag.Title = "Form File Upload";
+    ViewBag.pTitle = "Form File Upload";
+    ViewBag.pageTitle = "Forms";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+}
+
+<!-- Plugins css -->
+<link href="~/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+
+<!-- Cropper.js JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Dropzone</h4>
+                <p class="card-title-desc">
+                    DropzoneJS is an open source library
+                    that provides drag’n’drop file uploads with image previews.
+                </p>
+
+                <div>
+                    <form action="#" id="my-dropzone" class="dropzone">
+                        <div class="fallback">
+                            <input name="file" type="file" multiple="multiple">
+                        </div>
+                        <div class="dz-message needsclick">
+                            <div class="mb-3">
+                                <i class="display-4 text-muted ri-upload-cloud-2-line"></i>
+                            </div>
+                            <h4>Drop files here or click to upload.</h4>
+                        </div>
+                    </form>
+
+                    <button id="edit-image-button" class="btn btn-primary">Edit Image</button>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="button" class="btn btn-primary waves-effect waves-light">Send Files</button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<!-- Plugins js -->
+<script src="~/assets/libs/dropzone/min/dropzone.min.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+
+        var existingDropzone = document.querySelector('#my-dropzone').dropzone;
+        if (existingDropzone) {
+            existingDropzone.destroy();
+        }
+        // Dropzone configuration
+        Dropzone.autoDiscover = false;
+        var myDropzone = new Dropzone("#my-dropzone", {
+            url: "/your-upload-url", // Yükleme URL'sini buraya yerleştirin
+            maxFiles: 10, // Tek dosya yükleme sınırı
+            acceptedFiles: "image/*", // Sadece resim dosyalarını kabul et
+            addRemoveLinks: true, // Dosya ekleme/kaldırma bağlantılarını göster
+            dictDefaultMessage: "Drop files here or click to upload", // Varsayılan mesaj
+            dictRemoveFile: "Remove file", // Dosyayı kaldırma bağlantısının metni
+            init: function () {
+                this.on("success", function (file, response) {
+                    console.log("File uploaded successfully", response);
+                });
+            }
+        });
+
+        // Cropper.js configuration
+        var cropper;
+        $("#edit-image-button").click(function () {
+            var image = new Image();
+            image.src = myDropzone.files[0].dataURL; // Dropzone'da yüklenen ilk resmin veri URL'sini alın
+            image.onload = function () {
+                var canvas = document.createElement("canvas");
+                var context = canvas.getContext("2d");
+                canvas.width = image.width;
+                canvas.height = image.height;
+                context.drawImage(image, 0, 0, image.width, image.height);
+                var imageData = context.getImageData(0, 0, image.width, image.height);
+                var cropperContainer = document.createElement("div");
+                cropperContainer.style.width = "100%";
+                cropperContainer.style.height = "100%";
+                cropperContainer.appendChild(canvas);
+                $("#cropper-modal .modal-body").empty().append(cropperContainer);
+                $("#cropper-modal").modal("show");
+                cropper = new Cropper(canvas, {
+                    aspectRatio: 16 / 9, // İstediğiniz en-boy oranını ayarlayın
+                    viewMode: 1,
+                    autoCropArea: 1,
+                    responsive: true
+                });
+            };
+        });
+
+        // Save button in modal
+        $("#save-cropped-image").click(function () {
+            var croppedCanvas = cropper.getCroppedCanvas();
+            croppedCanvas.toBlob(function (blob) {
+                var formData = new FormData();
+                formData.append("croppedImage", blob, "cropped-image.jpg");
+                // Düzenlenmiş resmi sunucuya göndermek için AJAX kullanın
+                $.ajax({
+                    url: "/your-save-cropped-image-url", // Düzenlenmiş resmi kaydetme URL'sini buraya yerleştirin
+                    method: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        console.log("Cropped image saved successfully", response);
+                        $("#cropper-modal").modal("hide");
+                    },
+                    error: function (error) {
+                        console.error("Error saving cropped image", error);
+                    }
+                });
+            });
+        });
+
+        // Modal close event
+        $("#cropper-modal").on("hidden.bs.modal", function () {
+            cropper.destroy(); // Cropper örneğini yok edin
+        });
+    });
+
+</script>
+
+<div class="modal fade" id="cropped-image-modal" tabindex="-1" aria-labelledby="cropped-image-modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cropped-image-modalLabel">Edit and Save Cropped Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <canvas id="cropped-image-canvas"></canvas>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="save-cropped-image">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

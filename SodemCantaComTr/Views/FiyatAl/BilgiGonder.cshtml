@@ -1,0 +1,94 @@
+﻿@model FiyatAlViewModel
+
+@section Styles {
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.min.css" rel="stylesheet">
+    <link href="~/css/bs-icon-font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <script src="~/js/modernizr.js"></script>
+    <link href="~/css/shop.css" rel="stylesheet">
+    <link href="~/css/custom.css" rel="stylesheet">
+}
+
+<section class="parallax_window_in short" data-image-src="https://www.sodemcanta.com.tr/img/header_bg_black.jpg" data-parallax="scroll" data-natural-width="1400" data-natural-height="350">
+    <div id="sub_content_in">
+        <div class="container">
+            <h1>Fiyat Al / DESİGN</h1>
+            <p>"Bilgilerinizi Belirtiniz"</p>
+        </div>
+    </div>
+</section>
+
+<main>
+    <div class="container margin_60_35">
+        <form asp-action="AddOrUpdate" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-lg-6 col-12 image-container">
+                    <div id="imageContainer" class="col-12" style="margin-top:20px;">
+                        <img class="img-fluid" src="@ViewData["imageUrl"]" alt="Teklif Resmi" />
+                        <hr />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="row mb-3">
+                        <label for="AdSoyad" class="col-sm-2 col-form-label">Ad Soyad</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Teklif.AdSoyad" class="form-control" type="text" placeholder="Ad Soyad">
+                            <input asp-for="Teklif.Tasarim" class="form-control" type="hidden" value="@ViewData["imageUrl"]">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="FirmaAdi" class="col-sm-2 col-form-label">Firma Adı</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Teklif.FirmaAdi" class="form-control" type="text" placeholder="Firma Adı">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Telefon" class="col-sm-2 col-form-label">Telefon</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Teklif.Telefon" class="form-control" type="text" placeholder="Telefon">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Eposta" class="col-sm-2 col-form-label">Eposta</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Teklif.Eposta" class="form-control" type="text" placeholder="Eposta">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Konu" class="col-sm-2 col-form-label">Konu</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Teklif.Konu" class="form-control" type="text" placeholder="Konu">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Konu" class="col-sm-2 col-form-label">Mesaj</label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="Teklif.Mesaj" rows="5" class="form-control" name="Teklif.Mesaj"></textarea>
+                        </div>
+                    </div>
+                    <!-- Form Gönderim Butonu -->
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Gönder</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+
+@section Scripts {
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/common_scripts_min.js"></script>
+    <script src="~/js/functions.js"></script>
+    <script src="~/js/fontawesome.init.js"></script>
+    <script src="~/assets/validate.js"></script>
+   
+}

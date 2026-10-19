@@ -1,0 +1,38 @@
+﻿@model HeaderViewModel
+
+
+<div class="header homepagemenu">
+    <div class="">
+        <div class="logo">
+            <a href="/anasayfa/giris.html">
+                <img src="@Model.Ftp.DosyaAdresOnEki@Model.SiteAyar.HeaderLogoAcikRenk" />
+            </a>
+        </div>
+        <div class="menu">
+            <ul>
+                @foreach (var menu in Model.AnaMenuler)
+                {
+                    var altMenuler = Model.Menuler.Where(m => m.AnaMenuId == menu.Id).ToList();
+                    if (!altMenuler.Any())
+                    {
+                        <li><a href="@menu.BaglantiAdresi">@menu.MenuAdi</a></li>
+                    }
+                    else
+                    {
+                        <li class="submenu dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                @menu.MenuAdi <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @foreach (var item in altMenuler)
+                                {
+                                    <li><a href="@item.BaglantiAdresi">@item.MenuAdi</a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>

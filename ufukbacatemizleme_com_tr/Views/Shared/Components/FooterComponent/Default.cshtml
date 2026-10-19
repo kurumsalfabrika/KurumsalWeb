@@ -1,0 +1,59 @@
+﻿ @model GenelViewModel
+       <!--Main Footer-->
+<footer class="main-footer" style="background-image:url(images/background/2.jpg);">
+    <div class="auto-container">
+        <!--Widgets Section-->
+        <div class="widgets-section">
+            <div class="row clearfix">
+
+                <!--big column-->
+                <div class="big-column col-md-5 col-sm-12 col-xs-12">
+                    <div class="row clearfix">
+                        <!--Footer Column-->
+                        <div class="footer-column col-md-12 col-sm-12 col-xs-12">
+                            <div class="footer-widget logo-widget">
+                                <div class="footer-logo"><figure><a href="/anasayfa/anasayfa.html"><img src="@Model.Ftp.DosyaAdresOnEki@Model.SiteAyar.FooterLogo" alt=""></a></figure></div>
+                                <div class="widget-content">
+                                    <div class="text">@Model.SiteAyar.KisaHakkindaYazisi</div>
+                                    <ul class="social-icon-one">
+                                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                                        <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+                                        <li><a href="#"><span class="fab fa-google-plus"></span></a></li>
+                                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--big column-->
+                <div class="big-column col-md-7 col-sm-12 col-xs-12">
+                    <div class="row clearfix">
+                        <!--Footer Column-->
+                        <div class="footer-column col-md-12 col-sm-12 col-xs-12">
+                            <div class="footer-widget contact-widget">
+                                <h2>İletişim</h2>
+                                <div class="widget-content">
+                                    <ul class="list-style-one">
+                                        <li><span class="icon fas fa-phone"></span> @Model.Iletisim.Telefon1</li>
+                                        <li><span class="icon fas fa-envelope"></span> @Model.Iletisim.IletisimEposta</li>
+                                        <li><span class="icon fas fa-map-marker-alt"></span> @Model.Iletisim.FirmaAdres</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--End Widgets Section-->
+    </div>
+    <div class="footer-bottom">
+        <div class="auto-container">
+            <div class="copyright">Copyright &copy; 2025 Ufuk Baca Temizleme. All Rights Reserved</div>
+        </div>
+    </div>
+</footer>

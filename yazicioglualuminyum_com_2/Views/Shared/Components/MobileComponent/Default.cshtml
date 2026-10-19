@@ -1,0 +1,45 @@
+﻿@model GenelViewModel
+<div class="mobile-nav__wrapper">
+    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+    <!-- /.mobile-nav__overlay -->
+    <div class="mobile-nav__content">
+        <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+        <div class="logo-box">
+            <a href="index.html" aria-label="logo image">
+                <img src="@Model.Ftp@Model.SiteAyar.FooterLogo" width="150"
+                     alt="" />
+            </a>
+        </div>
+        <!-- /.logo-box -->
+        <div class="mobile-nav__container"></div>
+        <!-- /.mobile-nav__container -->
+
+        <ul class="mobile-nav__contact list-unstyled">
+            <li>
+                <i class="fa fa-envelope"></i>
+                <a href="mailto:@Model.Iletisim.IletisimEposta">@Model.Iletisim.IletisimEposta</a>
+            </li>
+            <li>
+                <i class="fas fa-phone"></i>
+                <a href="tel:@Model.Iletisim.Telefon1">@Model.Iletisim.Telefon1</a>
+            </li>
+        </ul><!-- /.mobile-nav__contact -->
+        <div class="mobile-nav__top">
+            <div class="mobile-nav__social">
+
+                @foreach (var item in Model.SosyalMedyaAdresler)
+                {
+                    <a href="@item.Url" class="@item.Ikon"></a>
+                }
+
+               
+   
+            </div><!-- /.mobile-nav__social -->
+        </div><!-- /.mobile-nav__top -->
+
+
+
+    </div>
+    <!-- /.mobile-nav__content -->
+</div>

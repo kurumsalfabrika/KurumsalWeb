@@ -1,0 +1,235 @@
+﻿@using Kurumsal.Core.Functions
+
+@inject ICurrencyService CurrencyService
+@model OdaViewModel
+@section Styles {
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <!-- BASE CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.min.css" rel="stylesheet">
+    <link href="~/css/bs-icon-font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- SPECIFIC CSS -->
+    <link href="~/css/carousel_home.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <!-- YOUR CUSTOM CSS -->
+    <link href="~/css/custom.css" rel="stylesheet">
+}
+<style>
+    .owl-carousel .owl-item {
+        border: 1px solid grey; /* Kenarlık rengi ve kalınlığı */
+        margin: 1px; /* Resimler arasında boşluk */
+        box-sizing: border-box; /* Kenarlıkların öğe boyutuna dahil edilmesi */
+    }
+
+    .owl-carousel .team-item img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+
+    }
+</style>
+<section class="parallax_window_in short" data-parallax="scroll" data-image-src="~/img/subheader_in_1.jpg" data-natural-width="1400" data-natural-height="350">
+    <div id="sub_content_in">
+        <div class="container">
+            <h1>@Model.Oda.OdaAdi</h1>
+        </div>
+    </div>
+</section><!-- End section -->
+
+<main>
+    <div class="container margin_60_35">
+        <div class="row">
+            <div class="owl-carousel owl-theme team-carousel">
+                @foreach (var item in Model.Fotograflar)
+                {
+                    <div class="team-item">
+                        <a href="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" class="image-popup">
+                            <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                }
+            </div><!-- End Team Carousel -->
+        </div><!-- End Row -->
+
+        <div class="row margin_60_35">
+            <div class="col-lg-12">
+                <div id="get_quote" style="height: 80px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h5><i class="icon_pushpin_alt"></i> @Model.Oda.SpotMetin</h5>
+                            </div>
+                            <div class="col-lg-6">
+                                <h5></h5>
+                            </div>
+                        </div><!-- End row -->
+                    </div><!-- End container -->
+                </div><!-- End get_quote -->
+            </div><!-- End col-lg-12 -->
+
+            <div class="row margin_60_35">
+                <div class="col-md-3">
+                    <ul class="list_ok">
+                        <li>Balkon</li>
+                        <li>Duşlu Banyo</li>
+                        <li>Kahvaltı Alanı</li>
+                        <li>Kablosuz Internet</li>
+                        <li>Şehir Manzaralı</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul class="list_ok">
+                        <li>Buzdolabı</li>
+                        <li>Saç Kurutma Makinesi</li>
+                        <li>Engelliler İçin Olanaklar</li>
+                        <li>Açılabilir Pencere</li>
+                        <li>Bahçe Manzaralı</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul class="list_ok">
+                        <li>Ütü Masası ve Ütü</li>
+                        <li>Mutfak</li>
+                        <li>Açık Küçük Mutfak</li>
+                        <li>Uzaktan Kumandalı TV</li>
+                        <li>Park Manzaralı</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul class="list_ok">
+                        <li>Acil Durum Çıkış Planı</li>
+                        <li>Uydu Kanalları</li>
+                        <li>Oturma Alanı</li>
+                        <li>Çay Makinesi</li>
+                        <li>Sokak Manzaralı</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <ul id="about" class="feat">
+                    <li>
+                        <i class="icon_check_alt2"></i><br>
+                        <h4>Koltuk Takımı</h4>
+                    </li>
+                    <li>
+                        <i class="icon_check_alt2"></i><br>
+                        <h4>Mutfak Eşyaları</h4>
+                    </li>
+                    <li>
+                        <i class="icon_check_alt2"></i><br>
+                        <h4>Çamaşır Makinası</h4>
+                    </li>
+                    <li>
+                        <i class="icon_check_alt2"></i><br>
+                        <h4>Buzdolabı</h4>
+                    </li>
+                    <li>
+                        <i class="icon_check_alt2"></i><br>
+                        <h4>Gardrop</h4>
+                    </li>
+                    <li>
+                        <i class="icon_check_alt2"></i><br>
+                        <h4>Süpürge</h4>
+                    </li>
+                    <li>
+                        <i class="icon_check_alt2"></i><br>
+                        <h4>Kettle</h4>
+                    </li>
+                    <li>
+                        <i class="icon_check_alt2"></i><br>
+                        <h4>Tea Pot</h4>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-12 col-sm-12">
+                <div class="box_style_4">
+                    <h3><i class="icon_pushpin_alt"></i> En fazla @Model.Oda.MaxYetiskin kişi kalabilir!</h3>
+                </div>
+            </div>
+            @{
+                var convertedPrice = CurrencyService.ConvertToCurrency(Model.Oda.GunlukUcret);
+                var currencySymbol = CurrencyService.GetCurrencySymbol();
+            }
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3> Fiyat: @convertedPrice.ToString("N2") @currencySymbol</h3>
+                <div>
+                    <a href="@Url.Content("~/rezervasyon/" + SeoUrlGenerator.GenerateSlug(Model.Oda.OdaAdi) + "-" + Model.Oda.Id + ".html")" class="btn btn-danger">Rezervasyon Yap</a>
+                </div>
+            </div>
+
+        </div><!-- End row -->
+        @Html.Raw(Model.Oda.Icerik)
+    </div><!-- End container -->
+</main><!-- End main -->
+<!-- Common scripts -->
+@section Scripts {
+    <!-- Common scripts -->
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/common_scripts_min.js"></script>
+    <script src="~/js/functions.js"></script>
+
+    <!--Owl carousel/slider -->
+    <script src="/js/slider.js"></script>
+
+    <!-- Specific scripts -->
+    <script src="~/js/jquery.validate.js"></script>
+    <script src="~/js/jquery.stepy.min.js"></script>
+    <script src="~/js/quotation-validate.js"></script>
+    <script src="~/js/fontawesome.init.js"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lc6lPYpAAAAAB6oZQQ2CgUS9Spx5Xlyv8MpmFBx"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script>
+        function onClick(e) {
+            e.preventDefault();
+            grecaptcha.enterprise.ready(async () => {
+                const token = await grecaptcha.enterprise.execute('6Lc6lPYpAAAAAB6oZQQ2CgUS9Spx5Xlyv8MpmFBx', { action: 'LOGIN' });
+            });
+        }
+    </script>
+    <script>
+        'use strict';
+        $(document).ready(function () {
+            $(".team-carousel").owlCarousel({
+                items: 6,
+                loop: true,
+                margin: 10,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                smartSpeed: 300,
+                responsiveClass: true,
+                responsive: {
+                    320: {
+                        items: 1,
+                    },
+                    768: {
+                        items: 2,
+                    },
+                    1000: {
+                        items: 6,
+                    }
+                }
+            });
+
+            $('.image-popup').magnificPopup({
+                type: 'image',
+                closeOnContentClick: true,
+                mainClass: 'mfp-img-mobile',
+                image: {
+                    verticalFit: true
+                }
+            });
+        });
+    </script>
+
+}

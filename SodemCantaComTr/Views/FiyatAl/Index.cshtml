@@ -1,0 +1,91 @@
+﻿@using Kurumsal.Core.Functions
+@model FiyatAlViewModel
+
+@section Styles {
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.min.css" rel="stylesheet">
+    <link href="~/css/bs-icon-font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <script src="~/js/modernizr.js"></script>
+    <link href="~/css/shop.css" rel="stylesheet">
+    <link href="~/css/custom.css" rel="stylesheet">
+}
+
+<section class="parallax_window_in short" data-image-src="https://www.sodemcanta.com.tr/img/header_bg_black.jpg" data-parallax="scroll" data-natural-width="1400" data-natural-height="350">
+    <div id="sub_content_in">
+        <div class="container">
+            <h1 style="margin-bottom: 40px;">Fiyat Almak İçin İstediğiniz Çantayı Seçiniz</h1>
+        </div>
+    </div>
+</section>
+
+<main>
+    <div class="container margin_60_35">
+        <div class="row">
+            <div class="col-lg-12" id="templates">
+                <div class="row">
+
+                    <div class="col-lg-3 col-6">
+                        <img src="@Model.Ftp.DosyaAdresOnEki@("canta/2020.jpg")" alt="20x20 Baskı Alanı"  class="img-fluid zoom-effect" onclick="selectTemplate('@Model.Ftp.DosyaAdresOnEki@("canta/2020.jpg")')">
+                        <hr />
+                        <h4 class="text-center">20x20 Baskı Alanı</h4>
+                    </div>
+
+                    <div class="col-lg-3 col-6">
+                       <img src="@Model.Ftp.DosyaAdresOnEki@("canta/2025.jpg")" alt="20x25 Baskı Alanı"  class="img-fluid zoom-effect" onclick="selectTemplate('@Model.Ftp.DosyaAdresOnEki@("canta/2025.jpg")')">
+                        <hr />
+                        <h4 class="text-center">20x25 Baskı Alanı</h4>
+                   </div>
+
+                    <div class="col-lg-3 col-6">
+                        <img src="@Model.Ftp.DosyaAdresOnEki@("canta/2530.jpg")" alt="25x30 Baskı Alanı"  class="img-fluid zoom-effect" onclick="selectTemplate('@Model.Ftp.DosyaAdresOnEki@("canta/2530.jpg")')">
+                        <hr />
+                        <h4 class="text-center">25x30 Baskı Alanı</h4>
+                    </div>
+
+                    <div class="col-lg-3 col-6">
+                        <img src="@Model.Ftp.DosyaAdresOnEki@("canta/3035.jpg")" alt="30x35 Baskı Alanı"  class="img-fluid zoom-effect" onclick="selectTemplate('@Model.Ftp.DosyaAdresOnEki@("canta/3035.jpg")')">
+                        <hr />
+                        <h4 class="text-center">30x35 Baskı Alanı</h4>
+                    </div>
+
+                    <div class="col-lg-3 col-6">
+                        <img src="@Model.Ftp.DosyaAdresOnEki@("canta/3040.jpg")" alt="30x40 Baskı Alanı"  class="img-fluid zoom-effect" onclick="selectTemplate('@Model.Ftp.DosyaAdresOnEki@("canta/3040.jpg")')">
+                        <hr />
+                        <h4 class="text-center">30x40 Baskı Alanı</h4>
+                    </div>
+
+                    <div class="col-lg-3 col-6">
+                        <img src="@Model.Ftp.DosyaAdresOnEki@("canta/4040.jpg")" alt="40x40 Baskı Alanı" class="img-fluid zoom-effect" onclick="selectTemplate('@Model.Ftp.DosyaAdresOnEki@("canta/4040.jpg")')">
+                        <hr />
+                        <h4 class="text-center">40x40 Baskı Alanı</h4>
+                    </div>
+
+                    <div class="col-lg-3 col-6">
+                        <img src="@Model.Ftp.DosyaAdresOnEki@("canta/5040.jpg")" alt="50x40 Baskı Alanı" class="img-fluid zoom-effect" onclick="selectTemplate('@Model.Ftp.DosyaAdresOnEki@("canta/5040.jpg")')">
+                        <hr />
+                        <h4 class="text-center">50x40 Baskı Alanı</h4>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <img src="@Model.Ftp.DosyaAdresOnEki@("canta/6045.jpg")" alt="60x45 Baskı Alanı" class="img-fluid zoom-effect" onclick="selectTemplate('@Model.Ftp.DosyaAdresOnEki@("canta/6045.jpg")')">
+                        <hr />
+                        <h4 class="text-center">60x45 Baskı Alanı</h4>
+                    </div>
+               
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+@section Scripts {
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/common_scripts_min.js"></script>
+    <script src="~/js/functions.js"></script>
+    <script src="~/js/fontawesome.init.js"></script>
+    <script src="~/js/scripts-fiyatal.js"></script>
+}

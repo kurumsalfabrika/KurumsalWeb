@@ -1,0 +1,60 @@
+﻿@using Kurumsal.Core.Functions
+@model UrunViewModel
+
+@{
+    ViewData["Title"] = Model.UrunKategori.KategoriAdi;
+}
+<div class="wt-bnr-inr overlay-wraper" style="background-image:url(~/assets/images/banner/gallery-banner.jpg);">
+    <div class="overlay-main bg-black opacity-07"></div>
+    <div class="container">
+        <div class="wt-bnr-inr-entry">
+            <h1 class="text-white">@Model.UrunKategori.KategoriAdi</h1>
+        </div>
+    </div>
+</div>
+<!-- INNER PAGE BANNER END -->
+<!-- BREADCRUMB ROW -->
+<div class="bg-gray-light p-tb20">
+    <div class="container">
+        <ul class="wt-breadcrumb breadcrumb-style-2">
+            <li><a href="/anasayfa/kirilmazlar-yapi.html"><i class="fa fa-home"></i> Anasayfa</a></li>
+            <li><a href="/urunler/kirilmazlar-yapi-urunler.html"><i class="fa fa-arrow"></i> Ürünler</a></li>
+            <li>@Model.UrunKategori.KategoriAdi</li>
+        </ul>
+    </div>
+</div>
+
+<div class="section-full p-t80 p-b50">
+    <div class="container">
+
+        <div class="row">
+            @foreach (var item in Model.Urunler)
+            {
+                <div class="col-md-3 mb-3">
+                    <a href="/urun/@($"{SeoUrlGenerator.GenerateSlug(item.Baslik)}-{item.Id}.html")" class="urun-kategori-link">
+
+                        <div class="card urun-kategori-card">
+                            <div class="overflow-hidden">
+                                <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" class="card-img-top urun-img" alt="@item.Baslik" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-center">@item.Baslik</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center">
+                @if (Model.UrunKategorileri.Count == 0)
+                {
+                    <p>Ürün grubu bulunmamaktadır.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

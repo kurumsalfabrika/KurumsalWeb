@@ -1,0 +1,84 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Gökhan Eraslan İnşaat - KAYSERİ";
+}
+@model ProjeViewModel
+@using Kurumsal.Core.Functions
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.0/css/lightgallery.min.css" rel="stylesheet">
+
+<div class="detaypagetop bannermaxheight">
+    <div class="bg1"></div>
+    <div>
+        <img src="@Model.Ftp.DosyaAdresOnEki@Model.Proje.OneCikanGorsel" class="imgcover" />
+        <div class="grdbg"></div>
+        <div class="grdbgbottom"></div>
+        <div class="detaypagetoptitle txtcenter">
+
+            <h1>@Model.Proje.ProjeAdi</h1>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="container  detaypagebegin projedetail">
+    <section class="iccenter">
+        <div>
+            <div class="fullcenter projedeatil-head">
+                <div class="head">
+                   
+                    <h4>
+
+                        @Html.Raw(Model.Proje.ProjeAciklama)
+
+                    </h4>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="bgblue fullcenter">
+        <div class="photo-gallery mtop">
+            @if (Model.Fotograflar != null && Model.Fotograflar.Any())
+            {
+                <ul id="lightgallery" class="list-unstyled row">
+                    @foreach (var item in Model.Fotograflar)
+                    {
+                        <li data-src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel">
+                            <a href="#">
+                                <img class="img-responsive" src="@Model.Ftp.DosyaAdresOnEki@("k_" + item.OneCikanGorsel)" alt="">
+                            </a>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="text-center">Henüz fotoğraf bulunmamaktadır.</p>
+            }
+        </div>
+    </section>
+
+
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.0/lightgallery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.0/plugins/thumbnail/lg-thumbnail.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.0/plugins/zoom/lg-zoom.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        lightGallery(document.getElementById('lightgallery'), {
+            plugins: [lgThumbnail, lgZoom],
+            speed: 500,
+        });
+    });
+</script>

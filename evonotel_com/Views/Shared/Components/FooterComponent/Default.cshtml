@@ -1,0 +1,46 @@
+﻿@model GenelViewModel 
+       
+<!-- ========== FOOTER ========== -->
+<footer>
+    <div class="inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-6 widget">
+                    <div class="about">
+                        <a href="/anasayfa/evon-otel.html"><img class="logo" src="@Model.Ftp.DosyaAdresOnEki@Model.SiteAyar.FooterLogo" height="32" alt="Logo"></a>
+                        <p>@Model.SiteAyar.KisaHakkindaYazisi</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 widget">
+                    <h5>İletişim</h5>
+                    <address>
+                        <ul class="address_details">
+                            <li><i class="glyphicon glyphicon-map-marker"></i>@Model.Iletisim.FirmaAdres</li>
+                            <li><i class="glyphicon glyphicon-phone-alt"></i> Tel: @Model.Iletisim.Telefon1</li>
+                            <li><i class="glyphicon glyphicon-phone-alt"></i> Gsm: @Model.Iletisim.GSM</li>
+                            <li><i class="fa fa-envelope"></i> Email: <a href="mailto:@Model.Iletisim.IletisimEposta">@Model.Iletisim.IletisimEposta</a></li>
+                        </ul>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="subfooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="copyrights">
+                        Copyright 2025 <a href="index.html">Evon Otel</a> All Rights Reserved.
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="social_media">
+                        <a class="facebook" data-original-title="Facebook" data-toggle="tooltip" href="https://www.facebook.com/evonapartotel"><i class="fa fa-facebook"></i></a>
+                        <a class="instagram" data-original-title="Instagram" data-toggle="tooltip" href="https://www.instagram.com/evonotel/"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

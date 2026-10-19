@@ -1,0 +1,107 @@
+﻿@model Kurumsal.DumanSafir.WebUI.Models.PaymentModel
+<!-- BASE CSS -->
+<link href="~/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/css/style.css" rel="stylesheet">
+<link href="~/css/menu.css" rel="stylesheet">
+<link href="~/css/responsive.css" rel="stylesheet">
+<link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+<link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+<link href="~/css/magnific-popup.min.css" rel="stylesheet">
+<link href="~/css/bs-icon-font/bootstrap-icons.min.css" rel="stylesheet">
+
+<!-- SPECIFIC CSS -->
+<link href="~/css/skins/square/grey.css" rel="stylesheet">
+<link href="~/css/shop.css" rel="stylesheet">
+<link href="~/css/custom.css" rel="stylesheet">
+
+
+
+<section class="parallax_window_in short" data-parallax="scroll" data-image-src="~/img/subheader_in_3.jpg" data-natural-width="1400" data-natural-height="350">
+    <div id="sub_content_in">
+        <div class="container">
+            <h1>Online Rezervasyon</h1>
+            <p></p>
+        </div>
+    </div>
+</section>
+<main>
+
+        <div class="container margin_60_35">
+        <form method="post" action="https://cc5test.est.com.tr/servlet/est3Dgate">
+
+            <div class="form-group col-md-12 col-sm-12 col-12">
+                <label>Kart Üzerindeki İsim <sup>*</sup></label>
+                <input type="text" asp-for="RezervasyonViewModel.PaymentModel.CardHolder" autocomplete="off" name="RezervasyonViewModel.PaymentModel.CardHolder" class="form-control">
+            </div>
+            <div class="form-group col-md-12 col-sm-12 col-12">
+                <label>Kart Numarası <sup>*</sup></label>
+                <input type="text" asp-for="RezervasyonViewModel.PaymentModel.CardNumber" autocomplete="off" name="RezervasyonViewModel.PaymentModel.CardNumber" class="form-control" maxlength="16">
+            </div>
+            <div class="form-group col-md-6 col-sm-6 col-12">
+                <label>Son Kullanım (Ay)<sup>*</sup></label>
+                <input type="text" asp-for="RezervasyonViewModel.PaymentModel.Ecom_Payment_Card_ExpDate_Month" autocomplete="off" name="RezervasyonViewModel.PaymentModel.Ecom_Payment_Card_ExpDate_Month" class="form-control" maxlength="2">
+            </div>
+            <div class="form-group col-md-6 col-sm-6 col-12">
+                <label>Son Kullanım (Yıl) <sup>*</sup></label>
+                <input type="text" asp-for="RezervasyonViewModel.PaymentModel.Ecom_Payment_Card_ExpDate_Year" autocomplete="off" name="RezervasyonViewModel.PaymentModel.Ecom_Payment_Card_ExpDate_Year" class="form-control" maxlength="2">
+            </div>
+            <div class="form-group col-md-6 col-sm-6 col-12">
+                <label>Güvenlik Kodu <sup>*</sup></label>
+                <input type="text" asp-for="RezervasyonViewModel.PaymentModel.CVV" autocomplete="off" name="RezervasyonViewModel.PaymentModel.CVV" class="form-control" maxlength="3">
+            </div>
+            <div class="form-group col-md-12 col-sm-12 col-12">
+                <input type="checkbox" id="mesafeliSozlesme" name="mesafeliSozlesme" required>
+                <label for="mesafeliSozlesme">Mesafeli Satış Sözleşmesini Okudum ve Kabul Ediyorum</label>
+            </div>
+            <div class="form-group col-md-12 col-sm-12 col-12">
+                <input type="checkbox" id="kvkkAydinlatma" name="kvkkAydinlatma" required>
+                <label for="kvkkAydinlatma">KVKK Aydınlatma Metnini Okudum ve Kabul Ediyorum</label>
+            </div>
+
+            <!-- Hidden input fields -->
+            <input type="hidden" asp-for="ClientId" name="clientid">
+            <input type="hidden" asp-for="Amount" name="amount">
+            <input type="hidden" asp-for="Oid" name="oid">
+            <input type="hidden" asp-for="OkUrl" name="okUrl">
+            <input type="hidden" asp-for="FailUrl" name="failUrl">
+            <input type="hidden" asp-for="IslemTipi" name="islemtipi">
+            <input type="hidden" asp-for="Taksit" name="taksit">
+            <input type="hidden" asp-for="Rnd" name="rnd">
+            <input type="hidden" asp-for="Hash" name="hash">
+            <input type="hidden" asp-for="StoreType" name="storetype" value="3d_pay_hosting">
+            <input type="hidden" asp-for="RefreshTime" name="refreshtime">
+            <input type="hidden" asp-for="Lang" name="lang">
+            <input type="hidden" asp-for="Currency" name="currency">
+            <input type="hidden" asp-for="FirmaAdi" name="firmaadi">
+            <input type="hidden" asp-for="Fismi" name="Fismi">
+            <input type="hidden" asp-for="FaturaFirma" name="faturaFirma">
+            <input type="hidden" asp-for="Fadres" name="Fadres">
+            <input type="hidden" asp-for="Fadres2" name="Fadres2">
+            <input type="hidden" asp-for="Fil" name="Fil">
+            <input type="hidden" asp-for="Filce" name="Filce">
+            <input type="hidden" asp-for="Fpostakodu" name="Fpostakodu">
+            <input type="hidden" asp-for="Tel" name="tel">
+            <input type="hidden" asp-for="Fulkekod" name="fulkekod">
+            <input type="hidden" asp-for="NakliyeFirma" name="nakliyeFirma">
+            <input type="hidden" asp-for="Tismi" name="tismi">
+            <input type="hidden" asp-for="Tadres" name="tadres">
+            <input type="hidden" asp-for="Tadres2" name="tadres2">
+            <input type="hidden" asp-for="Til" name="til">
+            <input type="hidden" asp-for="Tilce" name="tilce">
+            <input type="hidden" asp-for="Tpostakodu" name="tpostakodu">
+            <input type="hidden" asp-for="Tulkekod" name="tulkekod">
+            <input type="hidden" asp-for="ItemNumber1" name="itemnumber1">
+            <input type="hidden" asp-for="ProductCode1" name="productcode1">
+            <input type="hidden" asp-for="Qty1" name="qty1">
+            <input type="hidden" asp-for="Desc1" name="desc1">
+            <input type="hidden" asp-for="Id1" name="id1">
+            <input type="hidden" asp-for="Price1" name="price1">
+            <input type="hidden" asp-for="Total1" name="total1">
+
+            <input type="submit" value="Devam">
+        </form>
+
+
+
+        </div>
+        </main>

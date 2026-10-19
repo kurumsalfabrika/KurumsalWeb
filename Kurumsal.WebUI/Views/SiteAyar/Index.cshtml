@@ -1,0 +1,197 @@
+﻿@using Kurumsal.Entities.Concrete
+@{
+
+    @model SiteAyarViewModel
+    ViewBag.pTitle = "SAYFA İŞLEMLERİ";
+    ViewBag.Title = "Sayfa İşlemleri";
+    ViewBag.pageTitle = "Sayfalar";
+    Layout = "~/Views/_Shared/Layouts/_layout_horizontal_topbarlight_kurumsal_web.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/assets/libs/toastr/build/toastr.min.css">
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body row">
+
+                <form id="siteAyarForm" asp-action="AddOrUpdate" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" id="editId" asp-for="SiteAyar.Id" name="Id">
+
+                    <div class="row mb-3 ">
+                        <label for="Dosya" class="col-sm-2 col-form-label">Header Logo Açık Renk</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="headerLogoSecim" asp-for="Dosya" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 ">
+                        <label for="Dosya1" class="col-sm-2 col-form-label">Header Logo Koyu Renk</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="headerLogoSecim" asp-for="Dosya1" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3 ">
+                        <label for="Dosya2" class="col-sm-2 col-form-label">Holder Logo</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="holderLogoSecim" asp-for="Dosya2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3 ">
+                        <label for="Dosya3" class="col-sm-2 col-form-label">Footer Logo</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="footerLogoSecim" asp-for="Dosya3" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3 ">
+                        <label for="Dosya4" class="col-sm-2 col-form-label">Favori İkonu</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="faviconSecim" asp-for="Dosya4" class="form-control">
+                        </div>
+                    </div>
+       
+
+                    <div class="row mb-3">
+                        <label for="HeaderLogoAciklama" class="col-sm-2 col-form-label">Header Logo Dosya Adı</label>
+                        <div class="col-sm-10">
+                            <input asp-for="SiteAyar.HolderLogoAciklama" class="form-control">
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="row mb-3">
+                        <label for="SiteURL" class="col-sm-2 col-form-label">Site URL</label>
+                        <div class="col-sm-10">
+                            <input asp-for="SiteAyar.SiteURL" class="form-control" placeholder="https://www.">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="Slogan" class="col-sm-2 col-form-label">Slogan</label>
+                        <div class="col-sm-10">
+                            <input asp-for="SiteAyar.Slogan" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="Konum" class="col-sm-2 col-form-label">Konum</label>
+                        <div class="col-sm-10">
+                            <input asp-for="SiteAyar.Konum" class="form-control">
+                        </div>
+                    </div>
+                    
+
+                    <div class="row mb-3">
+                        <label for="SiteAdi" class="col-sm-2 col-form-label">Site Adı</label>
+                        <div class="col-sm-10">
+                            <input asp-for="SiteAyar.SiteAdi" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="KisaHakkindaYazisi" class="col-sm-2 col-form-label">Kısa Hakkında Yazısı</label>
+                        <div class="col-sm-10">
+                            <input asp-for="SiteAyar.KisaHakkindaYazisi" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="HeaderCSSAlani" class="col-sm-2 col-form-label">Header CSS Alanı </label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="SiteAyar.HeaderCSSAlani" rows="5" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="BodyHTMLAlani" class="col-sm-2 col-form-label">Body HTML Alanı </label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="SiteAyar.BodyHTMLAlani" rows="5" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="FooterCSSAlani" class="col-sm-2 col-form-label">Footer CSS Alanı </label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="SiteAyar.FooterCSSAlani" rows="5" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Form Gönderim Butonu -->
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<!-- toastr plugin -->
+<script src="~/assets/libs/toastr/build/toastr.min.js"></script>
+
+<!-- toastr init -->
+<script src="~/assets/js/pages/toastr.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var fileInput = document.getElementById('headerLogoSecim');
+        var fileNameInput = document.getElementById('headerLogo');
+
+        fileInput.addEventListener('change', function () {
+            if (this.files.length > 0) {
+                var fileName = this.files[0].name;
+
+                var fileNameWithoutExtension = fileName.replace(/\.[^/.]+$/, ""); // Uzantıyı kaldır
+
+
+                fileNameInput.value = fileNameWithoutExtension; // Dosya adını input alanına yerleştir
+                // SweetAlert ile bildirim göster
+                swal("Dosya Seçildi!", "Dosya Adı alanı SEO açısından büyük önem arz etmektedir. Lütfen dosya adınızı belirlerken özen gösteriniz ve çok fazla uzun olmasın!", "success");
+            }
+        });
+    });
+
+
+
+    $(document).ready(function () {
+        $('#siteAyarForm').on('submit', function (e) {
+            e.preventDefault(); // Formun normal submit işlemini engelle
+            var formData = new FormData(this);
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: formData,
+                contentType: false, // Çoklu form verisi gönderirken false olmalı
+                processData: false, // jQuery'nin veriyi işlemesini engeller
+                success: function (response) {
+                    if (response.success) {
+                        toastr.success(response.message);
+                        // Opsiyonel olarak başka bir sayfaya yönlendirme
+                        //        window.location.href = '/desired-location';
+                    } else {
+                        toastr.error(response.message);
+                    }
+                },
+                error: function (xhr) {
+                    toastr.error("İşlem başarısız: Sunucu hatası.");
+                }
+            });
+        });
+    });
+</script>

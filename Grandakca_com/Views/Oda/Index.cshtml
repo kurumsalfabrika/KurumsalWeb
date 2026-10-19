@@ -1,0 +1,65 @@
+﻿@model OdaViewModel
+@{
+    ViewData["Title"] = "Grand Akca Otel - Alkolsüz Her Şey Dahil Aile Oteli";
+    ViewData["DescripSon"] = "Alkolsüz her şey dahil aile oteli konsepSyle Grand Akca Otel'de kadınlara, erkeklere ve ailelere özel havuzlar, aile plajı, aquapark, konforlu odalar ve seçkin lezzetler sizleri bekliyor.";
+    ViewData["Keywords"] = "grand akca otel, alkolsüz taSl, aile oteli, gazipaşa otel, kadınlara özel havuz, aile plajı, alkolsüz her şey dahil otel, gazipaşa havalimanına 5 dakika";
+}
+@using Kurumsal.Core.Functions
+<section class="breadcrumb-outer">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>ODALAR</h2>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Konaklama</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<section class="room-list" style="padding:0 !important;">
+    <div class="container">
+        <div class="list-content">
+            <div class="row">
+
+                <div class="container my-5">
+                    <div class="alert alert-light shadow-sm border-0 rounded-4 p-4" role="alert">
+     
+                        <p class="mb-0 text-dark">
+                            Modern tasarıma sahip konforlu oda seçenekleriyle huzurlu bir konaklama deneyimi sizleri bekliyor.
+                            Ailelerin ihtiyaçları düşünülerek tasarlanan ferah odalarımızda konfor ve rahatlığı bir arada yaşayabilirsiniz.
+                            Tesisimizde farklı ihtiyaçlara hitap eden oda seçenekleri bulunmaktadır.
+                        </p>
+                    </div>
+                </div>
+
+                @foreach (var item in Model.Odalar)
+                {
+                    <div class="col-lg-6 col-md-6">
+                        <div class="room-item">
+                            <div class="room-image">
+                                <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="image" />
+                            </div>
+                            <div class="room-content">
+                                <div class="room-title">
+                                    <h4>@item.OdaAdi</h4>
+                                </div>
+                                <div class="room-services-horizontal">
+                                    <div><i class="fas fa-user"></i> @item.MaxYetiskin Yetişkin</div>
+                                    <div><i class="fas fa-baby"></i> @item.MaxCocuk Çocuk</div>
+                                    <div><i class="fas fa-ruler-combined"></i> @item.OdaGenislik m²</div>
+                                </div>
+                                <p>@item.SpotMetin</p>
+                                <div class="room-btns">
+                                    <a href="@Url.Content("~/odadetay/" + SeoUrlGenerator.GenerateSlug(item.OdaAdi) + "-" + item.Id + ".html")" class="btn btn-black mar-right-10">DETAY</a>
+                                    <a href="https://grand-akca.rezervasyonal.com/" target="_blank" class="btn btn-orange">REZERVASYON</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

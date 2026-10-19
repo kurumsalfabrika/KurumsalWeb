@@ -1,0 +1,310 @@
+﻿@model RezervasyonViewModel
+
+
+@section Styles {
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <!-- BASE CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.min.css" rel="stylesheet">
+    <link href="~/css/bs-icon-font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="~/pro/css/all.css" rel="stylesheet" />
+    <link href="~/css/shop.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <!-- SPECIFIC CSS -->
+    <link href="~/css/carousel_home.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <!-- YOUR CUSTOM CSS -->
+    <link href="~/css/custom.css" rel="stylesheet">
+}
+
+<section class="parallax_window_in short" data-parallax="scroll" data-image-src="~/img/subheader_in_3.jpg" data-natural-width="1400" data-natural-height="350">
+    <div id="sub_content_in">
+        <div class="container">
+            <h1>Online Rezervasyon</h1>
+            <p></p>
+        </div>
+    </div>
+</section>
+<main>
+    <form asp-action="Payment" asp-controller="Rezervasyon" method="post">
+        <div class="container margin_60_35">
+            <div class="checkout-page">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="billing-details">
+                            <div class="shop-form">
+                                <div class="default-title">
+                                    <h2>Kredi Kartı ile Ödeme</h2>
+                                </div>
+                                <div class="row">
+
+
+                                    <input type="hidden" asp-for="@Model.Oda" name="Oda">
+                                    <input type="hidden" asp-for="@Model.Ftp" name="Ftp">
+                                    <input type="hidden" asp-for="@Model.SiteAyar" name="SiteAyar">
+                                    <input type="hidden" asp-for="@Model.OdaKategoriler" name="OdaKategoriler">
+                                    <input type="hidden" asp-for="@Model.Odalar" name="Odalar">
+
+                                    <input type="hidden" id="convertedAmount" name="convertedAmount" />
+                                    <input type="hidden" id="selectedCurrency" name="selectedCurrency" />
+
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.Id" name="Rezervasyon.Id">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.UserId" name="Rezervasyon.UserId">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.AdSoyad" name="Rezervasyon.AdSoyad">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.Eposta" name="Rezervasyon.Eposta">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.Telefon" name="Rezervasyon.Telefon">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.Not" name="Rezervasyon.Not">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.OdaId" name="Rezervasyon.OdaId">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.GirisTarihi" name="Rezervasyon.GirisTarihi">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.CikisTarihi" name="Rezervasyon.CikisTarihi">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.ToplamGun" name="Rezervasyon.ToplamGun">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.GunlukUcret" name="Rezervasyon.GunlukUcret">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.ToplamTutar" name="Rezervasyon.ToplamTutar">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.TCKimlikNo" name="Rezervasyon.TCKimlikNo">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.VergiNo" name="Rezervasyon.VergiNo">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.FirmaAdi" name="Rezervasyon.FirmaAdi">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.FaturaAdresi" name="Rezervasyon.FaturaAdresi">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.VergiDairesi" name="Rezervasyon.VergiDairesi">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.OdemeKayitId" name="Rezervasyon.OdemeKayitId">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.Durum" name="Rezervasyon.Durum">
+                                    <input type="hidden" asp-for="@Model.Rezervasyon.KayitIP" name="Rezervasyon.KayitIP">
+
+
+                   
+                                    <input type="hidden" name="Amount" id="amount" asp-for="@Model.PaymentViewModel.TotalAmount" />
+                                    <input type="hidden" name="TotalAmount" asp-for="@Model.PaymentViewModel.TotalAmount" />
+
+
+
+                                    <div class="form-group col-md-12 col-sm-12 col-12">
+                                        <label>Kart Üzerindeki İsim <sup>*</sup></label>
+                                        <input type="text" asp-for="@Model.PaymentViewModel.CardHolderName" autocomplete="off" name="CardHolderName" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-12">
+                                        <label>Kart Numarası <sup>*</sup></label>
+                                        <input type="text" asp-for="@Model.PaymentViewModel.CardNumber" autocomplete="off" name="CardNumber" class="form-control" maxlength="16">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-12">
+                                        <label>Son Kullanım (Ay)<sup>*</sup></label>
+                                        <input type="text" asp-for="@Model.PaymentViewModel.ExpireMonth" autocomplete="off" name="ExpireMonth" class="form-control" maxlength="2">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-12">
+                                        <label>Son Kullanım (Yıl) <sup>*</sup></label>
+                                        <input type="text" asp-for="@Model.PaymentViewModel.ExpireYear" autocomplete="off" name="ExpireYear" class="form-control" maxlength="2">
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-12">
+                                        <label>Güvenlik Kodu <sup>*</sup></label>
+                                        <input type="text" asp-for="@Model.PaymentViewModel.CvvCode" autocomplete="off" name="CvvCode" class="form-control" maxlength="3">
+                                    </div>                                  
+           
+                                    <div class="form-group col-md-12 col-sm-12 col-12">
+                                        <input type="checkbox" id="mesafeliSozlesme" name="mesafeliSozlesme" required>
+                                        <label for="mesafeliSozlesme">
+                                            <a href="#" data-toggle="modal" data-target="#mesafeliSozlesmeModal">Mesafeli Satış Sözleşmesini Okudum ve Kabul Ediyorum</a>
+                                        </label>
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-12">
+                                        <input type="checkbox" id="kvkkAydinlatma" name="kvkkAydinlatma" required>
+                                        <label for="kvkkAydinlatma">
+                                            <a href="#" data-toggle="modal" data-target="#kvkkAydinlatmaModal">KVKK Aydınlatma Metnini Okudum ve Kabul Ediyorum</a>
+                                        </label>
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-12">
+                                        <button type="submit" class="btn_full">Ödeme Yap <i class="icon-left"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="your-order">
+                            <div class="default-title" style="margin-bottom:0;">
+                                <h2>Sipariş Detayı</h2>
+                            </div>
+                            <ul class="orders-table">
+                                <li class="clearfix">
+                                    <div class="col" style="text-transform:none;">
+                                        <img src="@Model.Ftp.DosyaAdresOnEki@Model.Oda.OneCikanGorsel" width="50" height="50" alt=""> @Model.Oda.OdaAdi
+                                    </div>
+                                    <div class="col second">
+                                        <span id="gunlukUcretSpan">@Model.Rezervasyon.GunlukUcret.ToString("N2")</span> <span id="dovizSembol">@Model.Rezervasyon.GunlukUcretDovizAdi</span>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="col-12 text-center">
+                                        Giriş Tarihi: <span class="bold" id="girisTarihiSpan">@Model.Rezervasyon.GirisTarihi.ToString("dd.MM.yyyy")</span> - Çıkış Tarihi:<span class="bold" id="cikisTarihiSpan">@Model.Rezervasyon.CikisTarihi.ToString("dd.MM.yyyy")</span> / <span class="bold" id="gunSayisiSpan">@Model.Rezervasyon.ToplamGun</span> Gün
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="col" style="text-transform:none;">
+                                        Ara Toplam
+                                    </div>
+                                    <div class="col second">
+                                        <span id="toplamTutarSpan">@Model.Rezervasyon.ToplamTutar.ToString("N2")</span> <span id="dovizSembolGenel">@Model.Rezervasyon.GunlukUcretDovizAdi</span>
+                                    </div>
+                                </li>
+                                <li class="clearfix total">
+                                    <div class="col">
+                                        <strong>Çekilecek Tutar</strong>
+                                    </div>
+                                    <div class="col second">
+                                        <span class="bold" id="genelToplamSpan">@Model.Rezervasyon.ToplamTutar.ToString("N2") </span><span id="dovizSembolGenel">@Model.Rezervasyon.GunlukUcretDovizAdi</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+              
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</main>
+
+<div class="modal fade" id="mesafeliSozlesmeModal" tabindex="-1" role="dialog" aria-labelledby="mesafeliSozlesmeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mesafeliSozlesmeModalLabel">Mesafeli Satış Sözleşmesi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Mesafeli Satış Sözleşmesi</strong></p>
+                <p>Bu sözleşme, Mevlana Mah. Elçibey Cad. No:34 Talas/KAYSERİ adresinde bulunan Duman Safir Rezidans ile aşağıda belirtilen niteliklerde hizmet alan müşteri ("Alıcı") arasında düzenlenmiştir.</p>
+                <h6>1. Taraflar</h6>
+                <p>
+                    <strong>Satıcı:</strong><br>
+                    Duman Safir Rezidans<br>
+                    Adres: Mevlana Mah. Elçibey Cad. No:34 Talas/KAYSERİ<br>
+                    Telefon: +90 352 513 36 26, +90 551 974 17 11, +90 551 986 62 67, +90 554 120 27 62<br>
+                    E-Posta: info@dumansafir.com
+                </p>
+                <p>
+                    <strong>Alıcı:</strong><br>
+                    @Model.Rezervasyon.AdSoyad<br />
+                    Adres: @Model.Rezervasyon.FaturaAdresi<br />
+                    Telefon : @Model.Rezervasyon.Telefon<br />
+                    E-Posta : @Model.Rezervasyon.Eposta
+                </p>
+                <h6>2. Sözleşmenin Konusu</h6>
+                <p>Bu sözleşmenin konusu, Alıcı'nın Satıcı'ya ait internet sitesinden elektronik ortamda siparişini yaptığı aşağıda nitelikleri ve satış fiyatı belirtilen hizmetin satışı ve teslimi ile ilgili olarak 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri gereğince tarafların hak ve yükümlülüklerinin belirlenmesidir.</p>
+                <h6>3. Hizmetin Nitelikleri ve Fiyatı</h6>
+                <p>Hizmetin türü, süresi, toplam bedeli ve ödeme şekli, Alıcı tarafından yapılan rezervasyon işlemleri sırasında belirtilen şekildedir. Satıcı, hizmetin niteliklerini ve fiyatını dilediği zaman değiştirme hakkını saklı tutar.</p>
+               <p>
+                   <table>
+                        <thead>
+                           <td>Hizmet Açıklaması</td>
+                           <td>Tutar</td>
+                      
+                       </thead>
+                       <tbody>
+                           <tr>
+                                <td>
+                                    @Model.Oda.OdaAdi (     Giriş Tarihi: <span class="bold" id="girisTarihiSpan">@Model.Rezervasyon.GirisTarihi.ToString("dd.MM.yyyy")</span> - Çıkış Tarihi:<span class="bold" id="cikisTarihiSpan">@Model.Rezervasyon.CikisTarihi.ToString("dd.MM.yyyy")</span> / <span class="bold" id="gunSayisiSpan">@Model.Rezervasyon.ToplamGun</span> Gün
+                                    )
+                                </td>
+                                <td>
+                                    @Model.Rezervasyon.ToplamTutar.ToString("N2") @Model.Rezervasyon.GunlukUcretDovizAdi
+                                </td>
+                           </tr>
+                       </tbody>
+                   </table>
+               </p>
+                
+                <h6>4. Teslimat ve İfa</h6>
+                <p>Hizmetin ifası, rezervasyon sırasında belirlenen tarihler arasında yapılacaktır. Satıcı, hizmetin ifasını mücbir sebeplerle veya Alıcı'nın ödeme işlemlerinde yaşanan aksaklıklar nedeniyle yerine getirememe hakkına sahiptir.</p>
+                <h6>5. Cayma Hakkı</h6>
+                <p>Alıcı, hizmetin ifasına 24 saat kalana kadar cayma hakkını kullanabilir. Cayma hakkının kullanılması için bu süre içinde Satıcı'ya yazılı olarak veya kalıcı veri saklayıcısı ile bildirimde bulunulması gerekmektedir. Cayma hakkının kullanılması durumunda, Alıcı'dan alınan ücret iade edilecektir.</p>
+                <h6>6. Uyuşmazlıkların Çözümü</h6>
+                <p>Bu sözleşmeden doğacak uyuşmazlıklarda, Tüketici Hakem Heyetleri ve Tüketici Mahkemeleri yetkilidir.</p>
+                <p>Bu sözleşme, taraflarca okunarak kabul edilmiş ve elektronik ortamda onaylanmıştır.</p>
+                <p>Duman Safir Rezidans</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="kvkkAydinlatmaModal" tabindex="-1" role="dialog" aria-labelledby="kvkkAydinlatmaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="kvkkAydinlatmaModalLabel">KVKK Aydınlatma Metni</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, kişisel verileriniz; veri sorumlusu olarak Mevlana Mah. Elçibey Cad. No:34 Talas/KAYSERİ adresinde bulunan Duman Safir Rezidans (“Şirket”) tarafından aşağıda açıklanan kapsamda işlenebilecektir.</p>
+                <h6>2. Kişisel Verilerin Hangi Amaçla İşleneceği</h6>
+                <p>Toplanan kişisel verileriniz, Şirket tarafından sağlanan hizmetlerden faydalanmanız amacıyla; Şirket’in ticari ve iş stratejilerinin belirlenmesi ve uygulanması amacıyla; Şirket’in ve Şirket ile iş ilişkisi içerisinde olan kişilerin hukuki ve ticari güvenliğinin temini amacıyla; Şirket’in sunduğu ürün ve hizmetlerin ilgili kişilerin beğeni, kullanım alışkanlıkları ve ihtiyaçlarına göre özelleştirilerek ilgili kişilere önerilmesi amacıyla işlenebilecektir.</p>
+                <h6>3. İşlenen Kişisel Verilerin Kimlere ve Hangi Amaçla Aktarılabileceği</h6>
+                <p>Toplanan kişisel verileriniz; yukarıda belirtilen amaçlarla sınırlı olmak üzere, iş ortaklarımıza, tedarikçilerimize, kanunen yetkili kamu kurumlarına ve özel kişilere, KVKK’nın 8. ve 9. maddelerinde belirtilen kişisel veri işleme şartları ve amaçları çerçevesinde aktarılabilecektir.</p>
+                <h6>4. Kişisel Veri Toplamanın Yöntemi ve Hukuki Sebebi</h6>
+                <p>Kişisel verileriniz, Şirketimiz tarafından farklı kanallar ve farklı hukuki sebeplere dayanarak; Şirketimiz tarafından sunulan ürün ve hizmetlerin belirlenen yasal çerçevede sunulabilmesi ve bu kapsamda Şirketimizin sözleşme ve kanundan doğan mesuliyetlerini tam ve gereği gibi yerine getirebilmesi amacıyla toplanmaktadır. Bu hukuki sebeplerle toplanan kişisel verileriniz KVKK’nın 5. ve 6. maddelerinde belirtilen kişisel veri işleme şartları ve amaçları kapsamında işlenebilmekte ve aktarılabilmektedir.</p>
+                <h6>5. Kişisel Veri Sahibi Olarak KVKK’nın 11. Maddesinde Sayılan Haklarınız</h6>
+                <p>Kişisel veri sahipleri olarak, haklarınıza ilişkin taleplerinizi aşağıda belirtilen iletişim bilgileri vasıtasıyla Şirketimize iletebilirsiniz. Şirketimiz, talebin niteliğine göre talebi en kısa sürede ve en geç otuz (30) gün içinde ücretsiz olarak sonuçlandıracaktır.</p>
+                <h6>İletişim Bilgileri:</h6>
+                <p>Adres: Mevlana Mah. Elçibey Cad. No:34 Talas/KAYSERİ</p>
+                <p>Telefonlar: +90 352 513 36 26, +90 551 974 17 11, +90 551 986 62 67, +90 554 120 27 62</p>
+                <p>E-Posta: info@dumansafir.com</p>
+                <p>Bu kapsamda, kişisel veri sahipleri;</p>
+                <ul>
+                    <li>Kişisel veri işlenip işlenmediğini öğrenme,</li>
+                    <li>Kişisel verileri işlenmişse buna ilişkin bilgi talep etme,</li>
+                    <li>Kişisel verilerin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme,</li>
+                    <li>Yurt içinde veya yurt dışında kişisel verilerin aktarıldığı üçüncü kişileri bilme,</li>
+                    <li>Kişisel verilerin eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme ve bu kapsamda yapılan işlemin kişisel verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme,</li>
+                    <li>KVKK ve ilgili diğer kanun hükümlerine uygun olarak işlenmiş olmasına rağmen, işlenmesini gerektiren sebeplerin ortadan kalkması hâlinde kişisel verilerin silinmesini veya yok edilmesini isteme ve bu kapsamda yapılan işlemin kişisel verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme,</li>
+                    <li>İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle kişinin kendisi aleyhine bir sonucun ortaya çıkmasına itiraz etme,</li>
+                    <li>Kişisel verilerin kanuna aykırı olarak işlenmesi sebebiyle zarara uğraması hâlinde zararın giderilmesini talep etme</li>
+                </ul>
+                <p>haklarına sahiptir.</p>
+                <p>DUMAN Safir Rezidans olarak kişisel verilerinizin güvenliği hususuna azami hassasiyet göstermekteyiz. Bu bilinçle, müşterilerimizin, tedarikçilerimizin, çalışanlarımızın ve iş ilişkisi içerisinde bulunduğumuz diğer gerçek kişilere ait her türlü kişisel verilerin KVKK’ya uygun olarak işlenmesine ve korunmasına büyük önem veriyoruz.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Common scripts -->
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/common_scripts_min.js"></script>
+    <script src="~/js/functions.js"></script>
+    <!--Owl carousel/slider -->
+    <script src="~/js/slider.js"></script>
+    <!-- Specific scripts -->
+    <script src="~/js/jquery.validate.js"></script>
+    <script src="~/js/jquery.stepy.min.js"></script>
+    <script src="~/js/quotation-validate.js"></script>
+}
+<script>
+
+
+    document.querySelector('button[type="submit"]').addEventListener('click', function (event) {
+        if (!document.getElementById('mesafeliSozlesme').checked || !document.getElementById('kvkkAydinlatma').checked) {
+            event.preventDefault(); // Ödeme işlemini engelle
+            alert('Lütfen Mesafeli Satış Sözleşmesini ve KVKK Aydınlatma Metnini kabul edin.'); // Kullanıcıya uyarı mesajı göster
+        } else {
+            updateHiddenInputs();
+        }
+    });
+</script>
+
+
+

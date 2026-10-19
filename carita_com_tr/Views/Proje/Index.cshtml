@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Gökhan Eraslan İnşaat - KAYSERİ";
+}
+@model ProjeViewModel
+@using Kurumsal.Core.Functions
+
+
+
+<div class="detaypagetop">
+    <div class="bg1"></div>
+    <div>
+        <img src="~/img/altbanner2.jpg" class="imgcover" />
+        <div class="grdbg"></div>
+        <div class="grdbgbottom"></div>
+        <div class="detaypagetoptitle txtcenter">
+            <h1>PROJELER</h1>
+        </div>
+    </div>
+
+</div>
+<div class="pagedetail">
+    <div class="alttabmenu">
+        <button class="menu-toggle">
+            <p>Tüm Projeler</p>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+
+        <div id="filter" class="filter-menu">
+            <button class="button filtering-button" data-filter="all">Tüm Projeler</button>
+            <button class="button filtering-button" data-filter="DevamEden">Devam Eden Projeler</button>
+            <button class="button filtering-button" data-filter="Tamamlanmis">Tamamlanan Projeler</button>
+        </div>
+
+
+    </div>
+
+
+    <div class="projelist">
+        <div class="treediv proje">
+            @foreach (var item in Model.InsaatProjeler.OrderBy(x => x.Sira))
+            {
+                <div data-status="@item.ProjeDurumu.ToString()">
+                    <a href="@Url.Content("~/proje-detay/" + SeoUrlGenerator.GenerateSlug(item.ProjeAdi) + "-" + item.Id + ".html")">
+                        <div class="zoom">
+                            <img src="@Model.Ftp.DosyaAdresOnEki@("k_" + item.OneCikanGorsel)" class="imgcover" />
+                            <div class="bg30"></div>
+                            <div class="div-shape-alan">
+                                <div class="projetitle">
+                                    <h1>
+                                        @item.ProjeAdi
+                                        <p><img src="img/next.svg"></p>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.filtering-button'); // Filtreleme butonları
+        const projects = document.querySelectorAll('.treediv.proje > div'); // Proje listesi
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const filter = this.getAttribute('data-filter'); // Hangi filtre seçildi
+
+                // Projeleri filtrele
+                projects.forEach(project => {
+                    const status = project.getAttribute('data-status');
+                    if (filter === 'all' || status === filter) {
+                        project.style.display = 'block'; // Görünür yap
+                    } else {
+                        project.style.display = 'none'; // Gizle
+                    }
+                });
+
+                // Aktif sınıfı ayarla
+                buttons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    });
+</script>

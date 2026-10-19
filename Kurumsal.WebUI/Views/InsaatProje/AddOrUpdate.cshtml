@@ -1,0 +1,375 @@
+﻿@{
+
+    @model InsaatProjeViewModel
+    ViewBag.pTitle = "PROJE İŞLEMLERİ";
+    ViewBag.Title = "InsaatProje İşlemleri";
+    ViewBag.pageTitle = "InsaatProjelar";
+    Layout = "~/Views/_Shared/Layouts/_layout_horizontal_topbarlight_kurumsal_web.cshtml";
+}
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form asp-action="AddOrUpdate" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" id="editSayfaId" asp-for="InsaatProje.Id" name="InsaatProje.Id">
+
+                    <div class="row mb-3">
+                        <label for="Sira" class="col-sm-2 col-form-label">Sıra</label>
+                        <div class="col-sm-10">
+                            <input asp-for="InsaatProje.Sira" type="number" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="Baslik" class="col-sm-2 col-form-label">Başlık</label>
+                        <div class="col-sm-10">
+                            <input asp-for="InsaatProje.ProjeAdi" class="form-control" placeholder="Proje Adı">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Durum">Proje Durumu</label>
+               
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="Baslik" class="col-sm-2 col-form-label">Başlık</label>
+                        <div class="col-sm-10">
+                            <select asp-for="InsaatProje.ProjeDurumu" class="form-control" asp-items="Model.ProjeDurumlari">
+                                <option value="">Seçiniz</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="ProjeAciklama" class="col-sm-2 col-form-label">Proje Açıklama</label>
+                        <div class="col-sm-10">
+                            <textarea id="elm2" asp-for="InsaatProje.ProjeAciklama" for="InsaatProje.ProjeAciklama" name="InsaatProje.ProjeAciklama"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3">
+                        <label for="OneCikanGorsel" class="col-sm-2 col-form-label">Öne Çıkan Görsel</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="oneCikanGorsel" asp-for="Dosya" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="DosyaAdi" class="col-sm-2 col-form-label">Dosya Adı</label>
+                        <div class="col-sm-10">
+                            <input id="dosyaAdi" asp-for="InsaatProje.OneCikanGorsel" class="form-control">
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3">
+                        <textarea id="elm1" asp-for="InsaatProje.Icerik" for="InsaatProje.Icerik" name="InsaatProje.Icerik"></textarea>
+                    </div>
+
+
+                    <!-- SEO Açıklama -->
+                    <div class="row mb-3">
+                        <label for="SEOAciklama" class="col-sm-2 col-form-label">SEO Açıklama</label>
+                        <div class="col-sm-10">
+                            <input asp-for="InsaatProje.SEOAciklama" class="form-control" placeholder="SEO Açıklama Metni">
+                        </div>
+                    </div>
+
+
+
+                    <!-- SEO Kelimeler -->
+                    <div class="row mb-3">
+                        <label for="SEOKelimeler" class="col-sm-2 col-form-label">SEO Kelimeler</label>
+                        <div class="col-sm-10">
+                            <input asp-for="InsaatProje.SEOKelimeler" class="form-control" placeholder="SEO Kelimelerini ,(virgül) ile ayırarak giriniz">
+                        </div>
+                    </div>
+
+
+
+                    <!-- Form Gönderim Butonu -->
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+
+
+
+                </form>
+                <hr>
+                <h4>İç Mekan Fotoğrafları</h4>
+                <div class="row">
+                    @if (Model?.IcMekanGorselleri != null && Model.IcMekanGorselleri.Any())
+                    {
+                        @foreach (var fotograf in Model.IcMekanGorselleri)
+                        {
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="@Model.Ftp.DosyaAdresOnEki@("k_" + fotograf.OneCikanGorsel)" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <button class="btn btn-danger col-12" onclick="deleteFoto(@fotograf.Id)">Sil</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="col-12">
+                            <p>Görüntülenecek iç mekan görselleri bulunamadı.</p>
+                        </div>
+                    }
+
+                </div>
+                <hr>
+                <h4>İç Mekan Fotoğraf Ekle</h4>
+                <form id="icMekanFotoEkleForm">
+                    <div class="row mb-3">
+                        <div class="col-sm-10">
+                            <input type="file" id="newFoto" name="newFoto" class="form-control">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-success" onclick="addIcMekanFoto(@Model.InsaatProje.Id)">Ekle</button>
+                        </div>
+                    </div>
+                </form>
+
+
+                <hr>
+                <h4>Dış Mekan Fotoğrafları</h4>
+                <div class="row">
+                    @if (Model?.DisMekanGorselleri != null && Model.DisMekanGorselleri.Any())
+                    {
+                        @foreach (var fotograf in Model.DisMekanGorselleri)
+                        {
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="@Model.Ftp.DosyaAdresOnEki@("k_" + fotograf.OneCikanGorsel)" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <button class="btn btn-danger col-12" onclick="deleteFoto(@fotograf.Id)">Sil</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="col-12">
+                            <p>Görüntülenecek iç mekan görselleri bulunamadı.</p>
+                        </div>
+                    }
+
+                </div>
+                <hr>
+                <h4>Dış Mekan Fotoğraf Ekle</h4>
+                <form id="disMekanFotoEkleForm">
+                    <div class="row mb-3">
+                        <div class="col-sm-10">
+                            <input type="file" id="newDisFoto" name="newDisFoto" class="form-control">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-success" onclick="addDisMekanFoto(@Model.InsaatProje.Id)">Ekle</button>
+                        </div>
+                    </div>
+                </form>
+
+                <hr>
+                <h4>Kroki Fotoğrafları</h4>
+                <div class="row">
+                    @if (Model?.KrokiGorselleri != null && Model.KrokiGorselleri.Any())
+                    {
+                        @foreach (var fotograf in Model.KrokiGorselleri)
+                        {
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="@Model.Ftp.DosyaAdresOnEki@("k_" + fotograf.OneCikanGorsel)" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <button class="btn btn-danger col-12" onclick="deleteFoto(@fotograf.Id)">Sil</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="col-12">
+                            <p>Görüntülenecek iç mekan görselleri bulunamadı.</p>
+                        </div>
+                    }
+
+                </div>
+                <hr>
+                <h4>Kroki Fotoğraf Ekle</h4>
+                <form id="krokiFotoEkleForm">
+                    <div class="row mb-3">
+                        <div class="col-sm-10">
+                            <input type="file" id="newKrokiFoto" name="newKrokiFoto" class="form-control">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-success" onclick="addKrokiFoto(@Model.InsaatProje.Id)">Ekle</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<!--tinymce js-->
+<script src="~/assets/libs/tinymce/tinymce.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/form-editor.init.js"></script>
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Sweet alert init js-->
+<script src="~/assets/js/pages/sweet-alerts.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var fileInput = document.getElementById('oneCikanGorsel');
+        var fileNameInput = document.getElementById('dosyaAdi');
+
+        fileInput.addEventListener('change', function () {
+            if (this.files.length > 0) {
+                var fileName = this.files[0].name;
+
+                var fileNameWithoutExtension = fileName.replace(/\.[^/.]+$/, ""); // Uzantıyı kaldır
+
+
+                fileNameInput.value = fileNameWithoutExtension; // Dosya adını input alanına yerleştir
+                // SweetAlert ile bildirim göster
+                swal("Dosya Seçildi!", "Dosya Adı alanı SEO açısından büyük önem arz etmektedir. Lütfen dosya adınızı belirlerken özen gösteriniz ve çok fazla uzun olmasın!", "success");
+            }
+        });
+
+        // Fonksiyonu bir değişkene atayarak kullanıma hazırla
+        var showSweetAlert = function () {
+            swal({
+                title: "Dosya Adı Düzenleme",
+                text: "Dosya Adı alanı SEO açısından büyük önem arz etmektedir. Lütfen dosya adınızı belirlerken özen gösteriniz ve çok fazla uzun olmasın!",
+                icon: "info",
+                button: "Tamam",
+            }).then((value) => {
+                // SweetAlert gösterildikten sonra, olay dinleyicisini kaldır
+                fileNameInput.removeEventListener('click', showSweetAlert);
+            });
+        };
+
+        // Olay dinleyicisini ekle
+        fileNameInput.addEventListener('click', showSweetAlert);
+    });
+    function addIcMekanFoto(urunId) {
+        var formData = new FormData();
+        var fileInput = document.getElementById('newFoto');
+        var file = fileInput.files[0];
+        formData.append('dosya', file);
+
+        $.ajax({
+            url: '/InsaatProje/AddIcMekanFoto?urunId=' + urunId,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function () {
+                alert('Fotoğraf eklenirken bir hata oluştu.');
+            }
+        });
+    }
+    function addDisMekanFoto(urunId) {
+        var formData = new FormData();
+        var fileInput = document.getElementById('newDisFoto');
+        var file = fileInput.files[0];
+        formData.append('dosya', file);
+
+        $.ajax({
+            url: '/InsaatProje/AddDisMekanFoto?urunId=' + urunId,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function () {
+                alert('Fotoğraf eklenirken bir hata oluştu.');
+            }
+        });
+    }
+    function addKrokiFoto(urunId) {
+        var formData = new FormData();
+        var fileInput = document.getElementById('newKrokiFoto');
+        var file = fileInput.files[0];
+        formData.append('dosya', file);
+
+        $.ajax({
+            url: '/InsaatProje/AddKrokiFoto?urunId=' + urunId,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function () {
+                alert('Fotoğraf eklenirken bir hata oluştu.');
+            }
+        });
+    }
+    
+    function deleteFoto(id) {
+        swal({
+            title: "Emin misiniz?",
+            text: "Bu fotoğrafı silmek istediğinizden emin misiniz?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: '/InsaatProje/DeleteFoto?id=' + id,
+                    type: 'POST',
+                    success: function (response) {
+                        if (response.success) {
+                            location.reload();
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Fotoğraf silinirken bir hata oluştu.');
+                    }
+                });
+            }
+        });
+    }
+</script>

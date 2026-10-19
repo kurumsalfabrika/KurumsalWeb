@@ -1,0 +1,525 @@
+﻿@using Kurumsal.Core.Functions
+@model GenelViewModel
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<!-- Main Slider Two Start -->
+<section class="main-slider-two">
+    <div class="swiper-container main-slider-two__carousel">
+        <div class="swiper-wrapper">
+           @foreach (var item in Model.Sliderlar)
+            {
+                <div class="swiper-slide">
+         
+                    <div class="main-slider-two__shpae-bg-2"></div>
+                    <div class="main-slider-two__shpae-bg-3"></div>
+                    <div class="main-slider-two__bg-box">
+                        <div class="main-slider-two__bg"
+                        style="background-image: url(@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel);">
+                        </div><!-- /.slider-one__bg -->
+                    </div>
+                   <div class="container">
+                        <div class="main-slider-two__content">
+
+                            <h2 class="main-slider-two__title">
+                                @item.SliderBaslik
+                            </h2>
+                            <p class="main-slider-two__text">
+                                @item.IkinciSatir
+                            </p>
+                            <div class="main-slider-two__btn-box">
+                                <div class="main-slider-two__btn">
+                                    <a class="thm-btn" href="@item.SliderURL">
+                                        @item.ButonYazisi
+                                        <span class="fas fa-arrow-right"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="swiper-pagination" id="main-slider-two-pagination"></div>
+    </div>
+</section>
+
+
+
+<!--Feature One Start -->
+<section class="feature-one">
+    <div class="container">
+        <div class="feature-one__inner">
+            <div class="row">
+
+
+                @foreach (var item in Model.UrunKategoriler)
+                {
+                    <div class="col-xl-6 col-lg-12 wow fadeInLeft"
+                          data-wow-delay="100ms">
+
+                        <div class="feature-one__single">
+
+                            <div class="feature-one__single-inner">
+                                <div class="row align-items-center">
+
+                                    <!-- Görsel alanı -->
+                                    <div class="col-4">
+                                        <img style="border-radius:10px; border:#dedede solid 1px;" class="img-fluid feature-category-image "
+                                             src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel"
+                                             alt="@item.KategoriAdi" />
+                                    </div>
+
+                                    <!-- İçerik alanı -->
+                                    <div class="col-8">
+                                        <h3 class="feature-one__title">
+                                            @item.KategoriAdi
+                                        </h3>
+
+                                        <p class="feature-one__text">
+                                            @item.KategoriAciklama
+                                        </p>
+
+                                        <div class="feature-one__read-more">
+                                            <a href="residential-construction.html">
+                                                Ürünler
+                                                <span class="fas fa-arrow-right"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="feature-one__icon">
+                                <span class="icon-construction-method"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+    
+            </div>
+        </div>
+    </div>
+</section>
+<!--Feature One End -->
+<!--About Three Start -->
+<section class="about-three">
+    <div class="about-three__shape-1 float-bob-y">
+        <img src="assets/images/shapes/about-three-shape-1.png" alt="">
+    </div>
+    <div class="about-three__shape-2 img-bounce">
+        <img src="assets/images/shapes/about-three-shape-2.png" alt="">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="about-three__left">
+                    <div class="section-title text-left sec-title-animation animation-style2">
+                        <div class="section-title__tagline-box">
+                            <div class="section-title__tagline-shape"></div>
+                            <span class="section-title__tagline">HAKKIMIZDA</span>
+                        </div>
+                        <h2 class="section-title__title title-animation">
+                            Yapılarınız İçin Güçlü ve Estetik Çözümler Üretiyoruz
+                        </h2>
+                    </div>
+                    <p class="about-three__text">
+                        “1991’den Bugüne Kalite, Güven ve Tecrübe”
+                    </p>
+                    <p class="about-three__text-2">
+                        Yüksek kaliteli alüminyum ürünleri, mimari cephe sistemleri ve doğrama çözümleriyle projelerinize değer katıyoruz.
+                    </p>
+                    <div class="about-three__tab tab-box">
+                        <ul class="tabs-button-box list-unstyled clearfix">
+                            <li data-tab="#mission" class="tab-btn-item active-btn">
+                                <h3>MİSYONUMUZ</h3>
+                            </li>
+                            <li data-tab="#vision" class="tab-btn-item">
+                                <h3>VİZYONUMUZ</h3>
+                            </li>
+                            <li data-tab="#commitment" class="tab-btn-item">
+                                <h3> DEĞERLERİMİZ</h3>
+                            </li>
+                        </ul>
+                        <div class="tabs-content tabs-content-box">
+                            <!--Start Single Tab Content-->
+                            <div class="tab tab-active" id="mission">
+                                <div class="about-three__single-tab">
+                                    <div class="about-three__single-tab-inner">
+                                        <div class="about-three__single-tab-text">
+                                            <p>
+                                                Müşterilerimizin ihtiyaçlarına uygun, dayanıklı ve estetik çözümler sunarak projelerin her aşamasında güvenilir bir çözüm ortağı olmak.
+                                            </p>
+                                        </div>
+                                        <ul class="about-three__single-tab-bottom-list list-unstyled">
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="fas fa-check"></span>
+                                                </div>
+                                                <p>
+                                                    Yüksek kaliteli ve güvenilir ürünler sunmak.
+                                                </p>
+                                            </li>
+
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="fas fa-check"></span>
+                                                </div>
+                                                <p>
+                                                    Müşteri ihtiyaçlarına özel çözümler geliştirmek.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="fas fa-check"></span>
+                                                </div>
+                                                <p>
+                                                    Güncel teknolojileri ve sektörel yenilikleri takip etmek.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="fas fa-check"></span>
+                                                </div>
+                                                <p>
+                                                    Satış öncesi ve sonrası kesintisiz destek sağlamak.
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Single Tab Content-->
+                            <!--Start Single Tab Content-->
+                            <div class="tab " id="vision">
+                                <div class="about-three__single-tab">
+                                    <div class="about-three__single-tab-inner">
+                                        <div class="about-three__single-tab-text">
+                                            <p>
+                                                Alüminyum, PVC doğrama ve mimari cephe sistemlerinde yenilikçi uygulamalarıyla fark yaratan; bölgesinde ve sektöründe öncü bir marka olmak.
+                                            </p>
+                                        </div>
+                                        <ul class="about-three__single-tab-bottom-list list-unstyled">
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="fas fa-check"></span>
+                                                </div>
+                                                <p>
+                                                    Ürün çeşitliliğimizi sürekli geliştirmek.
+                                                </p>
+                                            </li>
+
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="fas fa-check"></span>
+                                                </div>
+                                                <p>
+                                                    Yenilikçi teknolojileri hizmetlerimize entegre etmek.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="fas fa-check"></span>
+                                                </div>
+                                                <p>
+                                                    Sürdürülebilir ve enerji verimli çözümler üretmek.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="fas fa-check"></span>
+                                                </div>
+                                                <p>
+                                                    Güvenilir marka konumumuzu daha da güçlendirmek.
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Single Tab Content-->
+                            <!--Start Single Tab Content-->
+                            <div class="tab " id="commitment">
+                                <div class="about-three__single-tab">
+                                    <div class="about-three__single-tab-inner">
+                                        <div class="about-three__single-tab-text">
+                                            <p>
+                                                Tüm çalışmalarımızı kalite, güven, dürüstlük ve müşteri memnuniyeti ilkeleri doğrultusunda gerçekleştiriyoruz.
+
+                                            </p>
+                                        </div>
+                                        <ul class="about-three__single-tab-bottom-list list-unstyled">
+
+
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="fas fa-check"></span>
+                                                </div>
+                                                <p>
+                                                    Kaliteden ödün vermeyen hizmet anlayışı.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="fas fa-check"></span>
+                                                </div>
+                                                <p>
+                                                    Şeffaf ve güvenilir iş ilişkileri.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="fas fa-check"></span>
+                                                </div>
+                                                <p>
+                                                    Çevreye ve insana duyarlı çözümler.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="fas fa-check"></span>
+                                                </div>
+                                                <p>
+                                                    Uzun vadeli müşteri memnuniyeti.
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Single Tab Content-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="about-three__right wow slideInRight" data-wow-delay="100ms"
+                     data-wow-duration="2500ms">
+                    <div class="about-three__img-box">
+                        <div class="about-three__img">
+                            <img src="assets/images/resources/yazici1.jpg" alt="">
+                        </div>
+                        <div class="about-three__img-2">
+                            <img src="assets/images/resources/yazici2.jpg" alt="">
+                        </div>
+                        <div class="about-three__experience-box">
+                            <div class="about-three__experience-count">
+                                <h3 class="odometer" data-count="35">00</h3>
+                                <span>+</span>
+                            </div>
+                            <p class="about-three__experience-count-text">Yıllık Tecrübe</p>
+                        </div>
+                        <div class="about-three__video-link">
+                            <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
+                                <div class="about-three__video-icon">
+                                    <span class="fa fa-play"></span>
+                                    <i class="ripple"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="about-three__img-shape-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--About Three End -->
+<!--Process Two Start -->
+<section class="process-two">
+    <div class="container">
+        <div class="section-title text-center sec-title-animation animation-style1">
+            <h2 class="section-title__title title-animation">İş Akış Sürecimiz</h2>
+        </div>
+        <div class="process-two__inner">
+            <div class="process-two__bg"
+                 style="background-image: url(assets/images/shapes/process-two-bg-shape.png);"></div>
+            <div class="process-two__shape-four">
+                <img src="assets/images/shapes/process-two-shape-four.png" alt="">
+            </div>
+            <ul class="row">
+                <!--Process Two Single Start-->
+                <li class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="process-two__single">
+                        <div class="process-two__single-shape-1">
+                            <img src="assets/images/shapes/process-two-single-shape-1.png" alt="">
+                        </div>
+                        <div class="process-two__icon">
+                            <span class="icon-plan"></span>
+                        </div>
+                        <div class="process-two__shape-1">
+                            <div class="process-two__shape-2">
+                                <img src="assets/images/shapes/process-two-shape-2.png" alt="">
+                            </div>
+                            <div class="process-two__shape-3">
+                                <img src="assets/images/shapes/process-two-shape-3.png" alt="">
+                            </div>
+                        </div>
+                        <div class="process-two__content">
+                            <div class="process-two__count"></div>
+                            <h3 class="process-two__title">İhtiyaç Analizi</h3>
+                            <p class="process-two__text">
+                                Projenizin ihtiyaçlarını belirliyor, kullanım alanına uygun alüminyum sistemlerini planlıyoruz.
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <!--Process Two Single End-->
+                <!--Process Two Single Start-->
+                <li class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="process-two__single">
+                        <div class="process-two__single-shape-2">
+                            <img src="assets/images/shapes/process-two-single-shape-2.png" alt="">
+                        </div>
+                        <div class="process-two__content">
+                            <div class="process-two__count"></div>
+                            <h3 class="process-two__title">Ürün ve Sistem Seçimi</h3>
+                            <p class="process-two__text">
+                                Teknik gereksinimlere uygun profil, doğrama, cephe ve aksesuar seçeneklerini belirliyoruz.
+                            </p>
+                        </div>
+                        <div class="process-two__shape-1">
+                            <div class="process-two__shape-2">
+                                <img src="assets/images/shapes/process-two-shape-4.png" alt="">
+                            </div>
+                            <div class="process-two__shape-3">
+                                <img src="assets/images/shapes/process-two-shape-5.png" alt="">
+                            </div>
+                        </div>
+                        <div class="process-two__icon">
+                            <span class="icon-home"></span>
+                        </div>
+                    </div>
+                </li>
+                <!--Process Two Single End-->
+                <!--Process Two Single Start-->
+                <li class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="process-two__single">
+                        <div class="process-two__single-shape-1">
+                            <img src="assets/images/shapes/process-two-single-shape-1.png" alt="">
+                        </div>
+                        <div class="process-two__icon">
+                            <span class="icon-building-plan"></span>
+                        </div>
+                        <div class="process-two__shape-1">
+                            <div class="process-two__shape-2">
+                                <img src="assets/images/shapes/process-two-shape-2.png" alt="">
+                            </div>
+                            <div class="process-two__shape-3">
+                                <img src="assets/images/shapes/process-two-shape-3.png" alt="">
+                            </div>
+                        </div>
+                        <div class="process-two__content">
+                            <div class="process-two__count"></div>
+                            <h3 class="process-two__title">Üretim ve Uygulama</h3>
+                            <p class="process-two__text">
+                                Kalite standartlarına uygun ürünleri hazırlıyor, uzman ekibimizle uygulama sürecini yürütüyoruz.
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <!--Process Two Single End-->
+                <!--Process Two Single Start-->
+                <li class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="process-two__single">
+                        <div class="process-two__content">
+                            <div class="process-two__count"></div>
+                            <h3 class="process-two__title">Teslimat ve Destek</h3>
+                            <p class="process-two__text">
+                                Kontrolleri tamamlayarak projeyi zamanında teslim ediyor, satış sonrası desteğimizi sürdürüyoruz.
+                            </p>
+                        </div>
+                        <div class="process-two__shape-1">
+                            <div class="process-two__shape-2">
+                                <img src="assets/images/shapes/process-two-shape-4.png" alt="">
+                            </div>
+                            <div class="process-two__shape-3">
+                                <img src="assets/images/shapes/process-two-shape-5.png" alt="">
+                            </div>
+                        </div>
+                        <div class="process-two__icon">
+                            <span class="icon-property-1"></span>
+                        </div>
+                    </div>
+                </li>
+                <!--Process Two Single End-->
+            </ul>
+        </div>
+    </div>
+</section>
+<!--Process Two End -->
+<!--CTA One Start-->
+<section class="cta-one">
+    <div class="cta-one__bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
+         style="background-image: url(assets/images/backgrounds/yazici4.jpg);"></div>
+    <div class="container">
+        <div class="cta-one__inner">
+            <h2 class="cta-one__title">GÜVENLİ, DAYANIKLI VE MODERN <br>ALÜMİNYUM ÇÖZÜMLERİ SUNUYORUZ.</h2>
+            <p class="cta-one__text">1991’den bu yana kaliteli alüminyum sistemleriyle projelerinize değer katıyoruz.</p>
+            <div class="cta-one__btns-boxes">
+                <div class="cta-one__btn-one">
+                    <a href="about.html" class="thm-btn">
+                        Ürünlerimiz<span class="fas fa-arrow-right"></span>
+                    </a>
+                </div>
+                <div class="cta-one__btn-two">
+                    <a href="about.html" class="thm-btn">
+                        Bizi Tanıyın<span class="fas fa-arrow-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--CTA One End-->
+<!--Project Three Start -->
+<section class="project-three">
+    <div class="section-title text-center sec-title-animation animation-style1">
+        <h2 class="section-title__title title-animation">Son Projelerimiz</h2>
+    </div>
+    <div class="container">
+        <div class="project-three__inner">
+
+            @foreach (var item in Model.InsaatProjeler)
+            {
+
+
+                <div class="project-three__single">
+                    <div class="project-three__img-box">
+                        <div class="project-three__single-shape-1">
+                            <img src="assets/images/shapes/project-three-single-shape-1.png" alt="">
+                        </div>
+                        <div class="project-three__img">
+                            <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="project-three-img">
+                        </div>
+                        <div class="project-three__content">
+                            <div class="project-three__content-box">
+                                <div class="project-three__icon-box">
+                                    <a href="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" class="img-popup">
+                                        <span class="fal fa-plus"></span>
+                                    </a>
+                                </div>
+                                <p>@item.ProjeAdi</p>
+                                <h3><a href="project-details.html">@item.ProjeDurumu.GetDescription()</a></h3>
+                                <div class="project-three__read-more">
+                                    <a href="project-details.html">
+                                        <span class="fas fa-arrow-left"></span>Poje Detayları
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+<!--Project Three End-->

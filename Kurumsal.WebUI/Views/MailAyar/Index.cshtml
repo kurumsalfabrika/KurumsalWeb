@@ -1,0 +1,128 @@
+﻿@using Kurumsal.Entities.Concrete
+@{
+
+    @model MailAyar
+    ViewBag.pTitle = "E-POSTA İŞLEMLERİ";
+    ViewBag.Title = "E-Posta İşlemleri";
+    ViewBag.pageTitle = "Sayfalar";
+    Layout = "~/Views/_Shared/Layouts/_layout_horizontal_topbarlight_kurumsal_web.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/assets/libs/toastr/build/toastr.min.css">
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form id="ftpForm" asp-action="AddOrUpdate" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" id="editId" asp-for="Id" name="Id">
+                    <div class="row mb-3">
+                        <label for="SMTPServer" class="col-sm-2 col-form-label">SMTP Sunucu Adresi</label>
+                        <div class="col-sm-10">
+                            <input asp-for="SMTPServer" type="text" class="form-control" placeholder="smtp.alanadi.com" required>
+                        </div>
+                    </div>
+                   
+                    <div class="row mb-3">
+                        <label for="SMTPPort" class="col-sm-2 col-form-label">SMTP Port</label>
+                        <div class="col-sm-10">
+                            <input asp-for="SMTPPort" type="number" class="form-control" placeholder="587" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="SSL" class="col-sm-2 col-form-label">SSL</label>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input asp-for="SSL" class="form-check-input" type="checkbox">
+                                <label class="form-check-label" for="SSL">SSL Güvenlik</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="SMTPEposta" class="col-sm-2 col-form-label">E-posta Adresi</label>
+                        <div class="col-sm-10">
+                            <input asp-for="SMTPEposta" type="text" class="form-control" placeholder="adres@alanadi.com" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="SMTPEpostaSifre" class="col-sm-2 col-form-label">E-posta Şifresi</label>
+                        <div class="col-sm-10">
+                            <input asp-for="SMTPEpostaSifre" type="password" class="form-control" >
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="MesajinGelecegiEposta" class="col-sm-2 col-form-label">Mesajın Geleceği E-posta</label>
+                        <div class="col-sm-10">
+                            <input asp-for="MesajinGelecegiEposta" type="text" class="form-control" placeholder="adres@alanadi.com" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="Durum" class="col-sm-2 col-form-label">Durum</label>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input asp-for="Durum" class="form-check-input" type="checkbox">
+                                <label class="form-check-label" for="Durum">Aktif/Pasif</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Gönderim Butonu -->
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<!-- toastr plugin -->
+<script src="~/assets/libs/toastr/build/toastr.min.js"></script>
+
+<!-- toastr init -->
+<script src="~/assets/js/pages/toastr.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#ftpForm').on('submit', function (e) {
+            e.preventDefault(); // Formun normal submit işlemini engelle
+            var formData = new FormData(this);
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: formData,
+                contentType: false, // Çoklu form verisi gönderirken false olmalı
+                processData: false, // jQuery'nin veriyi işlemesini engeller
+                success: function (response) {
+                    if (response.success) {
+                        toastr.success(response.message);
+                        // Opsiyonel olarak başka bir sayfaya yönlendirme
+                        //        window.location.href = '/desired-location';
+                    } else {
+                        toastr.error(response.message);
+                    }
+                },
+                error: function (xhr) {
+                    toastr.error("İşlem başarısız: Sunucu hatası.");
+                }
+            });
+        });
+    });
+</script>

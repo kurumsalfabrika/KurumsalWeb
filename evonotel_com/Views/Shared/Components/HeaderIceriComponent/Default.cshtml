@@ -1,0 +1,41 @@
+﻿@model GenelViewModel
+
+<header class="fixed">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle mobile_menu_btn" data-toggle="collapse" data-target=".mobile_menu" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/anasayfa/anasayfa.html">
+                <img src="@Model.Ftp.DosyaAdresOnEki@Model.SiteAyar.HeaderLogoKoyuRenk" height="32" alt="Logo">
+            </a>
+        </div>
+        <nav id="main_menu" class="mobile_menu navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="mobile_menu_title" style="display:none;">MENU</li>
+                @foreach (var item in Model.Menuler.Where(x => x.AnaMenuId == 0).ToList())
+                {
+                    @if (Model.Menuler.Where(a => a.AnaMenuId == item.Id).Count() == 0)
+                    {
+                        <li><a href="@item.BaglantiAdresi">@item.MenuAdi</a></li>
+                    }
+                    else
+                    {
+                        <li class="simple_menu dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.MenuAdi</a>
+                            <ul class="dropdown-menu">
+                                @foreach (var altitem in Model.Menuler.Where(c => c.AnaMenuId == item.Id))
+                                {
+                                    <li><a href="@item.BaglantiAdresi">@altitem.MenuAdi</a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</header>
+

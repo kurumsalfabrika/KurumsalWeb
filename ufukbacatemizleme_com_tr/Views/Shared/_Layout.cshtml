@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    @await Component.InvokeAsync("HeadComponent")
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="preloader"></div>
+        @await Component.InvokeAsync("HeaderComponent")
+        @RenderBody()
+        @await Component.InvokeAsync("FooterComponent")
+    </div>
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-up"></span></div>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "~/Views/Shared/_IceriLayout.cshtml";
+}
+@using Kurumsal.Core.Functions
+@model OdaViewModel
+
+<!-- =========== PAGE TITLE ========== -->
+<div class="page_title gradient_overlay" style="background: url(images/page_title_bg.jpg);">
+    <div class="container">
+        <div class="inner">
+            <h1>Odalar</h1>
+            <ol class="breadcrumb">
+                <li><a href="/anasayfa/anasayfa.html">Anasayfa</a></li>
+                <li style="color:#fff;">Oda Listesi</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- =========== MAIN ========== -->
+<main id="rooms_list">
+    <div class="container">
+        @foreach (var item in Model.Odalar)
+        {
+
+            <article class="room_list">
+                <div class="row row-flex">
+                    <div class="col-lg-4 col-md-5 col-sm-12">
+                        <figure>
+                            <a href="@Url.Content("~/oda/" + SeoUrlGenerator.GenerateSlug(item.OdaAdi) + "-" + item.Id + ".html")" class="hover_effect h_link h_blue">
+                                <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" class="img-responsive" alt="@item.OdaAdi">
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="col-lg-8 col-md-7 col-sm-12">
+                        <div class="room_details row-flex">
+                            <div class="col-md-9 col-sm-9 col-xs-12 room_desc">
+                                <h3><a href="@Url.Content("~/oda/" + SeoUrlGenerator.GenerateSlug(item.OdaAdi) + "-" + item.Id + ".html")"> @item.OdaAdi </a></h3>
+                                <p>@item.SpotMetin</p>
+                                <div class="room_services">
+                                    <i class="fa fa-bed" data-toggle="popover" data-placement="top" data-trigger="hover" title="Yatak"></i>
+                                    <i class="fa fa-television" data-toggle="popover" data-placement="top" data-trigger="hover"  title="TV"></i>
+                                    <i class="fa fa-glass" data-toggle="popover" data-placement="top" data-trigger="hover"  title="Minibar"></i>
+                                    <i class="fa fa-shower" data-toggle="popover" data-placement="top" data-trigger="hover"  title="Saç Kurutma Makinesi"></i>
+                                    <i class="fa fa-coffee" data-toggle="popover" data-placement="top" data-trigger="hover" title="Setup Seti"></i>
+
+                               </div>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12 room_price">
+                                <div class="room_price_inner">
+
+                                    <a href="@Url.Content("~/oda/" + SeoUrlGenerator.GenerateSlug(item.OdaAdi) + "-" + item.Id + ".html")" class="button  btn_blue btn_full upper">Detaylar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+
+        }
+
+    
+    </div>
+</main>

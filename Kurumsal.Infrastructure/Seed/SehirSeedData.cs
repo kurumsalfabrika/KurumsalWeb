@@ -1,0 +1,98 @@
+﻿using Kurumsal.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+
+namespace Kurumsal.Infrastructure.Seed
+{
+    public static class SehirSeedData
+    {
+        public static void Seed(ModelBuilder modelBuilder)
+        {
+            var createdDate = new DateTime(2025, 1, 1);
+            var trId = Guid.Parse("00000000-0000-0000-0000-000000000180");
+
+            modelBuilder.Entity<Sehir>().HasData(
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000001"), Kod = "01", Ad = "Adana", TelefonKodu = "322", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000002"), Kod = "02", Ad = "Adıyaman", TelefonKodu = "416", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000003"), Kod = "03", Ad = "Afyonkarahisar", TelefonKodu = "272", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000004"), Kod = "04", Ad = "Ağrı", TelefonKodu = "472", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000005"), Kod = "05", Ad = "Amasya", TelefonKodu = "358", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000006"), Kod = "06", Ad = "Ankara", TelefonKodu = "312", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000007"), Kod = "07", Ad = "Antalya", TelefonKodu = "242", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000008"), Kod = "08", Ad = "Artvin", TelefonKodu = "466", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000009"), Kod = "09", Ad = "Aydın", TelefonKodu = "256", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000010"), Kod = "10", Ad = "Balıkesir", TelefonKodu = "266", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000011"), Kod = "11", Ad = "Bilecik", TelefonKodu = "228", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000012"), Kod = "12", Ad = "Bingöl", TelefonKodu = "426", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000013"), Kod = "13", Ad = "Bitlis", TelefonKodu = "434", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000014"), Kod = "14", Ad = "Bolu", TelefonKodu = "374", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000015"), Kod = "15", Ad = "Burdur", TelefonKodu = "248", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000016"), Kod = "16", Ad = "Bursa", TelefonKodu = "224", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000017"), Kod = "17", Ad = "Çanakkale", TelefonKodu = "286", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000018"), Kod = "18", Ad = "Çankırı", TelefonKodu = "376", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000019"), Kod = "19", Ad = "Çorum", TelefonKodu = "364", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000020"), Kod = "20", Ad = "Denizli", TelefonKodu = "258", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000021"), Kod = "21", Ad = "Diyarbakır", TelefonKodu = "412", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000022"), Kod = "22", Ad = "Edirne", TelefonKodu = "284", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000023"), Kod = "23", Ad = "Elazığ", TelefonKodu = "424", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000024"), Kod = "24", Ad = "Erzincan", TelefonKodu = "446", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000025"), Kod = "25", Ad = "Erzurum", TelefonKodu = "442", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000026"), Kod = "26", Ad = "Eskişehir", TelefonKodu = "222", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000027"), Kod = "27", Ad = "Gaziantep", TelefonKodu = "342", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000028"), Kod = "28", Ad = "Giresun", TelefonKodu = "454", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000029"), Kod = "29", Ad = "Gümüşhane", TelefonKodu = "456", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000030"), Kod = "30", Ad = "Hakkâri", TelefonKodu = "438", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000031"), Kod = "31", Ad = "Hatay", TelefonKodu = "326", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000032"), Kod = "32", Ad = "Isparta", TelefonKodu = "246", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000033"), Kod = "33", Ad = "Mersin", TelefonKodu = "324", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000034"), Kod = "34", Ad = "İstanbul", TelefonKodu = "212;216", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000035"), Kod = "35", Ad = "İzmir", TelefonKodu = "232", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000036"), Kod = "36", Ad = "Kars", TelefonKodu = "474", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000037"), Kod = "37", Ad = "Kastamonu", TelefonKodu = "366", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000038"), Kod = "38", Ad = "Kayseri", TelefonKodu = "352", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000039"), Kod = "39", Ad = "Kırklareli", TelefonKodu = "288", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000040"), Kod = "40", Ad = "Kırşehir", TelefonKodu = "386", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000041"), Kod = "41", Ad = "Kocaeli", TelefonKodu = "262", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000042"), Kod = "42", Ad = "Konya", TelefonKodu = "332", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000043"), Kod = "43", Ad = "Kütahya", TelefonKodu = "274", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000044"), Kod = "44", Ad = "Malatya", TelefonKodu = "422", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000045"), Kod = "45", Ad = "Manisa", TelefonKodu = "236", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000046"), Kod = "46", Ad = "Kahramanmaraş", TelefonKodu = "344", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000047"), Kod = "47", Ad = "Mardin", TelefonKodu = "482", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000048"), Kod = "48", Ad = "Muğla", TelefonKodu = "252", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000049"), Kod = "49", Ad = "Muş", TelefonKodu = "436", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000050"), Kod = "50", Ad = "Nevşehir", TelefonKodu = "384", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000051"), Kod = "51", Ad = "Niğde", TelefonKodu = "388", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000052"), Kod = "52", Ad = "Ordu", TelefonKodu = "452", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000053"), Kod = "53", Ad = "Rize", TelefonKodu = "464", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000054"), Kod = "54", Ad = "Sakarya", TelefonKodu = "264", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000055"), Kod = "55", Ad = "Samsun", TelefonKodu = "362", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000056"), Kod = "56", Ad = "Siirt", TelefonKodu = "484", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000057"), Kod = "57", Ad = "Sinop", TelefonKodu = "368", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000058"), Kod = "58", Ad = "Sivas", TelefonKodu = "346", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000059"), Kod = "59", Ad = "Tekirdağ", TelefonKodu = "282", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000060"), Kod = "60", Ad = "Tokat", TelefonKodu = "356", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000061"), Kod = "61", Ad = "Trabzon", TelefonKodu = "462", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000062"), Kod = "62", Ad = "Tunceli", TelefonKodu = "428", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000063"), Kod = "63", Ad = "Şanlıurfa", TelefonKodu = "414", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000064"), Kod = "64", Ad = "Uşak", TelefonKodu = "276", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000065"), Kod = "65", Ad = "Van", TelefonKodu = "432", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000066"), Kod = "66", Ad = "Yozgat", TelefonKodu = "354", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000067"), Kod = "67", Ad = "Zonguldak", TelefonKodu = "372", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000068"), Kod = "68", Ad = "Aksaray", TelefonKodu = "382", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000069"), Kod = "69", Ad = "Bayburt", TelefonKodu = "458", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000070"), Kod = "70", Ad = "Karaman", TelefonKodu = "338", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000071"), Kod = "71", Ad = "Kırıkkale", TelefonKodu = "318", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000072"), Kod = "72", Ad = "Batman", TelefonKodu = "488", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000073"), Kod = "73", Ad = "Şırnak", TelefonKodu = "486", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000074"), Kod = "74", Ad = "Bartın", TelefonKodu = "378", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000075"), Kod = "75", Ad = "Ardahan", TelefonKodu = "478", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000076"), Kod = "76", Ad = "Iğdır", TelefonKodu = "476", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000077"), Kod = "77", Ad = "Yalova", TelefonKodu = "226", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000078"), Kod = "78", Ad = "Karabük", TelefonKodu = "370", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000079"), Kod = "79", Ad = "Kilis", TelefonKodu = "348", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000080"), Kod = "80", Ad = "Osmaniye", TelefonKodu = "328", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false },
+                new Sehir { Id = Guid.Parse("10000000-0000-0000-0000-000000000081"), Kod = "81", Ad = "Düzce", TelefonKodu = "380", UlkeId = trId, CreatedAt = createdDate, IsDeleted = false }
+            );
+        }
+    }
+}

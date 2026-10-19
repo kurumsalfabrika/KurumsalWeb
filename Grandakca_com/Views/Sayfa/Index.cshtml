@@ -1,0 +1,45 @@
+﻿@using Kurumsal.Entities.Concrete
+@model SayfaViewModel
+
+@{
+
+
+ViewData["Title"] = "Grand Akca Otel - Alkolsüz Her Şey Dahil Aile Oteli";
+ViewData["DescripSon"] = "Alkolsüz her şey dahil aile oteli konsepSyle Grand Akca Otel'de kadınlara, erkeklere ve ailelere özel havuzlar, aile plajı, aquapark, konforlu odalar ve seçkin lezzetler sizleri bekliyor.";
+ViewData["Keywords"] = "grand akca otel, alkolsüz taSl, aile oteli, gazipaşa otel, kadınlara özel havuz, aile plajı, alkolsüz her şey dahil otel, gazipaşa havalimanına 5 dakika";
+
+
+    if(Model.Sayfa!=null)
+    {
+        ViewData["Title"] = "Grand Akca Otel - " + Model.Sayfa.Baslik;
+    }
+    else
+    {
+        Model.Sayfa = new Sayfa();
+        Model.Sayfa.Baslik = "Sayfa Bulunamadı";
+    }
+
+}
+
+<section class="breadcrumb-outer">
+    <div class="container">
+        <div class="breadcrumb-content">
+
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/anasayfa/grand-akca-ana-sayfa.html">Anasayfa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.Sayfa.Baslik</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<section class="py-5" style="background-color: #f9f9f9;">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-12 col-lg-12">
+                @Html.Raw(Model.Sayfa.Icerik)
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,100 @@
+﻿@using Kurumsal.Core.Functions
+@model HeaderViewModel
+
+
+<div class="footer-full">
+    <div class="container">
+        <div class="footer-menu-right">
+
+            <ul class="footer-menu">
+
+                @foreach (var item in Model.AnaMenuler.Where(x => x.MenuYeriId == 2).OrderBy(x => x.MenuSira))
+                {
+                    <li>
+                        <a title="@item.MenuAciklama" href="@item.BaglantiAdresi">@item.MenuAdi</a>
+                    </li>
+
+                }
+
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer-style-1">
+    <div class="footer-top pad-bottom-20">
+        <div class="container">
+
+     
+            <div class="footer-content">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mar-bottom-30">
+                        <div class="footer-about">
+                            <p>      <img alt="Image" src="~/images/logo.png" class="logo-white" /></p>
+                            <p>@Model.SiteAyar.KisaHakkindaYazisi</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mar-bottom-30">
+                        <div class="Rooms">
+                            <h4>Kurumsal</h4>
+                            <ul class="etiketler">
+                                @foreach (var item in Model.FooterMenuler)
+                                {
+                                    <li><a href="@item.BaglantiAdresi">@item.MenuAdi</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mar-bottom-30">
+                        <div class="footer-contact">
+                            <h4>İletişim Bilgileri</h4>
+                            <ul>
+                                <li>Tel: @Model.IletisimAyar.Telefon1</li>
+                                <li>Email: @Model.IletisimAyar.IletisimEposta</li>
+
+                                <li>Adres: @Model.IletisimAyar.FirmaAdres</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="copyright-content text-center">
+                <p class="white">
+                    Copyright 2025.<span>Grand Akça Otel</span>. All Rights Reserved. Powered By <a href="https://www.kurumsalfabrika.com.tr" target="_blank">Kurumsal Fabrika</a>
+                </p>
+                <ul>
+                    @foreach (var item in Model.SosyalMedyaAdresler)
+                    {
+                        <li>
+                            <a href="@item.Url" title="@item.Ad" target="_blank"><i class="@item.Ikon" aria-hidden="true"></i></a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Ends -->
+<!-- Floating Contact Buttons -->
+<div class="fab-container">
+
+    <a href="tel:@Model.IletisimAyar.Telefon1" class="fab-option phone">
+        <i class="fas fa-phone"></i>
+        <span class="fab-label">Telefon</span>
+    </a>
+
+    <a href="https://wa.me/@Model.IletisimAyar.GSM.Replace(" ", "")"
+       target="_blank"
+       class="fab-option whatsapp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="fab-label">WhatsApp</span>
+    </a>
+
+</div>

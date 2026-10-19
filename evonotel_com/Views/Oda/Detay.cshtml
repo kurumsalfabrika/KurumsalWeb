@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/Shared/_IceriLayout.cshtml";
+}
+@using Kurumsal.Core.Functions
+@model OdaViewModel
+
+<div class="page_title gradient_overlay" style="background: url(images/page_title_bg.jpg);">
+    <div class="container">
+        <div class="inner">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h1>@Model.Oda.OdaAdi</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="/anasayfa/anasayfa.html">Anasayfa</a></li>
+                        <li>Odalar</li>
+                        <li>@Model.Oda.OdaAdi</li>
+                    </ol>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="price">
+                        <div class="inner">
+                            <span>Özel Fiyat</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main id="room_page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="slider">
+                    <div id="slider-larg" class="owl-carousel image-gallery">
+                        @foreach (var item in Model.Fotograflar)
+                        {
+                            <!-- ITEM -->
+                            <div class="item lightbox-image-icon">
+                                <a href="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" class="hover_effect h_lightbox h_blue">
+                                    <img class="img-responsive" src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="Image">
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    <div id="thumbs" class="owl-carousel">
+                        @foreach (var item in Model.Fotograflar)
+                        {
+                            <div class="item">
+                                <img class="img-responsive" src="@($"{Model.Ftp.DosyaAdresOnEki}k_{item.OneCikanGorsel}")" alt="Image">
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="main_title mt50">
+                    <h2>@Model.Oda.OdaAdi</h2>
+                </div>
+                <p>@Model.Oda.SpotMetin</p>
+            </div>
+        </div>
+    </div>
+</main>

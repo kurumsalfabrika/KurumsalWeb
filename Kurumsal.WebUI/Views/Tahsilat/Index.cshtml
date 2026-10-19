@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Form Editor";
+    ViewBag.pTitle = "Form Editor";
+    ViewBag.pageTitle = "Forms";
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/card-js@2.5.1/dist/card-js.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.min.css">
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form id="payment-form" method="post" role="form">
+                    <div class="row">
+                    <div class="col-6">
+                        <input class="form-control name" placeholder="Cardholder Name">
+                        <input class="form-control card-number" placeholder="Card Number">
+                        <input class="form-control expiry" placeholder="MM / YY">
+                        <input class="form-control cvc" placeholder="CVC">
+                        <button type="submit">Submit</button>
+                    </div>
+                    <div class="col-6">
+                    <div class="card-wrapper"></div>
+                    </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<!--tinymce js-->
+<script src="~/assets/libs/tinymce/tinymce.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/libs/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+<script src="~/assets/js/pages/form-element.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/card-js@2.5.1/dist/card-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.min.js"></script>
+    <script>
+        var card = new Card({
+            form: document.getElementById('payment-form'),
+            container: '.card-wrapper',
+            formSelectors: {
+                numberInput: 'input.card-number',
+                expiryInput: 'input.expiry',
+                cvcInput: 'input.cvc',
+                nameInput: 'input.name'
+            },
+            messages: {
+                validDate: 'valid\ndate',
+                monthYear: 'mm/yyyy'
+            }
+        });
+    </script>

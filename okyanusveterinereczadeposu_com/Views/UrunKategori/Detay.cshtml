@@ -1,0 +1,165 @@
+﻿@using Kurumsal.Core.Functions
+
+@model UrunViewModel
+@{
+	ViewData["Title"] = Model.UrunKategori.KategoriAdi;
+}
+
+@section Styles {
+	<style>
+		.product-category-page {
+			padding-bottom: 100px;
+		}
+
+		.product-category-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 34px 28px;
+		}
+
+		.product-card {
+			background: #fff;
+			height: 100%;
+			box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+		}
+
+		.product-card-link {
+			display: block;
+			color: inherit;
+			height: 100%;
+		}
+
+		.product-card-media {
+			background: #fff;
+			aspect-ratio: 4 / 3;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 24px;
+			border-bottom: 1px solid #f0f0f0;
+		}
+
+		.product-card-media img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: contain;
+		}
+
+		.product-card-body {
+			padding: 24px 22px 26px;
+		}
+
+		.product-card-title {
+			color: #222;
+			font-size: 20px;
+			line-height: 1.35;
+			text-transform: uppercase;
+			margin-bottom: 14px;
+			word-break: break-word;
+		}
+
+		.product-card-summary {
+			color: #6f6f6f;
+			font-size: 14px;
+			line-height: 1.75;
+			margin: 0;
+		}
+
+		.product-card-link:hover .product-card-title {
+			color: #cd2122;
+		}
+
+		.product-card-link:hover .product-card {
+			transform: translateY(-4px);
+		}
+
+		.product-card {
+			transition: transform .25s ease, box-shadow .25s ease;
+		}
+
+		@@media (max-width: 991px) {
+			.product-category-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+}
+<!-- Inner Page Main Banner __________________ -->
+<div class="inner-page-banner">
+	<div class="opacity">
+		<div class="container">
+			<h2>@Model.UrunKategori.KategoriAdi</h2>
+		</div> <!-- /.container -->
+	</div> <!-- /.opacity -->
+</div> <!-- /.inner-page-banner -->
+<!-- Page Breadcrum __________________________ -->
+<div class="page-breadcrum">
+	<div class="container">
+		<ul>
+			<li><a href="/anasayfa/anasayfa.html">Anasayfa</a></li>
+			<li>-</li>
+			<li>@Model.UrunKategori.KategoriAdi</li>
+		</ul>
+	</div> <!-- /.container -->
+</div> <!-- /.page-breadcrum -->
+<!-- Product Category __________________________ -->
+<div class="blog-v2 product-category-page">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+				<div class="product-category-grid">
+
+					@foreach (var item in Model.Urunler)
+					{
+						<a href="@Url.Content("~/urun/" + SeoUrlGenerator.GenerateSlug(item.Baslik) + "-" + item.Id + ".html")" class="product-card-link">
+							<article class="product-card">
+								<div class="product-card-media">
+									<img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="@item.Baslik">
+								</div>
+								<div class="product-card-body">
+									<h3 class="product-card-title">@item.Baslik</h3>
+									<p class="product-card-summary">
+										@(string.IsNullOrEmpty(item.VitrinUrunAciklama)
+											? ""
+											: item.VitrinUrunAciklama.Length > 120
+												? item.VitrinUrunAciklama.Substring(0, 120) + "..."
+												: item.VitrinUrunAciklama)
+									</p>
+								</div>
+							</article>
+						</a>
+					}
+
+				</div>
+			</div>
+			<!-- _______________ SideBar ___________________ -->
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sidebarOne">
+				<div class="wrapper-left">
+					<div class="sidebar-box quick-event-list">
+						<div class="box-wrapper">
+							<h4>Ürün Grupları</h4>
+							<ul>
+
+								@foreach (var item in Model.UrunKategoriler)
+								{
+									<li class="@(item.Id == Model.UrunKategori.Id ? "active" : "")">
+										<a href="@Url.Content("~/urun-kategori/"
+							+ SeoUrlGenerator.GenerateSlug(item.KategoriAdi)
+							+ "-" + item.Id + ".html")"
+									   class="tran3s">
+										<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+										@item.KategoriAdi
+									</a>
+								</li>
+								}
+							
+						</ul>
+						</div> <!-- /.box-wrapper -->
+					</div> <!-- /.sidebar-box.quick-event-list -->
+
+				</div> <!-- /.wrapper -->
+			</div> <!-- /.sidebarOne -->
+		</div>
+	</div> <!-- /.container -->
+</div> <!-- /.blog-v2 -->

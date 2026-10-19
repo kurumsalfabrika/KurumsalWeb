@@ -1,0 +1,224 @@
+﻿@using Kurumsal.Core.Functions
+@model GenelViewModel
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<!-- ========== REVOLUTION SLIDER ========== -->
+<section id="slider" class="full_slider">
+    <div class="rev_slider_wrapper fullscreen-container">
+        <div id="fullscreen_slider" class="rev_slider fullscreenbanner gradient_slider" style="display:none" data-version="5.4.1">
+            <ul>
+                @{
+                    int sira = 1;
+                }
+                @foreach (var item in Model.Sliderlar)
+                {
+                    sira++;
+                    <!-- SLIDE NR. 1 -->
+                    <li data-transition="fade">
+                        <!-- MAIN IMAGE -->
+                        <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel"
+                        alt="@item.SliderBaslik"
+                             title="@item.SliderBaslik"
+                        data-bgposition="center center"
+                        data-bgfit="cover"
+                        data-bgrepeat="no-repeat"
+                        data-bgparallax="10"
+                        class="rev-slidebg"
+                        data-no-retina="">
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption tp-resizeme"
+                        data-x="center"
+                        data-hoffset=""
+                        data-y="middle"
+                        data-voffset="['-30','-30','-30','-30']"
+                        data-responsive_offset="on"
+                        data-fontsize="['60','50','40','30']"
+                        data-lineheight="['60','50','40','30']"
+                        data-whitespace="nowrap"
+                        data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+                        style="z-index: 5; color: #fff; font-weight: 900;">
+                            @item.SliderBaslik
+                        </div>
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption tp-resizeme"
+                        data-x="center"
+                        data-hoffset=""
+                        data-y="middle"
+                        data-voffset="['45','45','45','45']"
+                        data-fontsize="['16', '16', '14', '12']"
+                        data-lineheight="['16', '16', '14', '12']"
+                        data-whitespace="nowrap"
+                        data-transform_idle="o:1;"
+                        data-transform_in="opacity:0;s:300;e:Power2.easeInOut;"
+                        data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                        data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                        data-start="3000"
+                        data-splitin="chars"
+                        data-splitout="none"
+                        data-basealign="slide"
+                        data-responsive="off"
+                        data-elementdelay="0.05"
+                        style="z-index: 9; font-weight: 400; color: rgba(255, 255, 255, 0.8); font-family: Raleway;">
+                            @item.IkinciSatir
+                        </div>
+                    </li>
+                }
+
+
+            </ul>
+        </div>
+    </div>
+    <!-- ========== BOOKING FORM ========== -->
+    <div class="hbf_2">
+        <div class="container">
+            <div class="inner">
+       
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="white_bg" id="rooms">
+    <div class="container">
+        <div class="main_title mt_wave mt_yellow a_center">
+            <h2>ODALARIMIZ</h2>
+        </div>
+        <p class="main_description a_center">
+            Tatiliniz boyunca konfor ve huzuru bir arada sunan odalarımızla sizleri ağırlamaktan mutluluk duyarız.
+            Geniş, modern ve ihtiyaçlarınıza uygun olarak tasarlanmış odalarımızı aşağıdan inceleyebilirsiniz.
+        </p>
+        <div class="row">
+            @foreach (var item in Model.Odalar)
+            {
+                <div class="col-md-4">
+                    <article class="room">
+                        <figure>
+                            <div class="price"><span>Özel Fiyat</span></div>
+                            <a class="hover_effect h_blue h_link" href="@Url.Content("~/oda/" + SeoUrlGenerator.GenerateSlug(item.OdaAdi) + "-" + item.Id + ".html")">
+                                <img src="@($"{Model.Ftp.DosyaAdresOnEki}{item.OneCikanGorsel}")" class="img-responsive" alt="@item.OdaAdi">
+                            </a>
+                            <figcaption>
+                                <h4><a href="room.html">@item.OdaAdi</a></h4>
+                                <span class="f_right"><a href="@Url.Content("~/oda/" + SeoUrlGenerator.GenerateSlug(item.OdaAdi) + "-" + item.Id + ".html")" class="button btn_sm btn_blue">Detaylar</a></span>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="lightgrey_bg" id="features">
+    <div class="container">
+
+        <p class="main_description a_center">Otelimizde konforunuzu ön planda tutarak sizler için sunduğumuz ayrıcalıklı hizmetlerle tanışın. Tatilinizi keyifli ve unutulmaz hale getirecek olanaklar bir arada!</p>
+
+        <div class="row">
+            <div class="col-md-7">
+                <div data-slider-id="features" id="features_slider" class="owl-carousel">
+                    <div><img src="~/images/restaurant.jpg" class="img-responsive" alt="Restaurant"></div>
+                    <div><img src="~/images/havuz.jpg" class="img-responsive" alt="Havuz"></div>
+                    <div><img src="~/images/oda.jpg" class="img-responsive" alt="Oda"></div>
+                    <div><img src="~/images/sahil.jpg" class="img-responsive" alt="Sahil"></div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="owl-thumbs" data-slider-id="features">
+                    <div class="owl-thumb-item">
+                        <span class="media-left"><i class="flaticon-food"></i></span>
+                        <div class="media-body">
+                            <h5>Restaurant</h5>
+                            <p>Geniş menüsü ve şık ortamıyla, her damağa hitap eden lezzetleri sizlerle buluşturuyoruz.</p>
+                        </div>
+                    </div>
+                    <div class="owl-thumb-item">
+                        <span class="media-left"><i class="flaticon-person"></i></span>
+                        <div class="media-body">
+                            <h5>Havuz</h5>
+                            <p>Açık ve kapalı havuzlarımızda gün boyu serinleyebilir, keyifli anlar yaşayabilirsiniz.</p>
+                        </div>
+                    </div>
+                    <div class="owl-thumb-item">
+                        <span class="media-left"><i class="flaticon-business"></i></span>
+                        <div class="media-body">
+                            <h5>Oda</h5>
+                            <p>Modern tasarıma sahip, konforlu odalarımızda huzurlu bir konaklama sizi bekliyor.</p>
+                        </div>
+                    </div>
+                    <div class="owl-thumb-item">
+                        <span class="media-left"><i class="flaticon-beach"></i></span>
+                        <div class="media-body">
+                            <h5>Sahil</h5>
+                            <p>Tertemiz sahilimizde güneşin ve denizin tadını doyasıya çıkarabilirsiniz.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about_style_2" class="blue_bg">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-6 col-sm-12">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="about_img_1">
+                            <div class="about_img_inner">
+                                <img src="~/images/giris1.jpg" class="img-responsive" alt="Image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 about_img_2_col">
+                        <div class="about_img_2">
+                            <div class="about_img_inner">
+                                <img src="~/images/giris2.jpg" class="img-responsive" alt="Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="main_title mt_wave mt_white a_left">
+                    <h2>EVON OTEL ANTALYA</h2>
+                </div>
+                <p class="main_description md_white">
+                    Muhteşem doğası, temiz havası, doğal ve içten insanları ile Gazipaşa’mızın ve otelimizin müptelası olacaksınız…
+                    <br><br>
+                    Evon Otel, güzel Antalya’mızın Gazipaşa ilçesinde, denize yalnızca 800 metre mesafede yer almaktadır. 2018 yılında kapılarını açan otelimizde, misafirlerimizin her türlü ihtiyacı düşünülerek tasarlanmış 39 adet suit oda bulunmaktadır.
+                    <br><br>
+                    Her biri 65 m² genişliğinde ve 1+1 şeklinde düzenlenmiş olan odalarımızda; çamaşır makinesi, buzdolabı, fırın, elektrikli ocak, televizyon, ütü, ütü masası, oturma grubu, kettle ve ihtiyaç duyabileceğiniz tüm mutfak gereçleri mevcuttur.
+                    <br><br>
+                    Ayrıca Evon Otel’in hem yatak odasında hem de oturma odasında klima yer almaktadır. Konforlu, huzurlu ve unutulmaz bir tatil için sizleri Evon Otel’e bekliyoruz.
+                </p>
+            </div>
+
+
+        </div>
+    </div>
+
+</section>
+
+
+@section Scripts{
+
+    <!-- ========== REVOLUTION SLIDER ========== -->
+    <script type="text/javascript" src="~/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="~/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript" src="~/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="~/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="~/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="~/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="~/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="~/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="~/revolution/js/extensions/revolution.extension.video.min.js"></script>
+}

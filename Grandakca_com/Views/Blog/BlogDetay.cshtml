@@ -1,0 +1,41 @@
+﻿@using Kurumsal.Entities.Concrete
+@model SayfaViewModel
+
+@{
+    if (Model.Blog != null)
+    {
+        ViewData["Title"] = "Grand Akca Otel - " + Model.Blog.Baslik;
+    }
+    else
+    {
+        Model.Blog = new Blog();
+        Model.Blog.Baslik = "Blog Bulunamadı";
+    }
+
+
+    ViewData["Description"] = "Alkolsüz her şey dahil aile oteli konseptiyle Grand Akca Otel'de kadın ve ailelere özel havuzlar, aile plajı, aquapark, konforlu odalar ve eşsiz lezzetler sizi bekliyor.";
+    ViewData["Keywords"] = "grand akca otel, islami otel, alkolsüz tatil, aile oteli, gazipaşa otel, alanya islami otel, kadınlara özel havuz, aile plajı, her şey dahil otel";
+}
+
+<section class="breadcrumb-outer">
+    <div class="container">
+        <div class="breadcrumb-content">
+
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/anasayfa/grand-akca-ana-sayfa.html">Anasayfa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.Blog.Baslik</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<section class="py-5" style="background-color: #f9f9f9;">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-12 col-lg-12">
+                @Html.Raw(Model.Blog.Icerik)
+            </div>
+        </div>
+    </div>
+</section>

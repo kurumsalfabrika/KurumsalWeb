@@ -1,0 +1,322 @@
+﻿@using Kurumsal.Core.Functions
+
+@inject ICurrencyService CurrencyService
+@model AnasayfaViewModel
+@section Styles {
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <!-- BASE CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.min.css" rel="stylesheet">
+    <link href="~/css/bs-icon-font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="~/css/shop.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="~/pro/css/all.css" rel="stylesheet" />
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <!-- SPECIFIC CSS -->
+    <link href="~/css/carousel_home.css" rel="stylesheet">
+    <link href="~/css/skins/square/grey.css" rel="stylesheet">
+    <!-- YOUR CUSTOM CSS -->
+    <link href="~/css/custom.css" rel="stylesheet">
+}
+<main>
+    <div id="carousel-home">
+        <div class="owl-carousel owl-theme">
+            @foreach (var item in Model.Sliderlar)
+            {
+                <div class="owl-slide cover background-image" data-background="url(@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel)">
+                    <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                        <div class="container">
+                            <div class="row justify-content-center justify-content-md-end">
+                                <div class="col-lg-6 static">
+                                    <div class="slide-text text-end white">
+                                        <p class="owl-slide-animated owl-slide-subtitle">
+                                            @Html.Raw(item.Aciklama)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div id="icon_drag_mobile"></div>
+    </div>
+    <div id="get_quote" style="background-color:#ffd700 !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 style="color:black">@Model.SiteAyar.Slogan</h3>
+                </div>
+                <div class="col-lg-6 button-container d-flex flex-column flex-lg-row">
+                    <a href="https://www.youtube.com/watch?v=c-ufJ5r__cM&t=10s" target="_blank" class="btn btn-danger mb-2 mb-lg-0 me-lg-2">Duman Safir Nerede?</a>
+                    <a href="https://www.dumansafir.com.tr/Files/surdurulebilirlik.pdf" target="_blank" class="btn btn-danger mb-2 mb-lg-0 me-lg-2">Sürdürülebilirlik</a>
+                    <a href="@Model.SiteAyar.Konum" target="_blank" class="btn btn-danger mb-2 mb-lg-0 me-lg-2">Konum</a>
+                    <a href="@Url.Content("~/iletisim/bize_ulasin.html")" class="btn btn-danger mb-2 mb-lg-0">Bize Ulaşın</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container margin_60_25">
+        <div class="row">
+            @foreach (var item in Model.Odalar)
+            {
+                var convertedPrice = CurrencyService.ConvertToCurrency(item.GunlukUcret);
+                var currencySymbol = CurrencyService.GetCurrencySymbol();
+                <div class="col-md-4">
+                    <figure class="animated">
+                        <a title="@item.OdaAdi" href="@Url.Content("~/daire/" + SeoUrlGenerator.GenerateSlug(item.OdaAdi) + "-" + item.Id + ".html")">
+                            <img src="@Model.Ftp.DosyaAdresOnEki@item.OneCikanGorsel" alt="@item.OdaAdi" class="img-fluid">
+                            <div style="position:absolute; z-index:10000; top: 10px; left: 10px; background-color: darkred; padding: 5px; color:white;font-weight:900;">
+                                Fiyat: @convertedPrice.ToString("N2") @currencySymbol
+                            </div>
+                        </a>
+                    </figure>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3>@item.OdaAdi</h3>
+                        <div>
+                            <a href="@Url.Content("~/rezervasyon/" + SeoUrlGenerator.GenerateSlug(item.OdaAdi) + "-" + item.Id + ".html")" class="btn btn-danger">Yurt Dışı Rezervasyon Yap</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="container margin_0">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="checkout-page">
+                    <ul class="default-links">
+                        <li style="background-color:#ffd700 !important;color:black;"><h3>Haberler</h3></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-12">
+                    <div class="row">
+                        @foreach (var item in Model.Haberler)
+                        {
+                            <div class="col-12 col-lg-6">
+                                <div class="row strip">
+                                    <div class="col-lg-5">
+                                        <p>
+                                            <img src="@($"{Model.Ftp.DosyaAdresOnEki}k_{item.OneCikanGorsel}")" alt="" class="img-fluid">
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <h4>@item.Baslik</h4>
+                                        <p>
+                                            @Html.Raw(item.SpotMetin)
+
+                                            <a href="@Url.Content("~/haber/" + SeoUrlGenerator.GenerateSlug(item.Baslik) + "-" + item.Id + ".html")">Haberin Devamı...</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        
+                        <div class="col-lg-12"><a href="/haber/tum-haberler.html" class="btn btn-success">Tüm Haberler</a></div>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12">
+                <div class="checkout-page">
+                    <ul class="default-links">
+                        <li style="background-color:#ffd700 !important;color:black;"><h3>Yorumlar</h3></li>
+                    </ul>
+                </div>
+                @foreach (var item in Model.Yorumlar)
+                {
+                    <div class="row strip">
+                        <div class="col-lg-12">
+                            <h4>@item.AdSoyad</h4>
+                            <p>
+                                @Html.Raw(item.Icerik)
+                            </p>
+                        </div>
+                    </div>
+                }
+
+                <div class="col-lg-12"><a href="/yorum/tum-yorumlar.html" class="btn btn-success">Tüm Yorumlar</a></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container margin_60_35">
+        <div class="row">
+            <div class="col-md-4">
+                <figure class="animated"><a target="_blank" href="https://www.youtube.com/watch?v=YwosIPcf3wY&amp;ab_channel=G%C3%B6khan%C3%87ALI%C5%9EKAN"><img src="https://www.dumansafir.com/wp-content/uploads/2023/08/erciyes.jpg" alt="" class="img-fluid"></a></figure>
+                <h3>
+                    Erciyes
+                </h3>
+                <p>
+                    Konumu itibari ile Erciyes dağına çok yakın olan rezidansımız zamanınızı yollarda geçirmeyeceğiniz istediğiniz yere kolayca ulaşabileceğiniz bir rahatlık sunuyor.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <figure class="animated"><a target="_blank" href="https://www.youtube.com/watch?v=8BZOHHE0Tng&amp;ab_channel=RevanBey"><img src="https://www.dumansafir.com/wp-content/uploads/2023/08/kapadokya.jpg" alt="" class="img-fluid"></a></figure>
+                <h3>
+                    Kapadokya
+                </h3>
+                <p>
+                    Rezidansımız Kapadokya da zaman geçirmek isteyen misafirlerimiz için günübirlik gezilerini düzenleyebilecekleri uzaklıktaki konumu ile ön plana çıkıyor.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <figure class="animated"><a target="_blank" href="https://www.youtube.com/watch?v=AoSQVhjdMx0&amp;ab_channel=%C4%B0lyasU%C3%A7ar"><img src="https://www.dumansafir.com/wp-content/uploads/2023/12/kayseri.jpg" alt="" class="img-fluid"></a></figure>
+                <h3>
+                    Şehir Merkezi
+                </h3>
+                <p>
+                    Şehir merkezine de çok kısa mesafede olan rezidansımız sayesinde zaman kaybetmeden tüm iş ve gezilerinizi kolayca halledebileceğiniz kolaylıkta sizleri bekliyor.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="feat_home">
+        <div class="container margin_60_25">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="box_feat">
+                        <span><img src="https://www.dumansafir.com/wp-content/uploads/2023/08/wifi.svg" alt=""></span>
+                        <h3>
+                            Yüksek Hızda İnternet
+                        </h3>
+                        <p>
+                            Dünya ile bağlantınız kopmasın diye yüksek hızlı internet hizmeti ücretsiz olarak tüm dairelerimizde mevcuttur.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="box_feat">
+                        <span><img src="https://www.dumansafir.com/wp-content/uploads/2023/08/park.svg" alt=""></span>
+                        <h3>
+                            Otopark
+                        </h3>
+                        <p>
+                            Kendine ait geniş otoprak alanı ile misafirlerimizi rahat ve güvenli bir şekilde ağırlıyoruz. Otopark sorunu yaşamıyorsunuz.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="box_feat">
+                        <span><img src="https://www.dumansafir.com/wp-content/uploads/2023/08/universite.svg" alt=""></span>
+                        <h3>
+                            Üniversitelere Yakın Mesafe
+                        </h3>
+                        <p>
+                            Konumumuz Kayseri'de bulunan üniversitelere çok yakın mesafede olup herhangi bir ulaşım sorunu ile karşılaşılmamaktadır.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="box_feat">
+                        <span><img src="https://www.dumansafir.com/wp-content/uploads/2023/08/security.svg" alt=""></span>
+                        <h3>
+                            7/24 Güvenlik
+                        </h3>
+                        <p>
+                            Sizlerin rahat edebilmeniz için rezidansımız 7/24 güvenlik kamerası ile takip edilmektedir.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="box_feat">
+                        <span><img src="https://www.dumansafir.com/wp-content/uploads/2023/08/engelli.svg" alt=""></span>
+                        <h3>
+                            Engelsiz Yaşam
+                        </h3>
+                        <p>
+                            Rezidansımız tamamen engelsiz hayat standartlarına uygun, engelli ve yaşlılarımın konaklamasında sorun yaşatmayan bir mekandır.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="box_feat">
+                        <span><img src="https://www.dumansafir.com/wp-content/uploads/2023/08/ulasim.svg" alt=""></span>
+                        <h3>
+                            Ücretli Ulaşım Hizmeti
+                        </h3>
+                        <p>
+                            Siz değerli misafirlerimize isteğiniz doğrultusunda ücretli ulaşım imkanı tarafımızdan sağlanmaktadır.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="feat_home" style="background-color:#ffd700 !important">
+        <div class="container margin_60_25">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="box_feat">
+                        <span><i class="bi bi-telephone fs-3" style="font-size: 3rem; color: black;"></i></span><h3>
+                            <a href="tel:@Model.IletisimAyar.Telefon1" target="_blank">
+                                Telefon Aç
+                            </a>
+                        </h3>
+                        <p>
+                            @Model.IletisimAyar.Telefon1
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="box_feat">
+                        <span><i class="bi bi-geo-alt fs-3" style="font-size: 3rem; color: black;"></i></span>
+                        <h3>
+                            <a href="@Model.SiteAyar.Konum" target="_blank">
+                                Yol Tarifi Al
+                            </a>
+                        </h3>
+                        <p>
+                            @Model.IletisimAyar.FirmaAdres
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="box_feat">
+                        <span><i class="bi bi-envelope fs-3" style="font-size: 3rem; color: black;"></i></span> <h3>
+                            <a href="mailto:@Model.IletisimAyar.IletisimEposta" target="_blank">
+                                Mesaj Gönder
+                            </a>
+                        </h3>
+                        <p>
+                            @Model.IletisimAyar.IletisimEposta
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="box_feat">
+                        <span><i class="bi bi-calendar fs-3" style="font-size: 3rem; color: black;"></i></span> <h3>
+                            <a href="http://www.reseliva.com/booknow/Saffire-Tower/?lang=tr" target="_blank">
+                                Türkiye İçi Rezervasyon
+                            </a>
+                        </h3>
+                        <p>
+                            Kolay / Hızlı / Güvenilir
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <!-- Common scripts -->
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/common_scripts_min.js"></script>
+    <script src="~/js/functions.js"></script>
+    <!--Owl carousel/slider -->
+    <script src="~/js/slider.js"></script>
+    <!-- Specific scripts -->
+    <script src="~/js/jquery.validate.js"></script>
+    <script src="~/js/jquery.stepy.min.js"></script>
+    <script src="~/js/quotation-validate.js"></script>
+}

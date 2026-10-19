@@ -1,0 +1,141 @@
+﻿@{
+
+    @model ReferansViewModel
+    ViewBag.pTitle = "REFERANS İŞLEMLERİ";
+    ViewBag.Title = "Referans İşlemleri";
+    ViewBag.pageTitle = "Referanslar";
+    Layout = "~/Views/_Shared/Layouts/_layout_horizontal_topbarlight_kurumsal_web.cshtml";
+}
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form asp-action="AddOrUpdate" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" id="editSayfaId" asp-for="Referans.Id" name="Referans.Id">
+
+                    <div class="row mb-3">
+                        <label for="Sira" class="col-sm-2 col-form-label">Sıra</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Referans.Sira" type="number" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="Baslik" class="col-sm-2 col-form-label">Başlık</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Referans.Baslik" class="form-control" placeholder="Sayfanızın başlığı">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="OneCikanGorsel" class="col-sm-2 col-form-label">Öne Çıkan Görsel</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="oneCikanGorsel" asp-for="Dosya" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="DosyaAdi" class="col-sm-2 col-form-label">Dosya Adı</label>
+                        <div class="col-sm-10">
+                            <input id="dosyaAdi" asp-for="Referans.OneCikanGorsel" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <textarea id="elm1" asp-for="Referans.Icerik" for="Referans.Icerik" name="Referans.Icerik"></textarea>
+                    </div>
+
+
+                    <!-- SEO Açıklama -->
+                    <div class="row mb-3">
+                        <label for="SEOAciklama" class="col-sm-2 col-form-label">SEO Açıklama</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Referans.SEOAciklama" class="form-control" placeholder="SEO Açıklama Metni">
+                        </div>
+                    </div>
+
+
+
+                    <!-- SEO Kelimeler -->
+                    <div class="row mb-3">
+                        <label for="SEOKelimeler" class="col-sm-2 col-form-label">SEO Kelimeler</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Referans.SEOKelimeler" class="form-control" placeholder="SEO Kelimelerini ,(virgül) ile ayırarak giriniz">
+                        </div>
+                    </div>
+
+
+
+                    <!-- Form Gönderim Butonu -->
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+<!-- JAVASCRIPT -->
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+<!--tinymce js-->
+<script src="~/assets/libs/tinymce/tinymce.min.js"></script>
+
+<!-- init js -->
+<script src="~/assets/js/pages/form-editor.init.js"></script>
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Sweet alert init js-->
+<script src="~/assets/js/pages/sweet-alerts.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var fileInput = document.getElementById('oneCikanGorsel');
+        var fileNameInput = document.getElementById('dosyaAdi');
+
+        fileInput.addEventListener('change', function () {
+            if (this.files.length > 0) {
+                var fileName = this.files[0].name;
+
+                var fileNameWithoutExtension = fileName.replace(/\.[^/.]+$/, ""); // Uzantıyı kaldır
+            
+
+                fileNameInput.value = fileNameWithoutExtension; // Dosya adını input alanına yerleştir
+                // SweetAlert ile bildirim göster
+                swal("Dosya Seçildi!", "Dosya Adı alanı SEO açısından büyük önem arz etmektedir. Lütfen dosya adınızı belirlerken özen gösteriniz ve çok fazla uzun olmasın!", "success");
+            }
+        });
+
+        // Fonksiyonu bir değişkene atayarak kullanıma hazırla
+        var showSweetAlert = function () {
+            swal({
+                title: "Dosya Adı Düzenleme",
+                text: "Dosya Adı alanı SEO açısından büyük önem arz etmektedir. Lütfen dosya adınızı belirlerken özen gösteriniz ve çok fazla uzun olmasın!",
+                icon: "info",
+                button: "Tamam",
+            }).then((value) => {
+                // SweetAlert gösterildikten sonra, olay dinleyicisini kaldır
+                fileNameInput.removeEventListener('click', showSweetAlert);
+            });
+        };
+
+        // Olay dinleyicisini ekle
+        fileNameInput.addEventListener('click', showSweetAlert);
+    });
+
+</script>

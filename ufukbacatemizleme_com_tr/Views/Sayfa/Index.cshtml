@@ -1,0 +1,95 @@
+﻿@model GenelViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@section Styles
+{
+    <link href="~/css/bootstrap.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--Color Themes-->
+    <link id="theme-color-file" href="~/css/color-themes/red-theme.css" rel="stylesheet">
+    <link href="~/css/tinymce/skins/content/default/content.css" rel="stylesheet" />
+    <link href="~/css/tinymce/skins/content/default/content.min.css" rel="stylesheet" />
+
+    <link href="~/css/tinymce/skins/ui/oxide/content.css" rel="stylesheet" />
+    <link href="~/css/tinymce/skins/ui/oxide/content.inline.css" rel="stylesheet" />
+    <link href="~/css/tinymce/skins/ui/oxide/content.inline.min.css" rel="stylesheet" />
+    <link href="~/css/tinymce/skins/ui/oxide/content.min.css" rel="stylesheet" />
+    <link href="~/css/tinymce/skins/content/default/content.css" rel="stylesheet" />
+    <link href="~/css/tinymce/skins/content/default/content.min.css" rel="stylesheet" />
+
+
+    <style>
+        .tinymce-content {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333; /* TinyMCE içeriğinin metin rengi */
+        }
+
+            /* TinyMCE'nin body stili */
+            .tinymce-content.mce-content-body {
+                margin: 0;
+                padding: 0;
+            }
+
+    </style>
+
+}
+<!--Page Title-->
+<section class="page-title" style="background-image:url(images/background/4.jpg);">
+    <div class="auto-container">
+        <div class="inner-box">
+            <h1>@Model.Sayfa.Baslik</h1>
+            <ul class="bread-crumb">
+                <li><a href="/anasayfa/anasayfa.html">Anasayfa</a></li>
+                <li>@Model.Sayfa.Baslik</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
+<!--Story Section-->
+<section class="story-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!--Content Column-->
+            <div class="content-column col-md-12 col-sm-12 col-xs-12">
+                <div class="content-inner">
+                    <!--Sec Title-->
+                    <div class="sec-title">
+                        <div class="title">Ufuk Baca Temizleme</div>
+                        <h2>@Model.Sayfa.Baslik</h2>
+                    </div>
+                    <!-- İçeriği TinyMCE CSS ile Göster -->
+                    <div class="tinymce-content">
+                        @Html.Raw(Model.Sayfa.Icerik)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Story Section-->
+
+@section Scripts
+{
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.fancybox.pack.js"></script>
+    <script src="~/js/jquery.fancybox-media.js"></script>
+    <script src="~/js/owl.js"></script>
+    <script src="~/js/appear.js"></script>
+    <script src="~/js/wow.js"></script>
+    <script src="~/js/jquery-ui.js"></script>
+    <script src="~/js/mixitup.js"></script>
+    <script src="~/js/script.js"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+
+}
